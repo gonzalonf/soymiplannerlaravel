@@ -13,7 +13,11 @@
 		@foreach ($productChunk as $product)
 			<div class="col-xs-12 col-md-3">
 				<div class="thumbnail">
-				<img style="height: 300px;" src="http://cdn.playbuzz.com/cdn/adabbd88-1450-44a4-b4bc-a96174ea963c/b3d6a27c-fdf4-438e-9a04-b8a67ee04b52.png" alt="Evento">
+					@if (isset($product->imgName))
+					    <img src="{{Storage::url($product->imgName)}}">
+					@else
+						<img style="height: 300px;" src="http://cdn.playbuzz.com/cdn/adabbd88-1450-44a4-b4bc-a96174ea963c/b3d6a27c-fdf4-438e-9a04-b8a67ee04b52.png" alt="Evento">
+					@endif ($product->imgName)
 					<div class="caption">
 						<h3>Nombre de Evento: {{$product->name}}</h3>
 						<p>Descripcion: {{$product->description}}.</p>
@@ -29,14 +33,6 @@
 @endforeach
 
 
-
-
-
-	{{-- <ul>
-        @foreach($products as $product)
-            <li><a href="products/{{$product->id}}">{{ $product->name }}</a> - <a href="#">Edit</a></li>
-        @endforeach
-	</ul> --}}
 </body>
 </html>
 
