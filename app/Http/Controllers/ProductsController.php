@@ -18,15 +18,10 @@ class ProductsController extends Controller
         return view('products.index', compact('products'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        
+        return view('products.create');
     }
 
     /**
@@ -37,19 +32,28 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'=>'required|max:30', 
+            'price'=>'required',
+            'description'=>'required',
+            'category'=>'required'
+            // 'image'=>'required|max:1024'
+            ]);
+        $product=Product::create([
+            'name'=>$request->input('name'), 
+            'price'=>$request->input('price'), 
+            'description'=>$request->input('description'), 
+            'category_id'=>$request->input('category')
+
+            ]);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
-        $product = Product::find($id); // find me devuelve 1 unico producto
-        return view('products.show', compact('product')); // creo la vista y le paso la variable
+        // $product = Product::find($id); 
+        // return view('products.show', compact('product')); 
     }
 
     /**

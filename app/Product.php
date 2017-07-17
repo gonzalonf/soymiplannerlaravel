@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-	public $timestamps = false;
-
-	public function getName()
-	{
-		return $this->prod_name;
-	}
+	protected $fillable = ['name', 'price', 'description', 'imgName', 'category_id'];	
 
 }
