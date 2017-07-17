@@ -47,6 +47,16 @@ class ProductsController extends Controller
 
             ]);
 
+        $nombreImagen=$product->id . '.' . str_slug($product->name) . '.' .request()->image->extension();
+
+        request()->image->storeAs('public', $nombreImagen);
+        
+        $product->imgName = $nombreImagen;
+
+        $product->save();
+
+        return view('/');
+
     }
 
    
