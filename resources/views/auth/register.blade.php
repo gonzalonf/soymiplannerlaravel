@@ -8,7 +8,7 @@
 <body>
 
     <!-- navegación -->
-    @include('nav')
+    @include('partials/nav')
 
     <!-- inicia el CONTENEDOR para el Registro -->
 
@@ -81,7 +81,7 @@
             </form>
         </div>
 
-        @include('footer')
+        @include('partials/footer')
 
         {{-- <script src='../js/register.js' charset='utf-8'></script> --}}
 

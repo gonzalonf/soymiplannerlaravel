@@ -38,7 +38,7 @@
 		<div class="desplegable">
 			<nav>
 				<ul class="botonera">
-					<li><a href="/">INICIO</a></li>
+					<li><a href="/index">INICIO</a></li>
 					<li><a href="/#type1">NOSOTROS</a></li>
 					<li class="preguntas"><a href="faq">PREGUNTAS</a></li>
 

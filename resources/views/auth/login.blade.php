@@ -12,7 +12,7 @@
   <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
-  @include('nav')
+  @include('partials/nav')
 
   <form class="caja-login" style="height: auto;" action="{{ route('login') }}" method="POST">
       {{ csrf_field() }}
@@ -57,7 +57,7 @@
 </div>
 </form>
 
-@include('footer')
+@include('partials/footer')
 
 </body>
 </html>

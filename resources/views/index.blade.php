@@ -10,7 +10,7 @@
 <body>
 
 	<!-- navegación -->
-	@include('nav')
+	@include('partials/nav')
 
 	<section class="type_portada">
 
@@ -45,7 +45,7 @@
 			</form>
 		</div>
 	</section>
-	@include ('cuantos_somos')
+	@include ('partials/cuantos_somos')
 
 	<!-- quienes somos -------------------------------------------------->
 	<section id=type1 class="type1">
@@ -90,7 +90,7 @@
 	</section>
 
 	<!-- footer -->
-	@include('footer')
+	@include('partials/footer')
 
 	<script src="../js/carrusel.js"></script>
 	<script src="../js/cuantos_somos.js"> </script>

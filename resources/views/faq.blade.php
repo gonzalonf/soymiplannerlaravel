@@ -9,7 +9,7 @@
 <body>
 
 	<!-- barra navegación -->
-	@include('nav')
+	@include('partials/nav')
 
 	<section class="type2">
 		<div class="contenedor-responsive text-responsive">
@@ -51,7 +51,7 @@
 		</div>
 	</section>
 
-	@include('footer')
+	@include('partials/footer')
 
 </body>
 </html>

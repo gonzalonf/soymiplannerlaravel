@@ -9,7 +9,7 @@
 <body>
 
   {{-- si esta logueado... --}}
-  @include('nav')
+  @include('partials/nav')
 
   <div class='registro-container'>
     <div class='crear-cuenta'>
@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  @include('footer')
+  @include('partials/footer')
 
   {{-- si no esta logueado hacia header("Location:login.php");exit;--}}
 

@@ -13,13 +13,13 @@
 
 //////////////////////////////////////////////////////////////
 
-Route::get('/', 'IndexController@index'); //  Route::get('ruta', 'controlador@metodo'); 
+Route::get('/index', 'IndexController@index'); //  Route::get('ruta', 'controlador@metodo'); 
 
-Route::get('nav', 'NavController@index');
+// Route::get('nav', 'NavController@index');
 
-Route::get('footer', 'FooterController@index');
+// Route::get('footer', 'FooterController@index');
 
-Route::get('cuantos_somos', 'Cuantos_somosController@index');
+// Route::get('cuantos_somos', 'Cuantos_somosController@index');
 
 Route::get('faq', 'FaqController@index');
 
