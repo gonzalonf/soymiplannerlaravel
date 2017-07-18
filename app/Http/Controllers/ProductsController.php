@@ -55,7 +55,7 @@ class ProductsController extends Controller
 
         $product->save();
 
-        return view('/');
+        return view('/perfil');
 
     }
 
