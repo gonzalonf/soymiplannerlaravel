@@ -32,9 +32,9 @@
                     </div>
                     <div class="form-group">
                         <label for="price">Precio</label>
-                        <input type="number" name="price" id="price" value="{{old('price')}}" class="form-control">
+                        <input type="number" name="price" id="price" value="{{ old('price')}} " class="form-control">
                         <label for="conv">A convenir</label>
-                        <input type="checkbox" name="a convenir" id="conv">
+                        <input type="checkbox" onclick="if(this.checked){a()}" name="a convenir" id="conv">
                     </div>
                     <div class="form-group">
                         <label for="description">Descripción</label>
@@ -67,6 +67,22 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+       
+            var precio =document.getElementById('price');
+            var x = document.getElementById('conv');
+            function a(){
+                precio.type='text';
+                if(x.checked){
+                    precio.value='A convenir'
+                } else {
+                    precio.value=' ';
+                }
+                // hay que arreglar este if para que funcione
+                
+            }
+       
+    </script>
 
 
 
