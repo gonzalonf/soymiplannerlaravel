@@ -15,12 +15,6 @@
 
 Route::get('/index', 'IndexController@index'); //  Route::get('ruta', 'controlador@metodo'); 
 
-// Route::get('nav', 'NavController@index');
-
-// Route::get('footer', 'FooterController@index');
-
-// Route::get('cuantos_somos', 'Cuantos_somosController@index');
-
 Route::get('faq', 'FaqController@index');
 
 Route::get('login', 'LoginController@index');
@@ -37,7 +31,11 @@ Route::get('perfil', 'PerfilController@index')->name('perfil');
 //////////////////////////////////////////////////////////////
 
 Route::get('/products', 'ProductsController@index');
+
+Route::get('/products/create', 'ProductsController@create');
 Route::get('/products/{id}', 'ProductsController@show');
+
+
 Route::get('/create', 'ProductsController@create');
 Route::post('/create', 'ProductsController@store');
 

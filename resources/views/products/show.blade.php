@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>{{ $product->getName() }}</title>
-</head>
-<body>
-	<h1>{{ $product->getName() }}</h1>
-	<p>Descripcion: {{ $product->prod_description }}</p>
-</body>
-</html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title></title>
+  </head>
+  <body>
+	
+	<h1>{{$product->name}}</h1>
 
+  </body>
+</html>
