@@ -13,6 +13,8 @@
 
 //////////////////////////////////////////////////////////////
 
+Route::get('/', 'IndexController@index');
+
 Route::get('/index', 'IndexController@index'); //  Route::get('ruta', 'controlador@metodo'); 
 
 Route::get('faq', 'FaqController@index');
@@ -25,8 +27,8 @@ Route::get('registro', 'RegistroController@index');
 
 Auth::routes();
 
-Route::get('perfil', 'PerfilController@index')->name('perfil');
-// Route::get('home', 'PerfilController@index')->name('home'); // reemplacé home por perfil, si me falto reemplazarlo en algun caso, reemplazenlo
+Route::get('profile', 'ProfileController@index')->name('profile');
+// Route::get('home', 'ProfileController@index')->name('home'); // reemplacé home por profile, si me falto reemplazarlo en algun caso, reemplacenlo
 
 //////////////////////////////////////////////////////////////
 
