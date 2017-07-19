@@ -58,6 +58,8 @@ Productos/categoría/sub(si hay)
 	</div>
 @endforeach
 
+{{$products->links()}}
+
 
 </body>
 </html>

@@ -14,8 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        // no ponemos paginación?
-        $products = Product::all(); // esto me trae un array
+        $products = Product::orderBy('id', 'desc')->paginate(12); // esto me trae un array 
         return view('products.index', compact('products'));
     }
 
