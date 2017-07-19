@@ -11,9 +11,10 @@
 |
 */
 
-//////////////////////////////////////////////////////////////
 
-Route::get('/', 'IndexController@index'); //  Route::get('ruta', 'controlador@metodo');
+// Route::get('/', 'IndexController@index'); //  Route::get('ruta', 'controlador@metodo');
+
+ Route::get('/', 'IndexController@index');
 
 Route::get('faq', 'FaqController@index');
 
@@ -25,14 +26,13 @@ Route::get('registro', 'RegistroController@index');
 
 Auth::routes();
 
-Route::get('perfil', 'PerfilController@index')->name('perfil');
-// Route::get('home', 'PerfilController@index')->name('home'); // reemplacé home por perfil, si me falto reemplazarlo en algun caso, reemplazenlo
+Route::get('profile', 'ProfileController@index')->name('profile');
+// Route::get('home', 'ProfileController@index')->name('home'); // reemplacé home por profile, si me falto reemplazarlo en algun caso, reemplacenlo
 
-//////////////////////////////////////////////////////////////
+
 
 Route::get('/products', 'ProductsController@index');
 Route::get('/products/search', 'ProductsController@search');
-
 
 Route::get('/products/create', 'ProductsController@create');
 Route::get('/products/{id}', 'ProductsController@show');
@@ -45,9 +45,9 @@ Route::post('/create', 'ProductsController@store');
 // Route::get('products/create', 'ProductsController@create');
 // Route::post('products/create', 'ProductsController@store');
 
+
 // Route::get('products/{id}/update', 'ProductsController@edit');
 // Route::put('products/{id}/update', 'ProductsController@update');
 
 // Route::delete('products/{id}', 'ProductsController@destroy');
 
-/////////////////////////////////////////////////////////////

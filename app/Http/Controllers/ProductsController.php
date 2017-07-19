@@ -81,7 +81,7 @@ class ProductsController extends Controller
 
         $product->save();
 
-        return view('/perfil');
+        return view('/profile');
 
     }
 

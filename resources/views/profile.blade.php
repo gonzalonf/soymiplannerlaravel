@@ -29,10 +29,10 @@
       <div class="info">
         <ul>
           <li class="editarNav">Imagen de Perfil: <a href="perfilEditarAvatar.php">Cambiar</a></li>
-          <li class="editarNav">Email: <b> ver mail </b> <a href="perfilEditarEmail">Cambiar</a> </li>
-          <li class="editarNav">Nombre: <b> ver nombre </b> <a href="perfilEditarNombre">Cambiar</a> </li>
-          <li class="editarNav">Apellido: <b> ver apellido </b> <a href="perfilEditarApellido">Cambiar</a> </li>
-          <li class="editarNav">Localidad: <b> ver localidad</b> <a href="perfilEditarLocalidad">Cambiar</a> </li>
+          <li class="editarNav">Email: <b> {{Auth::User()->email}} </b> <a href="perfilEditarEmail">Cambiar</a> </li>
+          <li class="editarNav">Nombre: <b> {{Auth::User()->first_name}} </b> <a href="perfilEditarNombre">Cambiar</a> </li>
+          <li class="editarNav">Apellido: <b> {{Auth::User()->last_name}} </b> <a href="perfilEditarApellido">Cambiar</a> </li>
+          <li class="editarNav">Localidad: <b> {{Auth::User()->home}} </b> <a href="perfilEditarLocalidad">Cambiar</a> </li>
           <li class="editarNav">Contraseña: <b> ●●●●●● </b> <a href="perfilEditarContrasenia">Cambiar</a></li>
         </ul>
       </div>
@@ -42,7 +42,7 @@
 
   <div class='registro-container' style="margin-top: 0;">
     <div class='formulario'>
-      <a class='volver' href="">SALIR</a> {{-- el href hacia logout--}}
+      <a class='volver' href="/index">INICIO</a> {{-- el href hacia logout--}}
     </div>
   </div>
 

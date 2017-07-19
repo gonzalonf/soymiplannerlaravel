@@ -45,12 +45,13 @@
 					@if (Auth::guest())
 					<li class="ingresa"><a href="{{ url('/login') }}">INGRESA</a></li>
 					<li class="registrate"><a href="{{ url('/register') }}">REGISTRATE</a></li>
+			
 					@else
 					{{ Auth::user()->name }}
-					<li  class="dropdown"> <br>
+					<li  class="dropdown"> {{Auth::User()->first_name}}
 						<div class="dropdown-menu">
 							<ul>
-								<li><a href="{{ url('/perfil') }}">PERFIL</a></li>
+								<li><a href="{{ url('/profile') }}">PERFIL</a></li>
 								<li><a href={{ route('logout') }}" onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">LOGOUT</a>
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -60,7 +61,6 @@
 							</ul>
 						</div>
 					</li>
-
 					@endif
 
 				</ul>
