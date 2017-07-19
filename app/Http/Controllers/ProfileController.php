@@ -25,4 +25,10 @@ class ProfileController extends Controller
     {
         return view('profile');
     }
+
+    // public function avatar()
+    // {
+    //     $nombreImagen = Auth::User()->id . '.jpg';
+    //     return $nombreImagen;
+    // }
 }

@@ -23,7 +23,11 @@
     <div class="perfil1">
 
       <div class="avatar">
-        <img src="" alt="avatar"> {{-- ponerle en src un link para q levante la imagen de perfil --}}
+        @if (isset(Auth::User()->id))
+              <img src="images/{{(Auth::User()->id . '.jpg')}}" alt="avatar">
+          @else
+            <img src="images/default.png" alt="avatar">
+          @endif 
       </div>
 
       <div class="info">
