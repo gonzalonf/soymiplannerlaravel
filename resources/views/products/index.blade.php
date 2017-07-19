@@ -8,10 +8,33 @@
 <body>
 
 @include('partials/nav')
+---->Breadcrumb <br>
+Productos/categoría/sub(si hay)
+
 	<h1>Todos los Productos</h1>
 
+        <h3>acá poner filtros de productos</h3>
+        <select class="" name="">
+            <option value="">bla</option>
+            <option value="">blabla</option>
+            <option value="">blaaaa</option>
+        </select> (así)<br><br>
+
+        <button style="border:none; background:pink"type="button" name="button">FILTRO 1</button>
+        <button style="border:none;background:pink"type="button" name="button">FILTRO 2</button> (o así)
+
+        <h3>(diseño copado)</h3>
+
+@if (isset($error))
+    <div style="width:70%;padding:2em;margin:auto;background:pink">
+        <h2>{{$error}}</h2>
+        (Hacer algo mejor...con redireccion)
+    </div>
+@endif
+
+
 @foreach ($products->Chunk(3) as $productChunk)
-	
+
 	<div class="row">
 		@foreach ($productChunk as $product)
 			<div class="col-xs-12 col-md-3">
@@ -29,8 +52,8 @@
 							Contactar
 						</button>
 					</div>
-				</div>	
-			</div>	
+				</div>
+			</div>
 		@endforeach
 	</div>
 @endforeach

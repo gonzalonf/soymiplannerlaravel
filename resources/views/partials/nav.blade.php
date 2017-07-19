@@ -17,7 +17,7 @@
 				var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)checkStatus\s*\=\s*([^;]*).*$)|^.*$/, "$1"); // aca etoy asignando la cookie a una variable
 				return cookieValue
 			}
-			
+
 			function cambiarEstilo(miCookie) {
 				if (miCookie == 'true') {
 					document.querySelector('link#pagestyle').setAttribute('href', '../css/style2.css');
@@ -27,7 +27,7 @@
 				}
 			}
 
-		</script> 
+		</script>
 
 		<div class="logo-marca">
 			<a href="/#">
@@ -38,7 +38,7 @@
 		<div class="desplegable">
 			<nav>
 				<ul class="botonera">
-					<li><a href="/index">INICIO</a></li>
+					<li><a href="/">INICIO</a></li>
 					<li><a href="#type1">NOSOTROS</a></li>
 					<li class="preguntas"><a href="faq">PREGUNTAS</a></li>
 

@@ -13,7 +13,7 @@
 
 //////////////////////////////////////////////////////////////
 
-Route::get('/index', 'IndexController@index'); //  Route::get('ruta', 'controlador@metodo'); 
+Route::get('/', 'IndexController@index'); //  Route::get('ruta', 'controlador@metodo');
 
 Route::get('faq', 'FaqController@index');
 
@@ -31,6 +31,8 @@ Route::get('perfil', 'PerfilController@index')->name('perfil');
 //////////////////////////////////////////////////////////////
 
 Route::get('/products', 'ProductsController@index');
+Route::get('/products/search', 'ProductsController@search');
+
 
 Route::get('/products/create', 'ProductsController@create');
 Route::get('/products/{id}', 'ProductsController@show');

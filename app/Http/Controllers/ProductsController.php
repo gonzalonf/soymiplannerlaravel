@@ -14,13 +14,39 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all(); // esto me trae un array 
+        // no ponemos paginación?
+        $products = Product::all(); // esto me trae un array
         return view('products.index', compact('products'));
     }
 
+    public function search()
+    {
+        $search = request()->q;
+        $category =
+
+        $products = Product::orderBy('id','desc')
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->where('name','like','%'.$search.'%')
+        ->orWhere('category_name','like','%'.$search.'%')
+        ->orWhere('description','like','%'.$search.'%')
+        ->select('products.id','name','description','price')
+        ->paginate(15);
+
+        if ($products->count()===0) {
+            $error = "Lo sentimos, no pudimos encontrar '$search' en nuestra base de datos...";
+            return view('products.index', compact('products','error'));
+        }
+        // después sigo complejizando con joins y optimización... por lo pronto..
+        // funciona! muajaja
+
+        return view('products.index', compact('products'));
+
+    }
+
+
     public function create()
     {
-        
+
         return view('products.create');
     }
 
@@ -33,16 +59,16 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required|max:30', 
+            'name'=>'required|max:30',
             'price'=>'required',
             'description'=>'required',
             'category'=>'required'
             // 'image'=>'required|max:1024'
             ]);
         $product=Product::create([
-            'name'=>$request->input('name'), 
-            'price'=>$request->input('price'), 
-            'description'=>$request->input('description'), 
+            'name'=>$request->input('name'),
+            'price'=>$request->input('price'),
+            'description'=>$request->input('description'),
             'category_id'=>$request->input('category')
 
             ]);
@@ -50,7 +76,7 @@ class ProductsController extends Controller
         $nombreImagen=$product->id . '.' . str_slug($product->name) . '.' .request()->image->extension();
 
         request()->image->storeAs('public', $nombreImagen);
-        
+
         $product->imgName = $nombreImagen;
 
         $product->save();
@@ -59,11 +85,11 @@ class ProductsController extends Controller
 
     }
 
-   
+
     public function show($id)
     {
-        $product = Product::find($id); 
-        return view('products.show', compact('product')); 
+        $product = Product::find($id);
+        return view('products.show', compact('product'));
     }
 
     /**
