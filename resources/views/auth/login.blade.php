@@ -46,7 +46,7 @@
       <button type="submit" class="login-botones">INGRESAR</button>
 
       <label for="recordarme" >Recordarme</label>
-      <input style="float:left" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+      <input style="float:left" type="checkbox" id="recordarme" name="remember" {{ old('remember') ? 'checked' : '' }}>
 
   </div>
 

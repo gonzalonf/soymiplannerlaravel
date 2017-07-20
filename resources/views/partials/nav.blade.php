@@ -42,17 +42,24 @@
 					<li><a href="#type1">NOSOTROS</a></li>
 					<li class="preguntas"><a href="faq">PREGUNTAS</a></li>
 
+
+                    <li><a href="{{ url('/products') }}">PRODUCTOS</a></li>
+                    <li ><a href="{{ url('/create') }}">PUBLICAR</a></li>
+                    <li ><a href="{{ url('/cart') }}">EVENTO</a></li>
+
+
 					@if (Auth::guest())
 					<li class="ingresa"><a href="{{ url('/login') }}">INGRESA</a></li>
 					<li class="registrate"><a href="{{ url('/register') }}">REGISTRATE</a></li>
-			
+
+
 					@else
 					{{ Auth::user()->name }}
 					<li  class="dropdown"> {{Auth::User()->first_name}}
 						<div class="dropdown-menu">
 							<ul>
 								<li><a href="{{ url('/profile') }}">PERFIL</a></li>
-								<li><a href={{ route('logout') }}" onclick="event.preventDefault();
+								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">LOGOUT</a>
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 										{{ csrf_field() }}
@@ -60,7 +67,7 @@
 								</li>
 							</ul>
 						</div>
-					</li>
+
 					@endif
 
 				</ul>

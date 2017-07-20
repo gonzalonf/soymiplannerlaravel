@@ -876,7 +876,7 @@ footer img{
 		text-align: center;
 		color: white;
 	}
-	
+
 	.info li{
 		line-height: 40px; /* separacion entre renglones */
 	}
@@ -884,7 +884,7 @@ footer img{
 	.editarNav a{
 		width: 300px;
 		padding: 7px 7px;
-		margin-left: 10px; 	
+		margin-left: 10px;
 		background-color: limegreen;
 		font-weight: bold;
 		color: white;
@@ -919,7 +919,7 @@ footer img{
 	.volver a{
 	padding: 14px 42%;
 	}
-	
+
 	.volver:hover{
 		background: palegreen;
 	}
@@ -931,9 +931,9 @@ footer img{
 	}
 
 	.input-oculto {
-		height: 0; 
+		height: 0;
 		width: 0;
-		opacity: 0; 
+		opacity: 0;
 	}
 
 @media (min-width : 768px) {
@@ -948,51 +948,51 @@ footer img{
 			top: -1%;
 			left: 0;
 			height: 30%;
-			width: 100%; 			
+			width: 100%;
 			z-index: -2;
 		}
 
 		/* contiene la tira de imagenes alineadas (.contenido1 + 2 + 3...). Se desplaza dentro de su contenedor padre, que lo enmascara */
-		.contenedorMovil { 
+		.contenedorMovil {
 			height: 100%;
 			position: relative;
 		}
 
 		.contenido1 {
 			background: linear-gradient(rgba(0, 0, 0, .2), rgba(255, 255, 255, .3)),
-			url(../images/bg01.jpg) no-repeat center; 
+			url(../images/bg01.jpg) no-repeat center;
 			background-size: cover;
 			height: 100%;
-			width: 100vw; 
+			width: 100vw;
 			position: absolute;
 		}
 
 		.contenido2 {
 			background: linear-gradient(rgba(0, 0, 0, .2), rgba(255, 255, 255, .3)),
-			url(../images/bg02.jpg) no-repeat center; 
+			url(../images/bg02.jpg) no-repeat center;
 			background-size: cover;
 			height: 100%;
-			width: 100vw;  
+			width: 100vw;
 			position: absolute;
 			left: 100%
 		}
 
 		.contenido3 {
 			background: linear-gradient(rgba(0, 0, 0, .2), rgba(255, 255, 255, .3)),
-			url(../images/bg03.jpg) no-repeat center; 
+			url(../images/bg03.jpg) no-repeat center;
 			background-size: cover;
 			height: 100%;
-			width: 100vw; 
+			width: 100vw;
 			position: absolute;
 			left: 200%
 		}
 
 		.contenido4 {
 			background: linear-gradient(rgba(0, 0, 0, .2), rgba(255, 255, 255, .3)),
-			url(../images/bg01.jpg) no-repeat center; 
+			url(../images/bg01.jpg) no-repeat center;
 			background-size: cover;
 			height: 100%;
-			width: 100vw; 
+			width: 100vw;
 			position: absolute;
 			left: 300%
 		}

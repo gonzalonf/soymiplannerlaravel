@@ -41,7 +41,7 @@
 			<form class="buscador" method="get" action="products/search">
 
                 <input type="hidden" name="" value="{{ csrf_field() }}">
-                
+
 				<label  for="search"> Buscá: <br> </label>
 				<input type="search" name="q"  id="search" placeholder="Salones, Catering, Dj, Fotografía, Ambientación, ..." >
 				<input type="button" value="">
