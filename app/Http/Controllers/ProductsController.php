@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class ProductsController extends Controller
 {
     /**
@@ -14,14 +16,13 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'desc')->paginate(12); // esto me trae un array 
+        $products = Product::orderBy('id', 'desc')->paginate(12); // esto me trae un array
         return view('products.index', compact('products'));
     }
 
     public function search()
     {
         $search = request()->q;
-        $category =
 
         $products = Product::orderBy('id','desc')
         ->join('categories', 'categories.id', '=', 'products.category_id')
@@ -68,7 +69,8 @@ class ProductsController extends Controller
             'name'=>$request->input('name'),
             'price'=>$request->input('price'),
             'description'=>$request->input('description'),
-            'category_id'=>$request->input('category')
+            'category_id'=>$request->input('category'),
+            'user_seller_id'=>Auth::id()
 
             ]);
 

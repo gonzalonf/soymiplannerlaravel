@@ -38,8 +38,8 @@ Route::get('/products/create', 'ProductsController@create');
 Route::get('/products/{id}', 'ProductsController@show');
 
 
-Route::get('/create', 'ProductsController@create');
-Route::post('/create', 'ProductsController@store');
+Route::get('/create', 'ProductsController@create')->middleware('auth');
+Route::post('/create', 'ProductsController@store')->middleware('auth');
 
 
 // Route::get('products/create', 'ProductsController@create');
