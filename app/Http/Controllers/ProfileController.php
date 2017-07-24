@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+use App\Product;
+
+
 class ProfileController extends Controller
 {
+    // protected $id;
     /**
      * Create a new controller instance.
      *
@@ -31,4 +36,21 @@ class ProfileController extends Controller
     //     $nombreImagen = Auth::User()->id . '.jpg';
     //     return $nombreImagen;
     // }
+    public function products()
+    {
+
+            $id = Auth::User()->id;
+            $products = Product::orderBy('id','desc')->where('id',$id)->paginate(20);
+
+            $error = '';
+            if ($products->count()===0) {
+                $error = "No hay productos publicados";
+            }
+
+            return view('profile.products', compact('products','error'));
+    }
+    public function sales()
+    {
+        return view('profile/sales');
+    }
 }

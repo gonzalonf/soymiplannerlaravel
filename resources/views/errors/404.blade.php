@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>No disponible</title>
+
         <style media="screen">
         .error{
             background-color: pink;
