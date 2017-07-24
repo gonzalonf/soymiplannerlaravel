@@ -10,14 +10,11 @@
 @include('partials/nav')
 
 
-{{--->Breadcrumb <br>
-Productos/categoría/sub(si hay)
- --}}
 
 <div class="jumbotron">
-	<h2>Eventos</h2>	
+	<h2>Eventos</h2>
 </div>
- 
+
 
 
  <div id='content' class='row-fluid' style="
@@ -31,10 +28,9 @@ Productos/categoría/sub(si hay)
     <form style="
     text-align: center;
     margin: 7px auto;
-    " 
-    class="buscador" method="get" action="products/search">
-    {{ csrf_field() }}
-	
+    "
+    class="buscador" method="get" action="/products/search">
+
 		<input type="search" name="q"  id="search" placeholder="Buscá" style="
 		height: 35px;
 		margin-right: -7px;
@@ -47,6 +43,9 @@ Productos/categoría/sub(si hay)
 	            <span class=" glyphicon glyphicon-search"></span>
 	        </button>
 	</form>
+    @if (isset( $_GET['q']) && $_GET['q']!=='')
+        <b>{{ '"'.$_GET['q'].'"' }}</b>
+    @endif
 
     <div style="font-size: 0.8em" class='span2 sidebar'>
     	<h4>Ordenar Publicaciones</h4>
@@ -61,7 +60,7 @@ Productos/categoría/sub(si hay)
           <li><a href='#'>Catering</a></li>
           <li><a href='#'>Musica</a></li>
         </ul>
-  	
+
   	<h4>Ubicación</h4>
     	<ul class="nav nav-tabs nav-stacked ">
     		<li><a href="">Capital  Federal</a></li>
@@ -71,19 +70,7 @@ Productos/categoría/sub(si hay)
 
     	</div>
  </div>
-	{{-- <h1 style="margin: auto;">Todos los Productos</h1> --}}
-{{-- 
-        <h3>acá poner filtros de productos</h3>
-        <select class="" name="">
-            <option value="">bla</option>
-            <option value="">blabla</option>
-            <option value="">blaaaa</option>
-        </select> (así)<br><br>
 
-        <button style="border:none; background:pink"type="button" name="button">FILTRO 1</button>
-        <button style="border:none;background:pink"type="button" name="button">FILTRO 2</button> (o así)
-
-        <h3>(diseño copado)</h3> --}}
 
 @if (isset($error))
     <div style="width:70%;padding:2em;margin:auto;background:pink">
