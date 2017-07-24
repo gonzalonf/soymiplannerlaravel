@@ -19,6 +19,60 @@ Productos/categoría/sub(si hay)
 </div>
  
 
+
+ <div id='content' class='row-fluid' style="
+    float: right;
+    position: fixed;
+    top: 180px;
+    width: 25%;
+    z-index: 1;
+    background-color: #F1F1F1">
+
+    <form style="
+    text-align: center;
+    margin: 7px auto;
+    " 
+    class="buscador" method="get" action="products/search">
+    {{ csrf_field() }}
+	
+		<input type="search" name="q"  id="search" placeholder="Buscá" style="
+		height: 35px;
+		margin-right: -7px;
+		border: none;
+		position: relative;
+		top: 2.3px;
+		max-width: 128px;
+		" >
+	        <button class="btn btn-danger" type="submit">
+	            <span class=" glyphicon glyphicon-search"></span>
+	        </button>
+	</form>
+
+    <div style="font-size: 0.8em" class='span2 sidebar'>
+    	<h4>Ordenar Publicaciones</h4>
+    	<ul class="nav nav-tabs nav-stacked ">
+    		<li><a href="">Más Relevantes</a></li>
+    		<li><a href="">Menor Precio</a></li>
+    		<li><a href="">Mayor Precio</a></li>
+    	</ul>
+        <h4>Categorias</h4>
+        <ul class="nav nav-tabs nav-stacked">
+          <li><a href='#'>Salones</a></li>
+          <li><a href='#'>Catering</a></li>
+          <li><a href='#'>Musica</a></li>
+        </ul>
+  	
+  	<h4>Ubicación</h4>
+    	<ul class="nav nav-tabs nav-stacked ">
+    		<li><a href="">Capital  Federal</a></li>
+    		<li><a href="">Provincia de Bs As</a></li>
+    		<li><a href="">Cordoba</a></li>
+    	</ul>
+
+    	</div>
+ </div>
+	{{-- <h1 style="margin: auto;">Todos los Productos</h1> --}}
+{{-- 
         <h3>acá poner filtros de productos</h3>
         <select class="" name="">
             <option value="">bla</option>
