@@ -18,13 +18,11 @@
 
 
  <div id='content' class='row-fluid' style="
-    float: right;
+    
     position: fixed;
     top: 180px;
-    width: 25%;
     z-index: 1;
     background-color: #F1F1F1">
-
     <form style="
     text-align: center;
     margin: 7px auto;
@@ -33,21 +31,26 @@
 
 		<input type="search" name="q"  id="search" placeholder="Buscá" style="
 		height: 35px;
-		margin-right: -7px;
 		border: none;
 		position: relative;
 		top: 2.3px;
 		max-width: 128px;
+        margin: auto;
+
 		" >
 	        <button class="btn btn-danger" type="submit">
 	            <span class=" glyphicon glyphicon-search"></span>
 	        </button>
 	</form>
+    
+        
     @if (isset( $_GET['q']) && $_GET['q']!=='')
         <b>{{ '"'.$_GET['q'].'"' }}</b>
     @endif
 
-    <div style="font-size: 0.8em" class='span2 sidebar'>
+
+
+    <div style="font-size: 0.8em" class='span2 sidebar col-md-3'>
     	<h4>Ordenar Publicaciones</h4>
     	<ul class="nav nav-tabs nav-stacked ">
     		<li><a href="">Más Relevantes</a></li>
@@ -73,7 +76,14 @@
 
 
 @if (isset($error))
-    <div style="width:70%;padding:2em;margin:auto;background:pink">
+    <div style="
+    width:70%;
+    padding:2em;
+    margin:auto;
+    background:pink;
+    float: right;
+
+    ">
         <h2>{{$error}}</h2>
         (Hacer algo mejor...con redireccion)
     </div>
