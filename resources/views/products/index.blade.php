@@ -9,9 +9,13 @@
 
 @include('partials/nav')
 ---->Breadcrumb <br>
-Productos/categoría/sub(si hay)
 
 	<h1>Todos los Productos</h1>
+
+    <form class="buscador" method="get" action="/products/search">
+        <input type="search" name="q"  id="search" placeholder="Buscá..." >
+        <button type="submit" id=lupita></button>
+    </form>
 
         <h3>acá poner filtros de productos</h3>
         <select class="" name="">

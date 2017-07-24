@@ -371,7 +371,7 @@ footer img{
 	margin-left: -20px;*/
 }
 
-.type_portada input[type=button] {
+#lupita {
 	background-color: limegreen;
 	background-image: url(../images/lupita_blanca.png);
 	background-repeat: no-repeat;
@@ -388,11 +388,11 @@ footer img{
 	transition: background-color 0.3s;
 }
 
-.type_portada input[type=button]:hover {
+#lupita:hover {
 	background-color: palegreen;
 }
 
-.type_portada input[type=button]:active {
+#lupita:active {
 	background-color: palegreen;
 	background-position: center 3px;
 }
