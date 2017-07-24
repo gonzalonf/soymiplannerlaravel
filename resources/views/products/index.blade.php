@@ -8,14 +8,16 @@
 <body>
 
 @include('partials/nav')
----->Breadcrumb <br>
 
-	<h1>Todos los Productos</h1>
 
-    <form class="buscador" method="get" action="/products/search">
-        <input type="search" name="q"  id="search" placeholder="Buscá..." >
-        <button type="submit" id=lupita></button>
-    </form>
+{{--->Breadcrumb <br>
+Productos/categoría/sub(si hay)
+ --}}
+
+<div class="jumbotron">
+	<h2>Eventos</h2>	
+</div>
+ 
 
         <h3>acá poner filtros de productos</h3>
         <select class="" name="">
@@ -27,7 +29,7 @@
         <button style="border:none; background:pink"type="button" name="button">FILTRO 1</button>
         <button style="border:none;background:pink"type="button" name="button">FILTRO 2</button> (o así)
 
-        <h3>(diseño copado)</h3>
+        <h3>(diseño copado)</h3> --}}
 
 @if (isset($error))
     <div style="width:70%;padding:2em;margin:auto;background:pink">
@@ -39,7 +41,7 @@
 
 @foreach ($products->Chunk(3) as $productChunk)
 
-	<div class="row">
+	<div class="row" style="position: relative; left: 25% ">
 		@foreach ($productChunk as $product)
 			<div class="col-xs-12 col-md-3">
 				<div class="thumbnail">
@@ -62,8 +64,9 @@
 	</div>
 @endforeach
 
+<div class="paginacion" style="text-align: center;">
 {{$products->links()}}
-
+</div>
 
 </body>
 </html>
