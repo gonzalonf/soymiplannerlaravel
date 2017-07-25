@@ -15,25 +15,18 @@
 
 Route::get('/', 'IndexController@index');
 
- Route::get('/', 'IndexController@index');
-
 Route::get('faq', 'FaqController@index');
 
-Route::get('login', 'LoginController@index');
-
-Route::get('registro', 'RegistroController@index');
-
-///////////////////agregado x make:auth////////////////////////
+/////////////agregado x make:auth///////////////
 
 Auth::routes();
-// -------------------------
+
+///////////////////////////////////////////////
 
 Route::get('profile', 'ProfileController@index')->name('profile');
-// Route::get('home', 'ProfileController@index')->name('home'); // reemplacé home por profile, si me falto reemplazarlo en algun caso, reemplacenlo
+
 Route::get('profile/products', 'ProfileController@products')->name('profile');
 Route::get('profile/sales', 'ProfileController@sales')->name('profile');
-
-
 
 
 Route::get('/products', 'ProductsController@index');

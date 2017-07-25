@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'home' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+            ]);
     }
 
     /**
@@ -64,12 +64,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = app('request');
+
+        if($request->hasfile('avatar'))
+        {
+            $filename = User::count() + 1 . '.' . request()->avatar->extension();
+            $request->file('avatar')->storeAs('public/avatar', $filename);
+        } 
+
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'home' => $data['home'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+            ]);
     }
 }

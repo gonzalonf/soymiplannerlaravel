@@ -23,11 +23,11 @@
     <div class="perfil1">
 
       <div class="avatar">
-        @if (isset(Auth::User()->id))
-              <img src="images/{{(Auth::User()->id . '.jpg')}}" alt="avatar">
-          @else
-            <img src="images/default.png" alt="avatar">
-          @endif 
+        @if (file_exists('storage/avatar/'. Auth::User()->id . '.jpeg' ))
+           <img src="{{'storage/avatar/'. Auth::User()->id . '.jpeg' }}" alt="avatar"> 
+        @else
+           <img src="images/default.png" alt="avatar">
+        @endif 
       </div>
 
       <div class="info">
