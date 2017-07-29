@@ -22,6 +22,7 @@ header{
 	z-index: 1;
 }
 
+
 /*------------COMIENZA BURGUER------------------------------------------*/
 
 .burger {
@@ -521,6 +522,11 @@ footer img{
 	text-decoration: none;
 	color: black;
 }
+/*estilos productos----------------------*/
+
+.contenidos_productos{
+    margin-top: 60px;
+}
 
 /*------------EMPIEZA estilos LOGIN-------------------------*/
 
@@ -866,6 +872,15 @@ footer img{
 		font-size: 12px;
 		color: red;
 	}
+    .error_search{
+        width:70%;
+        padding:2em;
+        margin:auto;
+        background:pink;
+        float: right;
+
+    }
+
 
 	.editarContainer{
 		margin: 0 auto; /* centrado */

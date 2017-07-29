@@ -30,7 +30,7 @@ Route::get('profile/sales', 'ProfileController@sales')->name('profile');
 
 
 Route::get('/products', 'ProductsController@index');
-Route::get('/products/search', 'ProductsController@search');
+Route::get('/products/filter', 'ProductsController@filter');
 
 Route::get('/products/create', 'ProductsController@create');
 Route::get('/products/{id}', 'ProductsController@show');

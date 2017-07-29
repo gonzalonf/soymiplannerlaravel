@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -14,32 +15,66 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //  public $categories;
+
+    public function __construct()
     {
-        $products = Product::orderBy('id', 'desc')->paginate(12); // esto me trae un array
-        return view('products.index', compact('products'));
+        $this->categories = DB::table('categories')
+        // ->where('subcategory_child_of_id',null)
+        ->get();
     }
 
-    public function search()
+    public function index()
     {
-        $search = request()->q;
+        $categories=$this->categories;
+        $products = Product::orderBy('id', 'desc')->paginate(12); // esto me trae un array
 
-        $products = Product::orderBy('id','desc')
+        return view('products.index', compact('products','categories'));
+    }
+
+    public function filter()
+    {
+        $categories=$this->categories;
+
+        $search = trim(request()->q);
+
+        $products =
+        Product::select('products.id','name','description','price','category_id')
         ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->where('name','like','%'.$search.'%')
-        ->orWhere('category_name','like','%'.$search.'%')
-        ->orWhere('description','like','%'.$search.'%')
-        ->select('products.id','name','description','price')
-        ->paginate(15);
 
-        if ($products->count()===0) {
-            $error = "Lo sentimos, no pudimos encontrar '$search' en nuestra base de datos...";
-            return view('products.index', compact('products','error'));
+
+        // search
+        ->where(function($query) use ($search){
+                           return $query
+                           ->where('name','like', '%'.$search.'%')
+                           ->orWhere('category_name','like','%'.$search.'%')
+                           ->orWhere('description','like','%'.$search.'%');
+              });
+
+        // filter
+        if (isset(request()->cat) && is_numeric(request()->cat) ) {
+            $products=$products->where('category_id',request()->cat)
+                    ->orWhere('subcategory_child_of_id',request()->cat);
+
         }
-        // después sigo complejizando con joins y optimización... por lo pronto..
-        // funciona! muajaja
 
-        return view('products.index', compact('products'));
+        // order
+        switch (request()->order) {
+            case 'mayor':
+                $products=$products->orderBy('price','desc');
+                break;
+            case 'menor':
+                $products=$products->orderBy('price','asc');
+                break;
+            default:
+                $products=$products->orderBy('id','desc','name','asc');
+                break;
+        }
+
+
+
+        $products=$products->paginate(12);
+        return view('products.index', compact('products','categories'));
 
     }
 
