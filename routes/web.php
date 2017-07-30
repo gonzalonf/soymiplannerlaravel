@@ -23,7 +23,6 @@ Auth::routes();
 
 // Route::patch('profile', 'ProfileController@update')->middleware('auth');
 
-Route::resource('profile', 'ProfileController');
 
 ///////////////////////////////////////////////
 
@@ -32,6 +31,7 @@ Route::get('profile/products', 'ProfileController@products')->middleware('auth')
 Route::get('profile/sales', 'ProfileController@sales')->middleware('auth');
 Route::get('profile/{id}', 'ProfileController@show');
 // nota(gon): cambié ligeramente esto para meter la logica publica en el mismo controlador
+Route::resource('profile', 'ProfileController');
 
 
 
