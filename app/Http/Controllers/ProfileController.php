@@ -60,15 +60,6 @@ class ProfileController extends Controller
     */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->first_name = $request->get('first_name');
-        $user->last_name = $request->get('last_name');
-        $user->home = $request->get('home');
-        $user->email = $request->get('email');
-        if (!Hash::check($user->password, $request->get('password')) ) {
-            $user->password = bcrypt($request->get('password')); 
-        }
-        
           // Validator::make($user, [
           //   'first_name' => 'required|string|max:255',
           //   'last_name' => 'required|string|max:255',
@@ -77,10 +68,19 @@ class ProfileController extends Controller
           //   'password' => 'required|string|min:6|confirmed',
           //   ]);
 
-            $user->save();
+        $user = User::find($id);
+        $user->first_name = $request->get('first_name');
+        $user->last_name = $request->get('last_name');
+        $user->home = $request->get('home');
+        $user->email = $request->get('email');
+        if ($request->get('password') != '' ) {
+            $user->password = bcrypt($request->get('password')); 
+        } 
 
-            return redirect('/profile');
-        }
+        $user->save();
+
+        return redirect('/profile');
+    }
 
     /**
     * Remove the specified resource from storage.
