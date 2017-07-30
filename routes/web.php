@@ -23,14 +23,17 @@ Auth::routes();
 
 ///////////////////////////////////////////////
 
-Route::get('profile', 'ProfileController@index')->name('profile');
+Route::get('profile', 'ProfileController@index')->middleware('auth');
+Route::get('profile/products', 'ProfileController@products')->middleware('auth');
+Route::get('profile/sales', 'ProfileController@sales')->middleware('auth');
+Route::get('profile/{id}', 'ProfileController@show');
+// nota(gon): cambié ligeramente esto para meter la logica publica en el mismo controlador
 
-Route::get('profile/products', 'ProfileController@products')->name('profile');
-Route::get('profile/sales', 'ProfileController@sales')->name('profile');
 
 
 Route::get('/products', 'ProductsController@index');
 Route::get('/products/filter', 'ProductsController@filter');
+
 
 Route::get('/products/create', 'ProductsController@create');
 Route::get('/products/{id}', 'ProductsController@show');

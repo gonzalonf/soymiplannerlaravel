@@ -42,6 +42,12 @@
     					@endif ($product->imgName)
     					<div class="caption">
     						<h3>{{$product->name}}</h3>
+                            <p>
+                                <a href="/profile/{{$product->user_seller_id}}">
+                                    {{$product->first_name.' '.$product->last_name}}
+                                </a>
+                            </p>
+                            <h5><b>{{$product->category_name}}</b></h5>
     						<p>Descripcion: {{$product->description}}.</p>
     						<p class="caption">Precio: {{$product->price}} </p>
     						<button class="btn btn-primary">

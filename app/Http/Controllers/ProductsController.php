@@ -27,7 +27,8 @@ class ProductsController extends Controller
     public function index()
     {
         $categories=$this->categories;
-        $products = Product::orderBy('id', 'desc')->paginate(12); // esto me trae un array
+
+        $products = Product::getAll()->orderBy('id', 'desc')->paginate(12); // esto me trae un array
 
         return view('products.index', compact('products','categories'));
     }
@@ -38,9 +39,7 @@ class ProductsController extends Controller
 
         $search = trim(request()->q);
 
-        $products =
-        Product::select('products.id','name','description','price','category_id')
-        ->join('categories', 'categories.id', '=', 'products.category_id')
+        $products =Product::getAll()
 
 
         // search
@@ -124,8 +123,13 @@ class ProductsController extends Controller
 
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('products.show', compact('product'));
+        try {
+            $product = Product::find($id);
+            $product->nombre;
+            return view('products.show', compact('product'));
+        } catch (\Exception $e) {
+            abort(404);
+        }
     }
 
     /**
