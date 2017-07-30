@@ -21,6 +21,10 @@ Route::get('faq', 'FaqController@index');
 
 Auth::routes();
 
+// Route::patch('profile', 'ProfileController@update')->middleware('auth');
+
+Route::resource('profile', 'ProfileController');
+
 ///////////////////////////////////////////////
 
 Route::get('profile', 'ProfileController@index')->middleware('auth');

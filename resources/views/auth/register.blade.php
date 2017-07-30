@@ -25,8 +25,8 @@
 
             <input {{-- id='first_name' --}} class='decorative-input text-label' type='text' name='first_name' placeholder='Nombre' value='{{ old('first_name') }}' required autofocus> <br>
 
-            @if ($errors->has('last_name'))
-            <p class='msj_error'>{{ $errors->first('last_name') }}</p>
+            @if ($errors->has('first_name'))
+            <p class='msj_error'>{{ $errors->first('first_name') }}</p>
             @endif
 
             <input {{-- id='last_name' --}} class='decorative-input text-label' type='text' name='last_name' placeholder='Apellido' value='{{ old('last_name') }}' required> <br>
