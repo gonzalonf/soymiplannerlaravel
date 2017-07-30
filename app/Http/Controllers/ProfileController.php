@@ -74,8 +74,8 @@ class ProfileController extends Controller
         $user->home = $request->get('home');
         $user->email = $request->get('email');
         if ($request->get('password') != '' ) {
-            $user->password = bcrypt($request->get('password')); 
-        } 
+            $user->password = bcrypt($request->get('password'));
+        }
 
         $user->save();
 
@@ -100,7 +100,7 @@ class ProfileController extends Controller
     {
 
         $id = Auth::User()->id;
-        $products = Product::orderBy('id','desc')->where('id',$id)->paginate(20);
+        $products = Product::orderBy('id','desc')->where('user_seller_id',$id)->paginate(20);
 
         $error = '';
         if ($products->count()===0) {
