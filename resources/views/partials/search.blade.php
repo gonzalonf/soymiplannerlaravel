@@ -45,7 +45,7 @@
 
     <form class="buscador" method="get" action="/products/filter">
 
-		<input type="search" name="q"  id="search_products" placeholder="Buscá" value="{{trim(request()->q)??''}}">
+		<input type="search" name="q"  id="search_products" placeholder="Buscá" value="">
         <button class="btn btn-danger" type="submit">
             <span class=" glyphicon glyphicon-search"></span>
         </button>
