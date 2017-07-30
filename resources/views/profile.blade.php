@@ -23,10 +23,10 @@
     <div class="perfil1">
 
       <div class="avatar">
-        @if (file_exists('storage/avatar/'. Auth::User()->id . '.jpeg' ))
-           <img src="{{'storage/avatar/'. Auth::User()->id . '.jpeg' }}" alt="avatar"> 
+        @if (file_exists(glob('storage/avatar/'. Auth::User()->id . ".*")[0]) )
+        <img src="{{ glob('storage/avatar/'. Auth::User()->id . ".*")[0] }}" alt="avatar"> 
         @else
-           <img src="images/default.png" alt="avatar">
+        <img src="images/default.png" alt="avatar">
         @endif 
       </div>
 
