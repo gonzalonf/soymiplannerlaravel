@@ -19,11 +19,11 @@
         </div>
 
         <div class="avatar" style="margin-top: 10px;">
-            @if (file_exists(glob('storage/avatar/'. Auth::User()->id . ".*")[0]) )
+           @if (!empty(glob('storage/avatar/'. Auth::User()->id . ".*")[0]) )
             <img src="{{ glob('storage/avatar/'. Auth::User()->id . ".*")[0] }}" alt="avatar">
             @else
             <img src="images/default.png" alt="avatar">
-            @endif
+            @endif 
         </div>
 
         <form class='formulario' method="post" action="{{action('ProfileController@update', Auth::User()->id)}}">
