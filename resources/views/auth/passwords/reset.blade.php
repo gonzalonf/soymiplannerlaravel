@@ -176,8 +176,7 @@
 </head>
 <body>
 
-    <!-- navegación -->
-    {{--  @include('nav') --}}
+ {{--    @include('partials/nav') --}}
 
     <!-- inicia el CONTENEDOR para el Registro -->
 
@@ -227,6 +226,6 @@
         </div>
     </div>
 
-    {{--    @include('footer') --}}
+{{--     @include('partials/footer') --}}
 </body>
 </html>
