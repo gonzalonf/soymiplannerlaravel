@@ -41,7 +41,7 @@
     						<img style="height: 300px;" src="http://cdn.playbuzz.com/cdn/adabbd88-1450-44a4-b4bc-a96174ea963c/b3d6a27c-fdf4-438e-9a04-b8a67ee04b52.png" alt="Evento">
     					@endif {{-- ($product->imgName) --}}
     					<div class="caption">
-    						<h3> <a href="products/{{$product->id}}"> {{$product->name}} </a></h3>
+    						<h3> <a href="/products/{{$product->id}}"> {{$product->name}} </a></h3>
                             <p>
                                 <a href="/profile/{{$product->user_seller_id}}">
                                     {{$product->first_name.' '.$product->last_name}}

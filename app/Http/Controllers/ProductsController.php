@@ -19,23 +19,25 @@ class ProductsController extends Controller
 
     public function __construct()
     {
-        $this->categories = DB::table('categories')
-        // ->where('subcategory_child_of_id',null)
-        ->get();
+        $this->categories = DB::table('categories')->get();
+        $this->locations = DB::table('locations')->get();
     }
 
     public function index()
     {
         $categories=$this->categories;
+        $locations = $this->locations;
+
 
         $products = Product::getAll()->orderBy('id', 'desc')->paginate(12); // esto me trae un array
 
-        return view('products.index', compact('products','categories'));
+        return view('products.index', compact('products','categories','locations'));
     }
 
     public function filter()
     {
-        $categories=$this->categories;
+        $categories = $this->categories;
+        $locations = $this->locations;
 
         $search = trim(request()->q);
 
@@ -73,7 +75,7 @@ class ProductsController extends Controller
 
 
         $products=$products->paginate(12);
-        return view('products.index', compact('products','categories'));
+        return view('products.index', compact('products','categories','locations'));
 
     }
 

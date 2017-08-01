@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Illuminate\Support\Facades\DB;
+
+
 class RegisterController extends Controller
 {
     /*
@@ -70,7 +73,7 @@ class RegisterController extends Controller
         {
             $filename = User::count() + 1 . '.' . request()->avatar->extension();
             $request->file('avatar')->storeAs('public/avatar', $filename);
-        } 
+        }
 
         return User::create([
             'first_name' => $data['first_name'],
@@ -79,5 +82,11 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             ]);
+    }
+    public function showRegistrationForm()
+    {
+        $locations =  DB::table('locations')->get();
+
+        return view('auth.register',compact('locations'));
     }
 }

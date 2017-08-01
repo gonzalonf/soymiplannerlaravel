@@ -85,10 +85,15 @@
         	{{-- Ojaldre... esto debería venir de una nueva DB, no hardcodeado --}}
             <select placeholder="hola" class="" name="city" >
                 <option>Elegir Zona</option>
-        	    <option {{request()->city=='1'?'selected':''}} value="1">CABA</option>
-                <option {{request()->city=='2'?'selected':''}} value="2">AMBA (Zona Norte)</option>
-                <option {{request()->city=='3'?'selected':''}} value="3">Córdoba Capital</option>
-                <option {{request()->city=='4'?'selected':''}} value="4">Rosario</option>
+                @foreach ($locations as $loc)
+                    <option
+                        @if (request()->city==$loc->id)
+                                {{'selected'}}
+                        @endif
+                    value={{$loc->id}}>
+                        {{$loc->location}}
+                    </option>
+                @endforeach
         	</select>
 
 

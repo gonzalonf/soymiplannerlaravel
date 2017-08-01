@@ -35,7 +35,19 @@
             <p class='msj_error'>{{ $errors->first('last_name') }}</p>
             @endif
 
-            <input {{-- id='home' --}} class='decorative-input text-label' type='text' name='home' placeholder='Localidad' value='{{ old('home') }}' required> <br>
+            <select class="decorative-input text-label" name="home">
+                <option value="">--Seleccioná tu zona--</option>
+                @foreach ($locations as  $loc)
+                    <option
+                        @if (old('home')==$loc->location)
+                            {{'selected'}}
+                        @endif
+                        value="{{$loc->location}}">
+                            {{$loc->location}}
+                    </option>
+                @endforeach
+            </select>
+
 
             @if ($errors->has('home'))
             <p class='msj_error'>{{ $errors->first('home') }}</p>
