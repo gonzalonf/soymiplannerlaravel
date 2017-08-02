@@ -15,33 +15,35 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    //  public $categories;
+    static public $categories;
+    static public $locations;
 
     public function __construct()
     {
-        $this->categories = DB::table('categories')->get();
-        $this->locations = DB::table('locations')->get();
+        self::$categories = DB::table('categories')->get();
+        self::$locations = DB::table('locations')->get();
     }
 
     public function index()
     {
-        $categories=$this->categories;
-        $locations = $this->locations;
+        $products = Product::getAll()
+        ->where('user_seller_id','<>',Auth::id())
+        ->orderBy('id', 'desc')
+        ->paginate(12); // esto me trae un array
 
+        return view('products.index')
+        ->with(compact('products'))
+        ->with('categories',self::$categories)
+        ->with('locations',self::$locations);
 
-        $products = Product::getAll()->orderBy('id', 'desc')->paginate(12); // esto me trae un array
-
-        return view('products.index', compact('products','categories','locations'));
     }
 
     public function filter()
     {
-        $categories = $this->categories;
-        $locations = $this->locations;
-
         $search = trim(request()->q);
 
         $products =Product::getAll()
+        ->where('user_seller_id','<>',Auth::id())
 
 
         // search
@@ -75,7 +77,11 @@ class ProductsController extends Controller
 
 
         $products=$products->paginate(12);
-        return view('products.index', compact('products','categories','locations'));
+
+        return view('products.index')
+        ->with(compact('products'))
+        ->with('categories',self::$categories)
+        ->with('locations',self::$locations);
 
     }
 
@@ -126,9 +132,12 @@ class ProductsController extends Controller
     public function show($id)
     {
         try {
-            $product = Product::find($id);
-            $product->nombre;
+            $product = Product::where('user_seller_id','<>',Auth::id())->find($id);
+
+            $product->id;
+
             return view('products.show', compact('product'));
+            
         } catch (\Exception $e) {
             abort(404);
         }
