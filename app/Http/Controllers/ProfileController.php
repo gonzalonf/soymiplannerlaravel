@@ -60,26 +60,33 @@ class ProfileController extends Controller
     */
     public function update(Request $request, $id)
     {
-          // Validator::make($user, [
-          //   'first_name' => 'required|string|max:255',
-          //   'last_name' => 'required|string|max:255',
-          //   'home' => 'required|string|max:255',
-          //   'email' => 'required|string|email|max:255|unique:users',
-          //   'password' => 'required|string|min:6|confirmed',
-          //   ]);
-
         $user = User::find($id);
-        $user->first_name = $request->get('first_name');
-        $user->last_name = $request->get('last_name');
-        $user->home = $request->get('home');
-        $user->email = $request->get('email');
-        if ($request->get('password') != '' ) {
-            $user->password = bcrypt($request->get('password'));
+        $errors = Validator::make($request->all(), [
+            'first_name' => 'required|string|max:25',
+            'last_name' => 'required|string|max:25',
+            'home' => 'required|string|max:50',
+            // 'phone' => 'required|numeric|max:25',
+            'email' => 'required|string|email|max:50|unique:users,email,'.$user->id,
+            'password' => 'required|string|min:6|confirmed',
+            ]);
+
+        if ($errors->fails()) {
+            return redirect('/profile')
+            ->withErrors($errors)
+            ->withInput();
+        } else {
+            $user = User::find($id);
+            $user->first_name = $request->get('first_name');
+            $user->last_name = $request->get('last_name');
+            $user->home = $request->get('home');
+            // $user->phone = $request->get('phone');
+            $user->email = $request->get('email');
+            if ($request->get('password') != '' ) {
+                $user->password = bcrypt($request->get('password'));
+            }
+            $user->save();
+            return redirect('/profile');
         }
-
-        $user->save();
-
-        return redirect('/profile');
     }
 
     /**
