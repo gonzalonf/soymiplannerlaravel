@@ -95,7 +95,7 @@ class ProductsTableSeeder extends Seeder
             'updated_at' => date('Y-m-d h:i:s'),
             ],
             [
-            'name' => 'Moviliario para eventos "Silla&Sillon"',
+            'name' => 'Mobiliario para eventos "Silla&Sillon"',
             'description'=> 'Somos una empresa familiar dedicada al alquiler de mesas, sillas y sillones para eventos.',
             'price'=> 'A convenir',
             'user_seller_id'=>3,

@@ -23,7 +23,6 @@ Auth::routes();
 
 // Route::patch('profile', 'ProfileController@update')->middleware('auth');
 
-
 ///////////////////////////////////////////////
 
 Route::get('profile', 'ProfileController@index')->middleware('auth');
@@ -56,3 +55,4 @@ Route::post('/create', 'ProductsController@store')->middleware('auth');
 
 // Route::delete('products/{id}', 'ProductsController@destroy');
 
+Route::get('/profile', 'ProfileController@showRegistrationForm2');

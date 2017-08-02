@@ -35,7 +35,7 @@
             <p class='msj_error'>{{ $errors->first('last_name') }}</p>
             @endif
 
-            <select class="decorative-input text-label" name="home">
+            <select class="decorative-input text-label" style="margin-bottom: 20px;" name="home">
                 <option value="">--Seleccioná tu zona--</option>
                 @foreach ($locations as  $loc)
                     <option
@@ -48,10 +48,15 @@
                 @endforeach
             </select>
 
-
             @if ($errors->has('home'))
             <p class='msj_error'>{{ $errors->first('home') }}</p>
             @endif
+
+            <input class='decorative-input-mail text-label' type='tel' name='phone' placeholder='Teléfono' value='{{ old('phone') }}' required autofocus> <br>
+
+            @if ($errors->has('phone'))
+            <p class='msj_error'>{{ $errors->first('phone') }}</p>
+            @endif            
 
             <input {{-- id='email' --}} class='decorative-input-mail text-label' type='email' name='email' placeholder='Correo electronico' value='{{ old('email') }}' required autofocus> <br>
 

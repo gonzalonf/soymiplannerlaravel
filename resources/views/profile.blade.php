@@ -130,7 +130,18 @@
         
         {{-- LOCALIDAD --}}
         <h2 class="datosUsuario">Localidad: <strong> {{Auth::User()->home}} </strong> </h2>
-        <input class='decorative-input text-label inputUpdate' type="text" placeholder={{Auth::User()->home}} name="home" value='{{Auth::User()->home}}'>
+            <select class="decorative-input text-label inputUpdate" name="home">
+                <option value="">--Seleccioná tu zona--</option>
+                @foreach ($locations as  $loc)
+                    <option
+                        @if (Auth::User()->home == $loc->location)
+                            {{'selected'}}
+                        @endif
+                        value="{{$loc->location}}">
+                            {{$loc->location}}
+                    </option>
+                @endforeach
+            </select>
         <button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
 
         @if ($errors->has('home'))
@@ -159,13 +170,13 @@
 
         {{-- APELLIDO --}}
         <input type="hidden" name="last_name" value='{{Auth::User()->last_name}}'>
-        
+
         {{-- LOCALIDAD --}}
         <input type="hidden" name="home" value='{{Auth::User()->home}}'>
 
         {{-- TEL --}}
         <h2 class="datosUsuario">Teléfono: <strong> {{Auth::User()->phome}} </strong> </h2>
-        <input class='decorative-input text-label inputUpdate' type="text" placeholder={{Auth::User()->phone}} name="phone" value='{{Auth::User()->phone}}'>
+        <input class='decorative-input text-label inputUpdate' type="tel" placeholder={{Auth::User()->phone}} name="phone" value='{{Auth::User()->phone}}'>
         <button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
 
         @if ($errors->has('home'))
@@ -191,7 +202,7 @@
 
         {{-- APELLIDO --}}
         <input type="hidden" name="last_name" value='{{Auth::User()->last_name}}'>
-        
+
         {{-- LOCALIDAD --}}
         <input type="hidden" name="home" value='{{Auth::User()->home}}'>
 
@@ -223,7 +234,7 @@
 
         {{-- APELLIDO --}}
         <input type="hidden" name="last_name" value='{{Auth::User()->last_name}}'>
-        
+
         {{-- LOCALIDAD --}}
         <input type="hidden" name="home" value='{{Auth::User()->home}}'>
 

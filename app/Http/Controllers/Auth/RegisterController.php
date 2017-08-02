@@ -51,10 +51,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'home' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'first_name' => 'required|string|max:15',
+            'last_name' => 'required|string|max:15',
+            'home' => 'required|string|max:20',
+            'phone' => 'required|string|max:25',
+            'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|min:6|confirmed',
             ]);
     }
@@ -79,10 +80,12 @@ class RegisterController extends Controller
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'home' => $data['home'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             ]);
     }
+    
     public function showRegistrationForm()
     {
         $locations =  DB::table('locations')->get();
