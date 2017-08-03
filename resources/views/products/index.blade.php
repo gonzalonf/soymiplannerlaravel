@@ -5,6 +5,7 @@
 </head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="icon" type="favicon" href="images/favicon.png">
 
 <body>
 
@@ -15,7 +16,8 @@
 <div class="jumbotron">
 	<h2>Eventos</h2>
 </div> --}}
-
+<div style="display: flex" class="contenedor-flex ">
+    
 {{-- el aside --}}
 @include('partials/search')
 
@@ -31,9 +33,9 @@
 
     @foreach ($products->Chunk(3) as $productChunk)
 
-    	<div class="row" style="position: relative; left: 25% ">
+    	<div class="row" style="margin-left: 0">
     		@foreach ($productChunk as $product)
-    			<div class="col-xs-12 col-md-3">
+    			<div class="col-xs-12 col-md-4">
     				<div class="thumbnail">
     					@if (isset($product->imgName))
     					    <img src="{{Storage::url($product->imgName)}}">
@@ -59,6 +61,8 @@
     		@endforeach
     	</div>
     @endforeach
+</div>
+
 </div>
 
 <div class="paginacion" style="text-align: center;">

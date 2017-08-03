@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <title>Mis Productos</title>
         <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="icon" type="favicon" href="images/favicon.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     </head>
     <body>
         @include('partials/nav')
+
 
         <h1>Mis Productos</h1>
         <div class="">
@@ -15,7 +18,7 @@
         </div>
 
         @foreach ($products as $product)
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12">
 				<div class="thumbnail">
 					@if (isset($product->imgName))
 					    <img src="{{Storage::url($product->imgName)}}">

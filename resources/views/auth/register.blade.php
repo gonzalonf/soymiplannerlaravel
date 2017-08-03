@@ -4,6 +4,7 @@
     <title>Registro</title>
     <link id='pagestyle' rel='stylesheet' type='text/css' href='../css/style.css'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="favicon" href="images/favicon.png">
 </head>
 <body>
 

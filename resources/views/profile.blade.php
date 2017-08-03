@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title></title>
     <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="icon" type="favicon" href="images/favicon.png">
     <style type="text/css">
         .datosUsuario{
             display: inline-block;

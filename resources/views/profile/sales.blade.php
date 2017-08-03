@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Mis Transacciones</title>
         <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="icon" type="favicon" href="images/favicon.png">
         
     </head>
     <body>

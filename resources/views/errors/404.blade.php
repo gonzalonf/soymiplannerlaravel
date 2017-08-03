@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+
 <html>
     <head>
         <meta charset="utf-8">
-        <title>No disponible</title>
+        <title>404-No disponible</title>
+
 
         <style media="screen">
         .error{
@@ -19,8 +20,10 @@
         }
 
         </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
         <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="icon" type="favicon" href="images/favicon.png">
     </head>
     <body>
         @include('../partials/nav')

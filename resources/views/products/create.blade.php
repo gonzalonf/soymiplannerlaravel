@@ -6,6 +6,7 @@
     <title>Crear Evento</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="icon" type="favicon" href="images/favicon.png">
   </head>
   <body>
   @include('partials/nav')

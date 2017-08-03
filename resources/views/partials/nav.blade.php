@@ -58,7 +58,7 @@
 					<li  class="dropdown"> {{Auth::User()->first_name}}
 						<div class="dropdown-menu">
 							<ul>
-                                <li><a href="{{ url('/profile/products') }}">PRODUCTOS</a></li>
+                                <li><a href="{{ url('/profile/products') }}">MIS PRODUCTOS</a></li>
                                 <li><a href="{{ url('/profile/sales') }}">TRANSACCIONES</a></li>
 								<li><a href="{{ url('/profile') }}">PERFIL</a></li>
 								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();

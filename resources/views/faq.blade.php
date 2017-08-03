@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Preguntas Frecuentes</title>
-	<link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+@include('partials/head')
 <body>
 
 	<!-- barra navegación -->

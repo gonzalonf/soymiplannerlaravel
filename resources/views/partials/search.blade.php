@@ -1,13 +1,8 @@
 <style media="screen">
 
     #content{
-        position: fixed;
-        top: 50px;
-        z-index: 1;
-        width: 20%;
-        overflow: scroll;
-
-        background-color: #F1F1F1;
+        min-width: 270px;  
+        background-color: rgba(0, 0, 0, 0.1);
     }
     #search_products {
         height: 35px;
