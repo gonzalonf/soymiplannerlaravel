@@ -17,7 +17,7 @@
 	<h2>Eventos</h2>
 </div> --}}
 <div style="display: flex" class="contenedor-flex ">
-    
+
 {{-- el aside --}}
 @include('partials/search')
 
@@ -49,7 +49,18 @@
                                     {{$product->first_name.' '.$product->last_name}}
                                 </a>
                             </p>
-                            <h5><b>{{$product->category_name}}</b></h5>
+                            @php
+                            if ($product->subcategory_child_of_id !== NULL) {
+                                    foreach ($categories as $value) {
+                                        if ($value->id == $product->subcategory_child_of_id){
+                                            $father = $value->category_name.' - ';
+                                        }
+                                    }
+                                }else {
+                                    $father = '';
+                                }
+                            @endphp
+                            <h5><b>{{$father.$product->category_name}}</b></h5>
     						<p>Descripcion: {{$product->description}}.</p>
     						<p class="caption">Precio: {{$product->price}} </p>
     						<button class="btn btn-primary">
