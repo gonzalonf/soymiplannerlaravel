@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Hash;
 
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 use Illuminate\Support\Facades\DB;
@@ -62,6 +64,15 @@ class ProfileController extends Controller
     */
     public function update(Request $request, $id)
     {
+        if($request->hasfile('avatar'))
+        {
+            if (!empty(glob('storage/avatar/'. $id . '.*')[0])){
+                File::delete(glob('storage/avatar/'. $id . '.*')[0]);
+            }
+            $filename = $id . '.' . request()->avatar->extension();
+            request()->avatar->storeAs('public/avatar', $filename);
+        }
+
         $user = User::find($id);
         $errors = Validator::make($request->all(), [
             'first_name' => 'required|string|max:15',
@@ -120,7 +131,7 @@ class ProfileController extends Controller
 
         $error = '';
         if ($products->count()===0) {
-            $error = "No hay productos publicados";
+            $error = 'No hay productos publicados';
         }
 
         return view('profile.products', compact('products','error'));
@@ -136,15 +147,15 @@ class ProfileController extends Controller
         try {
             $user = User::find($id);
             $username = $user->first_name.' '.$user->last_name;
-            echo "Perfil público del usuario <b>$username</b> <br>";
-            echo "Mostrar otros productos, reputación, etc...<br><br>";
+            echo 'Perfil público del usuario <b>$username</b> <br>';
+            echo 'Mostrar otros productos, reputación, etc...<br><br>';
             $products=Product::getAll()->where('user_seller_id',$id)->get();
-            echo "sus productos...<br>";
-            echo "<ul>";
+            echo 'sus productos...<br>';
+            echo '<ul>';
             foreach ($products as $value) {
-                echo "<li>".$value->name."</li><br>";
+                echo '<li>'.$value->name.'</li><br>';
             }
-            echo "</ul>";
+            echo '</ul>';
 
         } catch (\Exception $e) {
 
