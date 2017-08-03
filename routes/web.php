@@ -14,6 +14,7 @@
  //  Route::get('ruta', 'controlador@metodo');
 
 Route::get('/', 'IndexController@index');
+Route::get('/partials', 'IndexController@cuantosSomos');
 
 Route::get('faq', 'FaqController@index');
 
@@ -56,3 +57,4 @@ Route::post('/create', 'ProductsController@store')->middleware('auth');
 // Route::delete('products/{id}', 'ProductsController@destroy');
 
 Route::get('/profile', 'ProfileController@showRegistrationForm2');
+

@@ -14,14 +14,14 @@
                 }
               }
 
-              req.open('GET', '../php/somos_backend.php', true);
+              req.open('GET', '/partials', true);
               req.send();
             }
 
             ajax();
             setInterval(ajax, 300000);
 
-     //  animateValue("value", 0, 257, 2000); // para test
+      // animateValue("value", 0, 257, 2000); // para test
 
      function animateValue(id, start, end, duration) {
       var range = end - start;

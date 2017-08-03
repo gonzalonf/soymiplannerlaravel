@@ -86,6 +86,5 @@
 
 	<script src="../js/carrusel.js"></script>
 	<script src="../js/cuantos_somos.js"> </script>
-	<!-- "../js/cuantos_somos.js" -->
 </body>
 </html>
