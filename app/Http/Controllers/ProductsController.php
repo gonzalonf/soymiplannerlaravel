@@ -108,10 +108,10 @@ class ProductsController extends Controller
             // 'image'=>'required|max:1024'
             ],
             [
-            'name.required' => 'El Nombre del producto es obligatorio',
-            'price.required' => 'El Precio del producto es obligatorio',
-            'description.required' => 'La Descripcion del producto es obligatoria',
-            'category.min' => 'La Categoria del producto es obligatoria',
+            'name.required' => 'El Nombre del la Publicación es obligatorio',
+            'price.required' => 'El Precio del la Publicación es obligatorio',
+            'description.required' => 'La Descripcion del la Publicación es obligatoria',
+            'category.min' => 'La Categoria del la Publicación es obligatoria',
             ]
             );
         $product=Product::create([
