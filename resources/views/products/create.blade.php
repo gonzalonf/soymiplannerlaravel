@@ -29,7 +29,7 @@
                     @endif
                     <div class="form-group">
                         <label for="name">Nombre de la Publicación</label>
-                        <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
+                        <input type="text" name="name" id="name" class="form-control" value="{{old('name')}} " autofocus>
                     </div>
                     <div class="form-group">
                         <label for="price">Precio</label>

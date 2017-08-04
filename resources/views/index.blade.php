@@ -41,6 +41,9 @@
 
 	@include('partials/quienes_somos')
 
+	@include('partials/faq')
+
+
 	<!-- footer -->
 	@include('partials/footer')
 
