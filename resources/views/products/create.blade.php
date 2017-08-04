@@ -14,7 +14,7 @@
  <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h1>Crear Producto</h1>
+                <h1 style="margin: 30px 0">Crear Publicación</h1>
                 <form action="/create" method="POST" id="create" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @if ($errors->any())
@@ -28,7 +28,7 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for="name">Nombre de Producto</label>
+                        <label for="name">Nombre de la Publicación</label>
                         <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
                     </div>
                     <div class="form-group">
@@ -47,7 +47,7 @@
                         <label for="category">Elige la Categoria</label>
                           <select name="category" class="form-control" id="exampleSelect1">
                           {{-- el primer value debe ser vacio--}}
-                          <option selected="selected">---</option>
+                          <option selected="selected">-</option>
                           <option value="1">Lugar</option>
                           <option value="2">Decoracion</option>
                           <option value="3">Servicios</option>
@@ -61,13 +61,15 @@
                         <label for="img">Imagen</label>
                         <input type="file" name="image" id="img" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <input class="btn btn-primary" type="submit" name="enviador" value="Enviar">
+                    <div class="form-group" style="margin: 30px 0;">
+                        <input class="btn btn-primary" type="submit" name="enviador" value="Publicar">
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    @include('partials/footer')
     <script type="text/javascript">
        
             var precio =document.getElementById('price');

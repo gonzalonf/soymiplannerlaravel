@@ -104,9 +104,16 @@ class ProductsController extends Controller
             'name'=>'required|max:30',
             'price'=>'required',
             'description'=>'required',
-            'category'=>'required'
+            'category'=>'required|min:2'
             // 'image'=>'required|max:1024'
-            ]);
+            ],
+            [
+            'name.required' => 'El Nombre del producto es obligatorio',
+            'price.required' => 'El Precio del producto es obligatorio',
+            'description.required' => 'La Descripcion del producto es obligatoria',
+            'category.min' => 'La Categoria del producto es obligatoria',
+            ]
+            );
         $product=Product::create([
             'name'=>$request->input('name'),
             'price'=>$request->input('price'),
