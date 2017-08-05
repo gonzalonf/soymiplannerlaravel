@@ -15,6 +15,7 @@
 
 Route::get('/', 'IndexController@index');
 Route::get('/partials', 'IndexController@cuantosSomos');
+Route::get('/auth', 'ValidacionAjaxController@validadorAjax');
 
 Route::get('faq', 'FaqController@index');
 

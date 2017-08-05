@@ -12,8 +12,6 @@
     @include('partials/nav')
 
     <!-- inicia el CONTENEDOR para el Registro -->
-
-
     <div class='registro-container'>
         <div class='crear-cuenta'>
             <h1>CREAR CUENTA</h1>
@@ -39,69 +37,70 @@
             <select class="decorative-input text-label" style="margin-bottom: 20px;" name="home">
                 <option value="">--Seleccioná tu zona--</option>
                 @foreach ($locations as  $loc)
-                    <option
-                        @if (old('home')==$loc->location)
-                            {{'selected'}}
-                        @endif
-                        value="{{$loc->location}}">
-                            {{$loc->location}}
-                    </option>
-                @endforeach
-            </select>
+                <option
+                @if (old('home')==$loc->location)
+                {{'selected'}}
+                @endif
+                value="{{$loc->location}}">
+                {{$loc->location}}
+            </option>
+            @endforeach
+        </select>
 
-            @if ($errors->has('home'))
-            <p class='msj_error'>{{ $errors->first('home') }}</p>
-            @endif
+        @if ($errors->has('home'))
+        <p class='msj_error'>{{ $errors->first('home') }}</p>
+        @endif
 
-            <input class='decorative-input-mail text-label' type='tel' name='phone' placeholder='Teléfono' value='{{ old('phone') }}' required autofocus> <br>
+        <input class='decorative-input-mail text-label' type='tel' name='phone' placeholder='Teléfono' value='{{ old('phone') }}' required autofocus> <br>
 
-            @if ($errors->has('phone'))
-            <p class='msj_error'>{{ $errors->first('phone') }}</p>
-            @endif            
+        @if ($errors->has('phone'))
+        <p class='msj_error'>{{ $errors->first('phone') }}</p>
+        @endif            
 
-            <input {{-- id='email' --}} class='decorative-input-mail text-label' type='email' name='email' placeholder='Correo electronico' value='{{ old('email') }}' required autofocus> <br>
+        <input {{-- id='email' --}} class='decorative-input-mail text-label' type='email' name='email' placeholder='Correo electronico' value='{{ old('email') }}' required autofocus> <br>
 
-            @if ($errors->has('email'))
-            <p class='msj_error'>{{ $errors->first('email') }}</p>
-            @endif
+        @if ($errors->has('email'))
+        <p class='msj_error'>{{ $errors->first('email') }}</p>
+        @endif
 
-            <input {{-- id='password' --}} class='decorative-input-password text-label' type='password' name='password' placeholder='Contraseña' required> <br>
+        <p id='errorEmail' class='msj_error'>
+            <?php if (isset($errores["email"])) {
+                echo $errores["email"];
+            }?></p>
 
-            @if ($errors->has('password'))
-            <p class='msj_error'>{{ $errors->first('password') }}</p>
-            @endif
+        <input {{-- id='password' --}} class='decorative-input-password text-label' type='password' name='password' placeholder='Contraseña' required> <br>
 
-            <input {{-- id='password-confirm' --}} class='decorative-input-password text-label' type='password' name='password_confirmation' placeholder='Confirmar contraseña' required> <br>
+        @if ($errors->has('password'))
+        <p class='msj_error'>{{ $errors->first('password') }}</p>
+        @endif
 
-            <label for='avatar' class='text-label'>Imagen de perfil: </label> <br>
-            <input class='decorative-input-imagen-boton' type='file' name='avatar'> <br>
+        <input {{-- id='password-confirm' --}} class='decorative-input-password text-label' type='password' name='password_confirmation' placeholder='Confirmar contraseña' required> <br>
 
-                <p class='msj_error'> <!--  $errores['variable'])) {
-                    echo $errores['variable'] -->
-                </p>
+        <label for='avatar' class='text-label'>Imagen de perfil: </label> <br>
+        <input class='decorative-input-imagen-boton' type='file' name='avatar'> <br>
 
-                <div class='checkbox'>
-                    <input checked='checked' name='mail-promociones' type='checkbox' value='1'>
-                </div>
-
-                <label for='mail-promociones' class='text-label'>  Me gustaría recibir cupones, promociones, encuestas y actualizaciones por correo electrónico sobre Soy Mi Planner y sus socios.
-                </label>
-                <br>
-
-                <button type='submit' class='enviar' name='submit' value='registrate'><strong>REGISTRATE</strong></button>
-                <br>
-
-                <div class='aclaracion'>
-                    <p>Al registrarme, acepto las Condiciones del servicio, la Política de Privacidad y de Cookies.</p>
-                    <br>
-                </div>
-
-            </form>
+        <div class='checkbox'>
+            <input checked='checked' name='mail-promociones' type='checkbox' value='1'>
         </div>
 
-        @include('partials/footer')
+        <label for='mail-promociones' class='text-label'>  Me gustaría recibir cupones, promociones, encuestas y actualizaciones por correo electrónico sobre Soy Mi Planner y sus socios.
+        </label>
+        <br>
 
-        {{-- <script src='../js/register.js' charset='utf-8'></script> --}}
+        <button type='submit' class='enviar' name='submit' value='registrate'><strong>REGISTRATE</strong></button>
+        <br>
 
-    </body>
-    </html>
+        <div class='aclaracion'>
+            <p>Al registrarme, acepto las Condiciones del servicio, la Política de Privacidad y de Cookies.</p>
+            <br>
+        </div>
+
+    </form>
+</div>
+
+@include('partials/footer')
+
+<script src='../js/register.js' charset='utf-8'></script>
+
+</body>
+</html>
