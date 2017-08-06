@@ -80,6 +80,8 @@ input[type=checkbox]:checked + label {
 	display: flex;
 	flex-flow: column;
 	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /*esto lo agregué para que se despuegue la barra del fondo... saquenlo si no gusta	*/
+	font-size: 12px;
+	font-family: Helvetica, Verdana, sans-serif;
 }
 
 body{
@@ -107,6 +109,7 @@ body{
 	font-weight: bold;
 	color: grey;
 	transition: background-color 0.3s;
+	height: 48px;
 }
 
 .botonera a:hover{
@@ -183,6 +186,10 @@ body{
 .dropdown:hover .dropdown-menu{
 	display: block;
 }
+.mini_avatar{
+	float:right; 
+	margin-top: -15px;
+}
 
 /*------------COMIENZA BOTONCITO CSS-----------------------------*/
 
@@ -191,7 +198,7 @@ body{
 	display: inline-block;
 	width: 18px;
 	height: 38px;
-	bottom: 20px;
+    bottom: 320px;
 	left: 10px;
 }
 

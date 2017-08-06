@@ -16,23 +16,29 @@
 					<li class="preguntas"><a href="#type2">PREGUNTAS</a></li>
 
 
-                    <li><a href="{{ url('/products') }}">PRODUCTOS</a></li>
-                    <li ><a href="{{ url('/create') }}">PUBLICAR</a></li>
-                    <li ><a href="{{ url('/event') }}">EVENTO</a></li>
+					<li><a href="{{ url('/products') }}">PRODUCTOS</a></li>
+					<li ><a href="{{ url('/create') }}">PUBLICAR</a></li>
+					<li ><a href="{{ url('/event') }}">EVENTO</a></li>
 
 
 					@if (Auth::guest())
 					<li class="ingresa"><a href="{{ url('/login') }}">INGRESA</a></li>
 					<li class="registrate"><a href="{{ url('/register') }}">REGISTRATE</a></li>
 
-
 					@else
-					{{ Auth::user()->name }}
-					<li  class="dropdown"> {{Auth::User()->first_name}}
+
+					<li class="dropdown"> {{Auth::User()->first_name}}
+						<div class="mini_avatar">
+							@if (!empty(glob('storage/avatar/'. Auth::User()->id . ".*")[0]) )
+							<img src="{{ asset (glob('storage/avatar/'. Auth::User()->id . ".*")[0]) }}" height="48px;" alt="avatar">
+							@else
+							<img src="images/default.png" height="48px;" alt="avatar">
+							@endif
+						</div>
 						<div class="dropdown-menu">
 							<ul>
-                                <li><a href="{{ url('/profile/products') }}">MIS PRODUCTOS</a></li>
-                                <li><a href="{{ url('/profile/sales') }}">TRANSACCIONES</a></li>
+								<li><a href="{{ url('/profile/products') }}">MIS PRODUCTOS</a></li>
+								<li><a href="{{ url('/profile/sales') }}">TRANSACCIONES</a></li>
 								<li><a href="{{ url('/profile') }}">PERFIL</a></li>
 								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">LOGOUT</a>
@@ -43,10 +49,10 @@
 							</ul>
 						</div>
 
-					@endif
+						@endif
 
-				</ul>
-			</nav>
+					</ul>
+				</nav>
+			</div>
 		</div>
-	</div>
-</header>
+	</header>
