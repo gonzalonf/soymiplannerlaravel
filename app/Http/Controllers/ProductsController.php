@@ -33,9 +33,9 @@ class ProductsController extends Controller
     public function index()
     {
       $products = Product::getAll()
-      ->where('user_seller_id','<>',Auth::id())
+      // ->where('user_seller_id','<>',Auth::id())
       ->orderBy('id', 'desc')
-        ->paginate(12); // esto me trae un array
+      ->paginate(12); // esto me trae un array
 
         return view('products.index')
         ->with(compact('products'))
@@ -49,7 +49,7 @@ class ProductsController extends Controller
         $search = trim(request()->q);
 
         $products =Product::getAll()
-        ->where('user_seller_id','<>',Auth::id())
+        // ->where('user_seller_id','<>',Auth::id())
 
 
         // search
