@@ -1,5 +1,5 @@
 <footer>
-		<img class="logoFooter" src="../images/logo.png" height=45px alt="logotipo" class="logo">
+		<img class="logoFooter" src="{{asset('images/logo.png')}}" height=45px alt="logotipo" class="logo">
 	<div class="footerContainer">
 	<nav>
 		<ul>
@@ -12,7 +12,7 @@
 		<div class="lugar">
 
 
-			<img class="map" src="../images/mapMarker.png" alt="map" width="30px"
+			<img class="map" src="{{asset('images/mapMarker.png')}}" alt="map" width="30px"
 			style="
 			display: block;
 			margin: auto;
@@ -29,10 +29,10 @@
 		</div>
 		<div class="redesSociales">
 			<ul>
-				<li><a href="http://www.facebook.com" target="_blank"><img src="../images/f.png" alt="facebook" width="50px"> </a></li>
-				<li><a href="http://www.twitter.com" target="_blank"><img src="../images/t.png" alt="twitter" width="50px"> </a></li>
-				<li><a href="http://www.youtube.com" target="_blank"><img src="../images/yt.png" alt="YouTube" width="50px"> </a></li>
-				<li><a href="http://www.instagram.com" target="_blank"><img src="../images/i.png" alt="Instagram" width="50px"> </a></li>
+				<li><a href="http://www.facebook.com" target="_blank"><img src="{{asset('images/f.png')}}" alt="facebook" width="50px"> </a></li>
+				<li><a href="http://www.twitter.com" target="_blank"><img src="{{asset('images/t.png')}}" alt="twitter" width="50px"> </a></li>
+				<li><a href="http://www.youtube.com" target="_blank"><img src="{{asset('images/yt.png')}}" alt="YouTube" width="50px"> </a></li>
+				<li><a href="http://www.instagram.com" target="_blank"><img src="{{asset('images/i.png')}}" alt="Instagram" width="50px"> </a></li>
 			</ul>
 			<br>
 			<br>

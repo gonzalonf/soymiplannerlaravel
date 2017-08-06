@@ -51,7 +51,8 @@
                           <option value="1">Lugar</option>
                           <option value="2">Decoracion</option>
                           <option value="3">Servicios</option>
-                          <option value="4">Otros</option>
+                          <option value="4">Servicios</option>
+                          <option value="5">Otros</option>
                          
                         </select>   
                     </div>

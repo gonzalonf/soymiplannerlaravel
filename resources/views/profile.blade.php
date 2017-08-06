@@ -52,9 +52,7 @@
            <img src="images/default.png" alt="avatar">
            @endif 
        </div>
-
-
-       {{-- FORM AVATAR --}}
+       {{------------------------------------------------------------------}}     {{-- FORM AVATAR --}}
        <form class='formulario' method='post' action='{{action('ProfileController@update', Auth::User()->id)}}' enctype='multipart/form-data'>
         {{ csrf_field() }}
         <input name='_method' type='hidden' value='PATCH'>
@@ -83,8 +81,7 @@
         <input type='hidden' name='password' value='{{Auth::User()->password}}'>
         <input  type='hidden' name='password_confirmation' value='{{Auth::User()->password}}'>
     </form>
-
-
+    {{------------------------------------------------------------------}}
     {{-- FORM NOMBRE --}}
     <form class='formulario' method="post" action="{{action('ProfileController@update', Auth::User()->id)}}">
         {{csrf_field()}}
@@ -115,8 +112,7 @@
         <input type="hidden" name="password" value='{{Auth::User()->password}}'>
         <input  type='hidden' name='password_confirmation' value='{{Auth::User()->password}}'>
     </form>
-
-
+    {{------------------------------------------------------------------}}
     {{-- FORM APELLIDO --}}
     <form class='formulario' method="post" action="{{action('ProfileController@update', Auth::User()->id)}}">
         {{csrf_field()}}
@@ -147,8 +143,7 @@
         <input type="hidden" name="password" value='{{Auth::User()->password}}'>
         <input  type='hidden' name='password_confirmation' value='{{Auth::User()->password}}'>
     </form>
-
-
+    {{------------------------------------------------------------------}}
     {{-- FORM LOCALIDAD --}}
     <form class='formulario' method="post" action="{{action('ProfileController@update', Auth::User()->id)}}">
         {{csrf_field()}}
@@ -190,8 +185,7 @@
     <input type="hidden" name="password" value='{{Auth::User()->password}}'>
     <input  type='hidden' name='password_confirmation' value='{{Auth::User()->password}}'>
 </form>
-
-
+{{------------------------------------------------------------------}}
 {{-- FORM PHONE --}}
 <form class='formulario' method="post" action="{{action('ProfileController@update', Auth::User()->id)}}">
     {{csrf_field()}}
@@ -222,8 +216,7 @@
     <input type="hidden" name="password" value='{{Auth::User()->password}}'>
     <input  type='hidden' name='password_confirmation' value='{{Auth::User()->password}}'>
 </form>
-
-
+{{------------------------------------------------------------------}}
 {{-- FORM EMAIL --}}
 <form class='formulario' method="post" action="{{action('ProfileController@update', Auth::User()->id)}}">
     {{csrf_field()}}
@@ -254,8 +247,7 @@
     <input type="hidden" name="password" value='{{Auth::User()->password}}'>
     <input  type='hidden' name='password_confirmation' value='{{Auth::User()->password}}'>
 </form>
-
-
+{{------------------------------------------------------------------}}
 {{-- FORM PASSWORD--}}
 <form class='formulario' method="post" action="{{action('ProfileController@update', Auth::User()->id)}}">
     {{csrf_field()}}

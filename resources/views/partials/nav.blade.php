@@ -31,7 +31,7 @@
 
 		<div class="logo-marca">
 			<a href="/#">
-				<img src="../images/logo2.png" alt="logotipo" class="logo">
+				<img src="{{asset('images/logo2.png')}}" alt="logotipo" class="logo">
 			</a>
 		</div>
 
@@ -59,7 +59,7 @@
 						<div class="dropdown-menu">
 							<ul>
                                 <li><a href="{{ url('/profile/products') }}">MIS PRODUCTOS</a></li>
-                                <li><a href="{{ url('/profile/sales') }}">MIS TRANSACCIONES</a></li>
+                                <li><a href="{{ url('/profile/sales') }}">TRANSACCIONES</a></li>
 								<li><a href="{{ url('/profile') }}">PERFIL</a></li>
 								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">LOGOUT</a>

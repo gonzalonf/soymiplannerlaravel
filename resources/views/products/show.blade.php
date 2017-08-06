@@ -16,20 +16,11 @@
 			 @if (isset($product->imgName))
     					    <img src="{{Storage::url($product->imgName)}}">
     					@else
-    						<img style="height: 300px;" src="http://cdn.playbuzz.com/cdn/adabbd88-1450-44a4-b4bc-a96174ea963c/b3d6a27c-fdf4-438e-9a04-b8a67ee04b52.png" alt="Evento">
+    						<img style="height: 300px;" src="/images/default_prod.png" alt="Evento">
     						@endif
 			<h2>{{$product->description}}</h2>
 			<p> <b>Precio: {{$product->price}}</b></p>
-
-            @if (!session()->has('cart') || !in_array($product->id,session()->get('cart')))
-                <form class="" action="/event/add" method="post">
-                    {{ csrf_field() }}
-                    <button class="btn-lg  btn-success" type="submit" name="add" value="{{$product->id}}">
-                        Añadir a Tu Carruaje de Eventos
-                    </button>
-
-                </form>
-            @endif
+			<button class="btn-lg  btn-success">Añadir a Tu Carruaje de Eventos
 		</div>
 	</div>
 
