@@ -6,31 +6,6 @@
     <title></title>
     <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="icon" type="favicon" href="images/favicon.png">
-    <style type="text/css">
-        .datosUsuario{
-            display: inline-block;
-            width: 28% !important;
-            padding-bottom: 12px;
-            margin-right: 2%; 
-            color: black;
-            font-size: .7rem;
-            vertical-align: bottom;
-            text-align: right;
-        }
-        .inputUpdate{
-            display: inline-block;
-            width: 40% !important; 
-            font-size: .7rem; 
-        }
-        .enviarUpdate{
-            display: inline-block;
-            width: 27% !important; 
-            padding: 10px 0; 
-            margin-left: 2%;
-            font-size: .7rem; 
-        }
-
-    </style>
 </head>
 <body>
 
@@ -40,7 +15,7 @@
     <div class='registro-container editarContainer'>
 
         <div class='crear-cuenta'>
-            <h1 style="font-size: 30px;">MI PERFIL</h1>
+            <h1 class="titulo_seccion">MI PERFIL</h1>
             <hr>
         </div>
 
@@ -59,8 +34,8 @@
 
         {{-- AVATAR --}}
         <h2 class='datosUsuario'>Imagen de perfil:</h2>
-        <input class='decorative-input-imagen-boton inputUpdate' type='file' name='avatar'>
-        <button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+        <input class='inputImagen' type='file' name='avatar'>
+        <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
         {{-- NOMBRE --}}
         <input type='hidden' name='first_name' value='{{Auth::User()->first_name}}'>
@@ -90,7 +65,7 @@
         {{-- NOMBRE --}}
         <h2 class="datosUsuario">Nombre: <strong> {{Auth::User()->first_name}} </strong> </h2>
         <input class='decorative-input text-label inputUpdate' type="text" placeholder={{Auth::User()->first_name}} name="first_name" value='{{Auth::User()->first_name}}'>
-        <button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+        <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
         @if ($errors->has('first_name'))
         <p class='msj_error'>{{ $errors->first('first_name') }}</p>
@@ -124,7 +99,7 @@
         {{-- APELLIDO --}}
         <h2 class="datosUsuario">Apellido: <strong> {{Auth::User()->last_name}} </strong> </h2>
         <input class='decorative-input text-label inputUpdate' type="text" placeholder={{Auth::User()->last_name}} name="last_name" value='{{Auth::User()->last_name}}'>
-        <button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+        <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
         @if ($errors->has('last_name'))
         <p class='msj_error'>{{ $errors->first('last_name') }}</p>
@@ -157,7 +132,7 @@
         
         {{-- LOCALIDAD --}}
         <h2 class="datosUsuario">Localidad: <strong> {{Auth::User()->home}} </strong> </h2>
-        <select class="decorative-input text-label inputUpdate" name="home">
+        <select class="inputGenerico" name="home">
             <option value="">--Seleccioná tu zona--</option>
             @foreach ($locations as  $loc)
             <option
@@ -169,7 +144,7 @@
         </option>
         @endforeach
     </select>
-    <button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+    <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
     @if ($errors->has('home'))
     <p class='msj_error'>{{ $errors->first('home') }}</p>
@@ -203,7 +178,7 @@
     {{-- TEL --}}
     <h2 class="datosUsuario">Teléfono: <strong> {{Auth::User()->phome}} </strong> </h2>
     <input class='decorative-input text-label inputUpdate' type="tel" placeholder={{Auth::User()->phone}} name="phone" value='{{Auth::User()->phone}}'>
-    <button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+    <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
     @if ($errors->has('home'))
     <p class='msj_error'>{{ $errors->first('phone') }}</p>
@@ -237,7 +212,7 @@
     {{-- EMAIL --}}
     <h2 class="datosUsuario">Email: <strong> {{Auth::User()->email}} </strong> </h2>
     <input class='decorative-input-mail text-label inputUpdate' type="email" placeholder={{Auth::User()->email}} name="email" value='{{Auth::User()->email}}'>
-    <button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+    <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
     @if ($errors->has('email'))
     <p class='msj_error'>{{ $errors->first('email') }}</p>
@@ -271,7 +246,7 @@
     {{-- PASSWORD --}}
     <h2 class="datosUsuario">Contraseña:</h2>
     <input class='decorative-input-password text-label inputUpdate' type="password" placeholder='●●●●●●' name="password" {{-- required --}}>
-    <div class='enviarUpdate'></div><br>
+    <div class='dummy'></div><br>
 
     @if ($errors->has('password'))
     <p class='msj_error'>{{ $errors->first('password') }}</p>
@@ -280,9 +255,8 @@
     {{-- PASSWORD CONFIRM --}}
     <h2 class="datosUsuario">Confirmar contraseña:</h2>
     <input class='decorative-input-password text-label inputUpdate' type='password' name='password_confirmation' placeholder='●●●●●●' {{-- required --}}> 
-    <button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button><br>
+    <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button><br>
 </form>
-
 
 <div class='formulario'>
     <a class='volver' href="/">INICIO</a>

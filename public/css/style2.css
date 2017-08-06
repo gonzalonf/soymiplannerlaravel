@@ -188,12 +188,12 @@ body{
 /*------------COMIENZA BOTONCITO CSS-----------------------------*/
 
 .switch {
-  position: fixed;
+  position: absolute;
   display: inline-block;
   width: 18px;
   height: 38px;
-  top: 5px;
-  left: 4px;
+  bottom: 20px;
+  left: 10px;
 }
 
 .switch input {
@@ -813,7 +813,7 @@ footer img{
 .text-label {
 	display: block;
 	text-align-last: left;
-	color: white;
+	color: grey;
 	font-size: 12px;
 }
 
@@ -949,6 +949,120 @@ footer img{
 		opacity: 0;
 	}
 
+/*---------COMIENZAN ESTILOS DE EDITAR PROFILE Y EDITAR PRODUCTO---------*/
+.titulo_seccion{
+	font-size: 30px;
+}
+/*---------Edit Profile---------*/
+.datosUsuario{
+	display: inline-block;
+	width: 28% !important;
+	padding-bottom: 12px;
+	margin-right: 5px;
+	margin-top: 10px; 
+	color: black;
+	font-size: .7rem;
+	vertical-align: top;
+	text-align: right;
+}
+.inputUpdate{
+	display: inline-block;
+	width: 40% !important; 
+	font-size: .7rem;
+	margin: 5px;
+	padding: 5px;
+}
+/*---------Edit Productos---------*/
+.comment{
+	display: inline-block;
+	width: 40% !important;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 4px;
+	background: #f4f4f4;
+	border: 1px solid lightgrey;
+	color: grey;
+	font-size: .8rem; 
+}
+.inputGenerico{
+	display: inline-block;
+	width: 40%;
+	height: 35px;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 4px;
+	background: #f4f4f4;
+	border: 1px solid lightgrey;
+	color: grey;
+	font-size: .7rem; 
+}
+.inputImagen{
+	display: inline-block;
+	width: 40% !important;
+	margin: 5px;
+	border-radius: 4px;
+	background: #f4f4f4;
+	border: 1px solid lightgrey;
+	color: grey;
+	font-size: .7rem; 
+}
+.boton_update{
+	width: 27% !important;
+	margin-left: 5px;
+	padding: 10px 0; 
+	border: none;
+	outline: none;
+	border-radius: 2px;
+	background-color: limegreen;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	font-size: .7rem; 
+}
+/*---------Productos---------*/
+.wrapper_products{
+	display: flex;
+	align-items: flex-start;
+	text-align: left;
+	margin: 50px 0;
+}
+img.thumbnail{
+	height: 200px; 
+	width: 200px; 
+	border-radius: 5px;
+	object-fit: cover
+}
+.info{
+	display: flex;
+	flex-flow: column;
+	margin: 0 30px; 
+	font-size: .8rem;
+	line-height: 1.3rem;      
+}
+.info strong{
+	margin: 10px 0; 
+	font-size: 1.4rem;
+	line-height: 1.2rem;      
+}
+.boton_editar{
+	width: 100px;
+	margin: 10px 0;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 2px;
+	background-color: limegreen;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+}
+.dummy{
+	display: inline-block;
+	width: 27% !important;
+	margin-left: 5px;
+}
+/*---------TERMINAN ESTILOS DE EDITAR PROFILE Y EDITAR PRODUCTO---------*/
 @media (min-width : 768px) {
 
 /*------------COMIENZA CARRUSEL------------------------------------------*/

@@ -1,14 +1,20 @@
 <footer>
-		<img class="logoFooter" src="{{asset('images/logo.png')}}" height=45px alt="logotipo" class="logo">
+	<img class="logoFooter" src="{{asset('images/logo.png')}}" height=45px alt="logotipo" class="logo">
+	
+	<label class="switch">
+		<input type="checkbox" id="miCheckbox" onclick="cambiarEstilo(setearCookie());"/>
+		<div class="slider round"></div>
+	</label>
+
 	<div class="footerContainer">
-	<nav>
-		<ul>
-			<li><a href="#">Acerca de</a></li>
-			<li><a href="#">Usuarios</a></li>
-			<li><a href="faq">FAQs</a></li>
-			<li><a href="mailto:soymiplanner@soymiplanner.com?subject=feedback">Contacto</a></li>
-		</ul>
-	</nav>
+		<nav>
+			<ul>
+				<li><a href="#">Acerca de</a></li>
+				<li><a href="#">Usuarios</a></li>
+				<li><a href="faq">FAQs</a></li>
+				<li><a href="mailto:soymiplanner@soymiplanner.com?subject=feedback">Contacto</a></li>
+			</ul>
+		</nav>
 		<div class="lugar">
 
 
@@ -43,7 +49,7 @@
 	<button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
 
 	<script>
-	window.onscroll = function() {scrollFunction()};
+		window.onscroll = function() {scrollFunction()};
 
 	//cuando baja 100px aparece el boton
 	function scrollFunction() {
@@ -59,6 +65,8 @@
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
 	}
-	</script>
+</script>
+
+<script src="../js/switch.js"> </script>
 
 </footer>

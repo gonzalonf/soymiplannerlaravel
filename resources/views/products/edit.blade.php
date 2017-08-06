@@ -5,62 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 	<title></title>
 	<link {{-- id="pagestyle" --}} rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-	<style type="text/css">
-		.datosUsuario{
-			display: inline-block;
-			width: 28% !important;
-			padding-bottom: 12px;
-			margin-right: 5px;
-			margin-top: 10px; 
-			color: black;
-			font-size: .7rem;
-			vertical-align: top;
-			text-align: right;
-		}
-		.comment{
-			display: inline-block;
-			width: 40% !important;
-			margin: 5px;
-			padding: 5px;
-			border-radius: 4px;
-			background: #f4f4f4;
-			border: 1px solid lightgrey;
-			color: grey;
-			font-size: .8rem; 
-		}
-		.inputGenerico{
-			display: inline-block;
-			width: 40% !important;
-			height: 35px;
-			margin: 5px;
-			padding: 5px;
-			border-radius: 4px;
-			background: #f4f4f4;
-			border: 1px solid lightgrey;
-			color: grey;
-			font-size: .7rem; 
-		}
-		.inputImagen{
-			display: inline-block;
-			width: 40% !important;
-			margin: 5px;
-			border-radius: 4px;
-			background: #f4f4f4;
-			border: 1px solid lightgrey;
-			color: grey;
-			font-size: .7rem; 
-		}
-		.enviarUpdate{
-			display: inline-block;
-			width: 27% !important; 
-			padding: 10px 0; 
-			margin-left: 5px;
-			margin-top: 5px; 
-			font-size: .7rem;
-			vertical-align: top;
-		}
-
-	</style>
 </head>
 <body>
 
@@ -70,7 +14,7 @@
 	<div class='registro-container editarContainer'>
 
 		<div class='crear-cuenta'>
-			<h1 style="font-size: 30px;">EDITAR PRODUCTO</h1>
+			<h1 class="titulo_seccion">EDITAR PRODUCTO</h1>
 			<hr>
 		</div>
 
@@ -90,7 +34,7 @@
 			{{-- AVATAR --}}
 			<h2 class='datosUsuario'>Imagen del producto:</h2>
 			<input class='inputImagen' type='file' name='prod_image'>
-			<button type='submit' class='enviar enviarUpdate'><strong>CAMBIAR</strong></button>
+			<button type='submit' class='boton_update'><strong>CAMBIAR</strong></button>
 			
 			{{-- PRODUCTO --}}
 			<input type="hidden" name="name" value='{{$product->name}}'>
@@ -113,7 +57,7 @@
 			{{-- PRODUCTO --}}
 			<h2 class="datosUsuario">Producto: <strong> {{$product->name}} </strong> </h2>
 			<input class='inputGenerico' type="text" placeholder={{$product->name}} name="name" value='{{$product->name}}'>
-			<button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+			<button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
 			@if ($errors->has('name'))
 			<p class='msj_error'>{{ $errors->first('name') }}</p>
@@ -148,7 +92,7 @@
 					<option value="4" {{$product->category_id == 4?"selected":"" }} >4.Servicios</option>
 					<option value="5" {{$product->category_id == 5?"selected":"" }} >5.Otros</option>
 				</select>   
-			<button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+			<button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
 			@if ($errors->has('category_id'))
 			<p class='msj_error'>{{ $errors->first('category_id') }}</p>
@@ -175,7 +119,7 @@
 			{{-- PRECIO --}}
 			<h2 class="datosUsuario">Precio: <strong> {{$product->price}} </strong> </h2>
 			<input class='inputGenerico' type="text" placeholder={{$product->price}} name="price" value='{{$product->price}}'>
-			<button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+			<button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
 			@if ($errors->has('price'))
 			<p class='msj_error'>{{ $errors->first('price') }}</p>
@@ -202,7 +146,7 @@
 			{{-- DESCRIPCION --}}
 			<h2 class="datosUsuario">Descripción:</h2>
 			<textarea rows="8" cols="50" class='comment' name="description" value="{{$product->description}}" form="usrform">{{$product->description}}</textarea>
-			<button type='submit' class='enviar enviarUpdate' name='submit'><strong>CAMBIAR</strong></button>
+			<button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
 
 			@if ($errors->has('description'))
 			<p class='msj_error'>{{ $errors->first('description') }}</p>
