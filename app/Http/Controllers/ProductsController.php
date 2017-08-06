@@ -137,7 +137,7 @@ class ProductsController extends Controller
             $product->id;
 
             return view('products.show', compact('product'));
-            
+
         } catch (\Exception $e) {
             abort(404);
         }

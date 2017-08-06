@@ -58,3 +58,11 @@ Route::post('/create', 'ProductsController@store')->middleware('auth');
 
 Route::get('/profile', 'ProfileController@showRegistrationForm2');
 
+Route::get('/event', 'CartController@index');
+Route::post('/event', 'CartController@checkout');
+Route::post('/event/add', 'CartController@add');
+Route::post('/event/remove', 'CartController@remove');
+
+
+
+

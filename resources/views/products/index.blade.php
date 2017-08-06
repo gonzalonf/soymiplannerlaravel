@@ -26,7 +26,7 @@
     @if ($products->count()===0)
         <div class="error_search">
             <h2>
-                Lo sentimos, no pudimos encontrar <b>'{{trim(request()->q)}}' </b> en nuestra base de datos.
+                Lo sentimos, no pudimos encontrar su búsqueda en nuestra base de datos.
             </h2>
         </div>
     @endif
@@ -53,7 +53,7 @@
                             if ($product->subcategory_child_of_id !== NULL) {
                                     foreach ($categories as $value) {
                                         if ($value->id == $product->subcategory_child_of_id){
-                                            $father = $value->category_name.' - ';
+                                            $father = $value->category_name.' / ';
                                         }
                                     }
                                 }else {
@@ -63,9 +63,12 @@
                             <h5><b>{{$father.$product->category_name}}</b></h5>
     						<p>Descripcion: {{$product->description}}.</p>
     						<p class="caption">Precio: {{$product->price}} </p>
-    						<button class="btn btn-primary">
-    							Contactar
-    						</button>
+                            <form class="" action="/event/add" method="post">
+                                {{ csrf_field() }}
+                                <button class="btn btn-primary" type="submit" name="add" value="{{$product->id}}">
+                                    Contactar
+                                </button>
+                            </form>
     					</div>
     				</div>
     			</div>

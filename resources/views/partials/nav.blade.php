@@ -45,7 +45,7 @@
 
                     <li><a href="{{ url('/products') }}">PRODUCTOS</a></li>
                     <li ><a href="{{ url('/create') }}">PUBLICAR</a></li>
-                    <li ><a href="{{ url('/cart') }}">EVENTO</a></li>
+                    <li ><a href="{{ url('/event') }}">EVENTO</a></li>
 
 
 					@if (Auth::guest())
@@ -59,7 +59,7 @@
 						<div class="dropdown-menu">
 							<ul>
                                 <li><a href="{{ url('/profile/products') }}">MIS PRODUCTOS</a></li>
-                                <li><a href="{{ url('/profile/sales') }}">TRANSACCIONES</a></li>
+                                <li><a href="{{ url('/profile/sales') }}">MIS TRANSACCIONES</a></li>
 								<li><a href="{{ url('/profile') }}">PERFIL</a></li>
 								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">LOGOUT</a>

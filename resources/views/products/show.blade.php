@@ -20,7 +20,16 @@
     						@endif
 			<h2>{{$product->description}}</h2>
 			<p> <b>Precio: {{$product->price}}</b></p>
-			<button class="btn-lg  btn-success">Añadir a Tu Carruaje de Eventos
+
+            @if (!session()->has('cart') || !in_array($product->id,session()->get('cart')))
+                <form class="" action="/event/add" method="post">
+                    {{ csrf_field() }}
+                    <button class="btn-lg  btn-success" type="submit" name="add" value="{{$product->id}}">
+                        Añadir a Tu Carruaje de Eventos
+                    </button>
+
+                </form>
+            @endif
 		</div>
 	</div>
 

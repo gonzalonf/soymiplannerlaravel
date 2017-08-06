@@ -36,14 +36,14 @@ class CategoriesTableSeeder extends Seeder
             ],
             [
             'id' => 4,
-            'category_name' => 'Servicios',
+            'category_name' => 'Entretenimiento',
             'subcategory_child_of_id' => NULL,
             'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s'),
             ],
             [
             'id' => 5,
-            'category_name' => 'Otros',
+            'category_name' => 'Otros Servicios',
             'subcategory_child_of_id' => NULL,
             'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s'),
@@ -121,7 +121,7 @@ class CategoriesTableSeeder extends Seeder
             [
             'id' => NULL,
             'category_name' => 'Foto y video',
-            'subcategory_child_of_id' => 4,
+            'subcategory_child_of_id' => 5,
             'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s'),
             ],

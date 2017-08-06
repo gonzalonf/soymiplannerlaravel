@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('user_seller_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->integer('location_id')->unsigned()->nullable();
+            $table->tinyInteger('active')->unsigned()->default(1);
             $table->timestamps();
         });
     }

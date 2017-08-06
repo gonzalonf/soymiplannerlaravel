@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Product;
 use App\User;
-
-
+use App\Contact;
 
 class ProfileController extends Controller
 {
@@ -117,6 +116,8 @@ class ProfileController extends Controller
     */
     public function destroy($id)
     {
+        // cambiar a active = 0
+        // y cerciorarse que solo logee users con ative seteado en 1
         $user = User::find($id);
         $user->delete();
 
@@ -129,6 +130,7 @@ class ProfileController extends Controller
         $id = Auth::User()->id;
         $products = Product::orderBy('id','desc')->where('user_seller_id',$id)->paginate(20);
 
+
         $error = '';
         if ($products->count()===0) {
             $error = 'No hay productos publicados';
@@ -139,7 +141,15 @@ class ProfileController extends Controller
 
     public function sales()
     {
-        return view('profile/sales');
+
+        $contacts=Contact::all();
+        // ->join('products','products.id','=','contacts.product_id')
+        // ->join('users','users.id','=','contacts.user_seller_id')
+        // ->where('user_seller_id',$id)
+        // ->get();
+        // y tb la fecha sea anterior o igual al evento
+
+        return view('profile/sales',compact('contacts'));
     }
 
     public function show($id)
