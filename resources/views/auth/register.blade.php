@@ -51,7 +51,7 @@
         <p class='msj_error'>{{ $errors->first('home') }}</p>
         @endif
 
-        <input class='decorative-input-mail text-label' type='tel' name='phone' placeholder='Teléfono' value='{{ old('phone') }}' required autofocus> <br>
+        <input class='decorative-input-phone text-label' type='tel' name='phone' placeholder='Teléfono' value='{{ old('phone') }}' required autofocus> <br>
 
         @if ($errors->has('phone'))
         <p class='msj_error'>{{ $errors->first('phone') }}</p>

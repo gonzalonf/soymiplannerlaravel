@@ -1,161 +1,117 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Crear Evento</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="icon" type="favicon" href="images/favicon.png">
-  </head>
-  <body>
-  @include('partials/nav')
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <title>PUBLICAR</title>
+    <link id='pagestyle' rel='stylesheet' type='text/css' href='../css/style.css'>
+    <link rel='icon' type='favicon' href='images/favicon.png'>
+</head>
+<body>
+    @include('partials/nav')
 
- <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h1 style="margin: 30px 0">Crear Publicación</h1>
-                <form action="/create" method="POST" id="create" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    @if ($errors->any())
-                    {{-- como pasar errores campo por campo ????--}}
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    <div class="form-group">
-                        <label for="name">Nombre de la Publicación</label>
-                        <input type="text" name="name" id="name" class="form-control" value="{{old('name')}} " autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Precio</label>
-                        <input type="number" name="price" id="price" value="{{ old('price')}} " class="form-control">
-                        <label for="conv">A convenir</label>
-                        <input type="checkbox" onclick="if(this.checked){a()}" name="a convenir" id="conv">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Descripción</label>
-                        <input type="text" name="description" value="{{old('description')}}" id="description" class="form-control">
-                    </div>
-                    
-                        
-                    <div class="form-group">
-                        <label for="category">Elige la Categoria</label>
-                          <select name="category" class="form-control" id="exampleSelect1">
-                          {{-- el primer value debe ser vacio--}}
-                          <option selected="selected">-</option>
-                          <option value="1">Lugar</option>
-                          <option value="2">Decoracion</option>
-                          <option value="3">Servicios</option>
-                          <option value="4">Servicios</option>
-                          <option value="5">Otros</option>
-                         
-                        </select>   
-                    </div>
-                    
-
-                    <div class="form-group form-control-file">
-                        <label for="img">Imagen</label>
-                        <input type="file" name="image" id="img" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="telefono">Telefono</label>
-                        <p>Esta telefono sera mostrado en la publicación</p>
-                        <input type="text" name="telefono" value="{{ Auth::User()->phone }}" id="telefono" class="form-control">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="localidad">Localidad</label>
-                        <p>Este localidad sera mostrado en la publicación</p>
-                        <input type="text" name="localidad" value="{{ Auth::User()->home }}" id="localidad" class="form-control">
-                    </div>
-                    
-
-                     <div class="form-group">
-                        <label for="direccion">Direccion</label>
-                        <p>Esta direccion sera mostrado en la publicación</p>
-                        <input type="text" name="direccion" value="{{ old('direccion') }}" id="direccion" class="form-control">
-                    </div>
-                    
-
-
-                    
-     
-
-    <div class="pricing-grid" style="max-width: 750px; margin: 0 auto; display: flex; margin-bottom: 40px; align-items: center;">
-        <div class="plan-1" style=" margin:20px; border-radius: 4px; text-align: center; cursor: pointer;">
-            <h2>Gratuita</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-            <ul class="features">
-                <li> </li>
-                <li></li>
-                <li></li>
-            </ul>
-
-            <p class="price"> Gratis
-            <input type="radio" style="background-color: yellow; padding: 10px; color: black; 
-            border-radius: 4px" name=" Gratuita" >
-            </p>
-        
-
+    <div class='registro-container'>
+        <div class='crear-cuenta'>
+            <h1>PUBLICAR UN SERVICIO O PRODUCTO</h1>
+            <hr>
         </div>
 
-        <div class="plan-2" style="text-align: center; margin: 20px;">
-            <h2>Premium</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-            <ul>
-                <li> </li>
-                <li></li>
-                <li></li>
-            </ul>
-            <p class="price" style="text-align: center;"> mercadolibre $477/90dias <br> Nosotros:<b> $120/90dias </b> </p>
-            <input type="radio" style="background-color: yellow; padding: 10px; color: black; 
-            border-radius: 4px; margin: auto 50%;" name=" Gratuita" > 
-            
-            
-        </div>
 
+        <form class='formulario' action='/create' method='POST' id='create' enctype='multipart/form-data'>
+            {{ csrf_field() }}
+
+            @if ($errors->any())
+            {{-- como pasar errores campo por campo ????--}}
+            <div class='msj_error'>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            <input type='text' name='name' class='decorative-input-edit' placeholder='Nombre del Servivio o Producto' value='{{old('name')}}' id='description'> <br>
+
+
+            <select name='category_id' class='decorative-input-imagen-boton text-label' style='    padding-left: 15px; margin: 5px 0; height: 38px;' id='exampleSelect1' class='decorative-input-edit'>
+                {{-- el primer value debe ser vacio--}}
+                <option disabled selected value>--Elige la Categoría--</option>
+                <option value='1'>Lugar</option>
+                <option value='2'>Decoracion</option>
+                <option value='3'>Catering</option>
+                <option value='4'>Servicios</option>
+                <option value='5'>Otros</option>
+            </select> <br> 
+
+
+            <input type='number' name='price' id='price' class='decorative-input-imagen-boton text-label' style='padding-left: 15px; margin: 5px 0; height: 38px;' placeholder='Precio' value='{{ old('price')}} '><br>
+
+
+            <label class='text-label' style='display: inline-block;'>A convenir</label>
+            <input type='checkbox' style='display: inline-block;' onclick='if(this.checked){a()}' name='a convenir' id='conv'>
+
+
+            <input type='text' name='description' class='decorative-input-edit' placeholder='Descripción' value='{{old('description')}}' id='description' class='form-control'> <br>
+
+
+            <label for='img' class='text-label'>Imagen de perfil: </label> <br>
+            <input type='file' name='image' id='img' class='decorative-input-imagen-boton'> <br>
+
+
+            <p class='text-label'>Este telefono sera mostrado en la publicación.</p>
+            <input type='text' class='decorative-input-phone text-label' placeholder='Teléfono' name='telefono' value='{{ Auth::User()->phone }}' id='telefono' class='form-control'> <br>
+
+
+            <p class='text-label'>Esta localidad sera mostrada en la publicación.</p>
+            <input type='text' class='decorative-input text-label' placeholder='Localidad' name='localidad' value='{{ Auth::User()->home }}' id='localidad' class='form-control'> <br>
+
+
+            <p class='text-label'>Esta dirección sera mostrada en la publicación.</p>
+            <input type='text' class='decorative-input text-label' placeholder='Direccion' name='direccion' value='{{ old('direccion') }}' id='direccion' class='form-control'> <br>
+
+
+            <div class='' style='max-width: 750px; margin: 0 auto; margin-bottom: 40px; display: flex; align-items: flex-start;'>
+
+                <div class='text-label' style=' margin:20px; flex: 1; flex-flow: column; text-align-last: center !important; cursor: pointer;'>
+                    <h2>GRATUITA</h2><br>
+                    <p>La publicación GRATUITA es de menor tamaño y no aparece en todas las búsquedas de su categoría.</p><br>
+                    <strong>Gratis</strong><br><br> 
+                    <input type='radio' style='' name='modalidad' >
+                </div>
+
+                <div class='text-label' style=' margin:20px; flex: 1; flex-flow: column; text-align-last: center !important; cursor: pointer;'>  
+                <h2>PREMIUM</h2><br>
+                    <p>La públicacion PREMIUM aparece en las búsquedas de manera destacada.</p><br>
+                    mercadolibre $477/90dias <br> 
+                    <b>Nosotros: $120/90dias </b> <br><br>  
+                    {{--  <strong>Premium</strong><br> --}}
+                    <input type='radio' style='' name='modalidad' > 
+                </div>
+
+            </div>
+
+            <input class='enviar' type='submit' name='enviador' value='Publicar'>
+
+        </form>
     </div>
+</div>
+</div>
 
-    <div class="form-group" style="margin: 30px 0;">
-        <input class="btn btn-primary center-block" type="submit" name="enviador" value="Publicar">
-  </div>
-  </form>
-                
+@include('partials/footer')
 
+<script type='text/javascript'>
+    var precio =document.getElementById('price');
+    var x = document.getElementById('conv');
+    function a(){
+        precio.type='text';
+        if(x.checked){// hay que arreglar este if para que funcione
+            precio.value='A convenir'
+        } else {
+            precio.value=' ';
+        }
+    }
+</script>
 
-           </div>
-        </div>
-    </div>
-
-    @include('partials/footer')
-    <script type="text/javascript">
-       
-            var precio =document.getElementById('price');
-            var x = document.getElementById('conv');
-            function a(){
-                precio.type='text';
-                if(x.checked){
-                    precio.value='A convenir'
-                } else {
-                    precio.value=' ';
-                }
-                // hay que arreglar este if para que funcione
-                
-            }
-       
-    </script>
-
-
-
-	
-	
-  </body>
+</body>
 </html>
