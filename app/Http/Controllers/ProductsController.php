@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
@@ -48,30 +54,30 @@ class ProductsController extends Controller
 
         // search
         ->where(function($query) use ($search){
-                           return $query
-                           ->where('name','like', '%'.$search.'%')
-                           ->orWhere('category_name','like','%'.$search.'%')
-                           ->orWhere('description','like','%'.$search.'%');
-              });
+         return $query
+         ->where('name','like', '%'.$search.'%')
+         ->orWhere('category_name','like','%'.$search.'%')
+         ->orWhere('description','like','%'.$search.'%');
+     });
 
         // filter
         if (isset(request()->cat) && is_numeric(request()->cat) ) {
             $products=$products->where('category_id',request()->cat)
-                    ->orWhere('subcategory_child_of_id',request()->cat);
+            ->orWhere('subcategory_child_of_id',request()->cat);
 
         }
 
         // order
         switch (request()->order) {
             case 'mayor':
-                $products=$products->orderBy('price','desc');
-                break;
+            $products=$products->orderBy('price','desc');
+            break;
             case 'menor':
-                $products=$products->orderBy('price','asc');
-                break;
+            $products=$products->orderBy('price','asc');
+            break;
             default:
-                $products=$products->orderBy('id','desc','name','asc');
-                break;
+            $products=$products->orderBy('id','desc','name','asc');
+            break;
         }
 
 
@@ -123,9 +129,9 @@ class ProductsController extends Controller
 
             ]);
 
-        $nombreImagen=$product->id . '.' . str_slug($product->name) . '.' .request()->image->extension();
+        $nombreImagen=$product->id . /*'.' . str_slug($product->name) .*/ '.' .request()->image->extension();
 
-        request()->image->storeAs('public', $nombreImagen);
+        request()->image->storeAs('public/products/', $nombreImagen);
 
         $product->imgName = $nombreImagen;
 
@@ -158,21 +164,51 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+      $product = Product::find($id);
 
-    /**
+      return view('products.edit', compact('product','id'));
+  }
+
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+     public function update(Request $request, $id)
+     {
+        if($request->hasfile('prod_image'))
+        {
+            if (!empty(glob('storage/product/'. $id . '.*')[0])){
+                File::delete(glob('storage/product/'. $id . '.*')[0]);
+            }
+            $filename = $id . '.' . request()->prod_image->extension();
+            request()->prod_image->storeAs('public/product', $filename);
+        }
 
+        $product = Product::find($id);
+        $errors = Validator::make($request->all(), [
+            'name'=>'max:30',
+            'price'=>'max:30',
+            'description'=>'max:200',
+            'category'=>'min:2',
+            ]);
+
+        if ($errors->fails()) {
+            return redirect()->back()
+            ->withErrors($errors)
+            ->withInput();
+        } else {
+            $product = Product::find($id);
+            $product->name = $request->get('name');
+            $product->price = $request->get('price');
+            $product->description = $request->get('description');
+            $product->category_id = $request->get('category_id');
+            $product->save();
+            return redirect()->back();
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
