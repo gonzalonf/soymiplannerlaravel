@@ -5,37 +5,77 @@
     <title>Mis Productos</title>
     <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="icon" type="favicon" href="images/favicon.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <style type="text/css">
+        .wrapper{
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            margin: 50px 0;
+        }
+        img.thumbnail{
+            height: 200px; 
+            width: 200px; 
+            border-radius: 5px;
+            object-fit: cover
+        }
+        .info{
+            display: flex;
+            flex-flow: column;
+            margin: 0 30px; 
+            font-size: .8rem;
+            line-height: 1.3rem;      
+        }
+        .info strong{
+            margin: 10px 0; 
+            font-size: 1.4rem;
+            line-height: 1.2rem;      
+        }
+        .boton_editar{
+            width: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 2px;
+            background-color: #ff5a5f;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     @include('partials/nav')
 
+    <div class='registro-container editarContainer'>
+        <div class='crear-cuenta'>
+            <h1 style="font-size: 30px;">MIS PRODUCTOS</h1>
+            <hr>
+        </div>
 
-    <h1>Mis Productos</h1>
-    <div class="">
-        {{$error}}
+        <div class="">
+            {{$error}}
+        </div>
+
+        @foreach ($products as $product)
+        <div class="wrapper">
+            <div>
+                @if  (!empty (glob ('storage/product/'. $product->id .'.*') [0]) )
+                <img class="thumbnail"  src="{{asset (glob ('storage/product/'. $product->id .'.*') [0]) }}" alt="producto">
+                @else
+                <img class="thumbnail"  src="/images/default_prod.png" alt="producto">
+                @endif 
+            </div>
+            <div class="info">
+                <h3>Producto/Servicio: {{$product->name}}</h3>
+                <p>Descripcion: {{$product->description}}</p>
+                <strong>Precio: {{$product->price}}</strong>
+                <a class="boton_editar" href='/products/{{$product->id}}/edit'>EDITAR</a>
+            </div>
+        </div><hr><br>
+        @endforeach
     </div>
-
-    @foreach ($products as $product)
-    <div class="col-xs-12">
-        <div class="thumbnail">
-           @if (isset($product->imgName))
-           <img src="{{Storage::url($product->imgName)}}">
-           @else
-           <img style="height: 300px;" src="http://cdn.playbuzz.com/cdn/adabbd88-1450-44a4-b4bc-a96174ea963c/b3d6a27c-fdf4-438e-9a04-b8a67ee04b52.png" alt="Evento">
-           @endif ($product->imgName)
-           <div class="caption">
-              <h3>Nombre de Evento: {{$product->name}}</h3>
-              <p>Descripcion: {{$product->description}}.</p>
-              <p class="caption">Precio: {{$product->price}} </p>
-              <a class="btn btn-primary" href='/products/{{$product->id}}/edit'>EDITAR</a>
-          </div>
-      </div>
-  </div>
-  @endforeach
-
-
-  @include('partials/footer')
+    @include('partials/footer')
 </body>
 </html>
