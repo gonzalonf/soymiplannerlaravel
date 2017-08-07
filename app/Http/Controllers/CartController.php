@@ -18,7 +18,7 @@ class CartController extends Controller
     public function index()
     {
         if (session()->has('cart')) {
-            $cart = session()->get('cart') ?? [];
+            $cart = (session()->has('cart')) ? session()->get('cart') : [];
             $products = Product::getAll()->whereIn('products.id',$cart)->get();
         } else {
             $products = [];
@@ -48,7 +48,7 @@ class CartController extends Controller
     public function add(Request $request)
     {
 
-        $cart = session()->get('cart') ?? [];
+         $cart = (session()->has('cart')) ? session()->get('cart') : [];
 
         if (isset($request->add) && !in_array($request->add,$cart)){
 
