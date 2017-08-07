@@ -63,6 +63,10 @@ class ProfileController extends Controller
     */
     public function update(Request $request, $id)
     {
+
+    /*---------UPDATE---------*/
+     if($request->has('submit'))
+     {
         if($request->hasfile('avatar'))
         {
             if (!empty(glob('storage/avatar/'. $id . '.*')[0])){
@@ -92,22 +96,38 @@ class ProfileController extends Controller
             ]
             );
 
-        if ($errors->fails()) {
-            return redirect('/profile')
-            ->withErrors($errors)
-            ->withInput();
-        } else {
-            $user = User::find($id);
-            $user->first_name = $request->get('first_name');
-            $user->last_name = $request->get('last_name');
-            $user->home = $request->get('home');
-            $user->phone = $request->get('phone');
-            $user->email = $request->get('email');
-            if ($request->get('password') != $user->password ) {
-                $user->password = bcrypt($request->get('password'));
+            if ($errors->fails()) {
+                return redirect('/profile')
+                ->withErrors($errors)
+                ->withInput();
+            } else {
+                $user = User::find($id);
+                $user->first_name = $request->get('first_name');
+                $user->last_name = $request->get('last_name');
+                $user->home = $request->get('home');
+                $user->phone = $request->get('phone');
+                $user->email = $request->get('email');
+                if ($request->get('password') != $user->password ) {
+                    $user->password = bcrypt($request->get('password'));
+                }
+                $user->save();
+                return redirect('/profile');
             }
-            $user->save();
-            return redirect('/profile');
+        }     
+        /*---------BAJA---------*/
+        if($request->has('submit2'))
+        {   
+            $inputBaja = $request->get('borrarUsuario');
+            if($inputBaja == 'ok')
+            {
+                $user = User::find($id);
+                $user->active = "0";
+                $user->save();
+
+                Auth::logout();
+
+                return redirect('/');
+            }
         }
     }
 
@@ -118,25 +138,8 @@ class ProfileController extends Controller
         return view('/profile', compact('locations'));
     }
 
-    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function destroy($id)
-    {
-        // cambiar a active = 0
-        // y cerciorarse que solo logee users con ative seteado en 1
-        $user = User::find($id);
-        $user->delete();
-
-        return redirect('/profile');
-    }
-
     public function products()
     {
-
         $id = Auth::User()->id;
         $products = Product::orderBy('id','desc')->where('user_seller_id',$id)->paginate(20);
 

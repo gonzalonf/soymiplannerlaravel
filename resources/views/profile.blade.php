@@ -27,7 +27,7 @@
            <img src="images/default.png" alt="avatar">
            @endif 
        </div>
-         {{-- FORM AVATAR --}}
+       {{------------------------------------------------------------------}}     {{-- FORM AVATAR --}}
        <form class='formulario' method='post' action='{{action('ProfileController@update', Auth::User()->id)}}' enctype='multipart/form-data'>
         {{ csrf_field() }}
         <input name='_method' type='hidden' value='PATCH'>
@@ -65,7 +65,7 @@
         {{-- NOMBRE --}}
         <h2 class="datosUsuario">Nombre: <strong> {{Auth::User()->first_name}} </strong> </h2>
         <input class='decorative-input text-label inputUpdate' type="text" placeholder={{Auth::User()->first_name}} name="first_name" value='{{Auth::User()->first_name}}'>
-        <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
+        <button type='submit' class='boton_update' name='submit' value="submit"><strong>CAMBIAR</strong></button>
 
         @if ($errors->has('first_name'))
         <p class='msj_error'>{{ $errors->first('first_name') }}</p>
@@ -245,7 +245,7 @@
 
     {{-- PASSWORD --}}
     <h2 class="datosUsuario">Contraseña:</h2>
-    <input class='decorative-input-password text-label inputUpdate' type="password" placeholder='●●●●●●' name="password" {{-- required --}}>
+    <input class='decorative-input-password text-label inputUpdate' type="password" placeholder='●●●●●●' name="password">
     <div class='dummy'></div><br>
 
     @if ($errors->has('password'))
@@ -254,8 +254,19 @@
 
     {{-- PASSWORD CONFIRM --}}
     <h2 class="datosUsuario">Confirmar contraseña:</h2>
-    <input class='decorative-input-password text-label inputUpdate' type='password' name='password_confirmation' placeholder='●●●●●●' {{-- required --}}> 
+    <input class='decorative-input-password text-label inputUpdate' type='password' name='password_confirmation' placeholder='●●●●●●'> 
     <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button><br>
+</form>
+{{------------------------------------------------------------------}}
+{{-- FORM BORRAR USUARIO--}}
+<form class='formulario' method="post" action="{{action('ProfileController@update', Auth::User()->id)}}">
+    {{csrf_field()}}
+    <input name="_method" type="hidden" value="PATCH">
+
+    {{-- BORRAR --}}
+    <h2 class="datosUsuario">Baja de usuario: tipée ok y presione BAJA</strong> </h2>
+    <input class='decorative-input-edit text-label inputUpdate' type="text" name="borrarUsuario" value=''>
+    <button type='submit'  class='boton_update' name="submit2" value="submit2"><strong>BAJA</strong></button><br>
 </form>
 
 <div class='formulario'>
