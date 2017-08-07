@@ -136,8 +136,8 @@ class ProductsController extends Controller
         // $product->image = $nombreImagen;
 
         // $product->save();
-      
-      return redirect('/profile/products');  
+
+      return redirect('/profile/products');
     }
 
 

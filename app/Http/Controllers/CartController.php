@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Contact;
+use App\Event;
+
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -100,13 +104,52 @@ class CartController extends Controller
 
         return redirect('/event');
     }
-    public function checkout()
+    public function checkout(Request $request)
     {
-        var_dump(session()->get('cart'));
-        var_dump(session()->get('city'));
-        var_dump(session()->get('dir'));
-        var_dump(session()->get('event'));
+        // ojo validar
+       $cartArray = session()->get('cart');
+       $city = session()->get('city');
+       $dir = session()->get('dir');
+       $day = session()->get('event.day');
+       $month = session()->get('event.month');
+       $year = session()->get('event.year');
+       $time = session()->get('event.time');
+       $eventName = (session()->get('eventName'))?:'Mi Evento';
 
-        var_dump(request()->checkout);
+       $event = Event::where('user_id',Auth::id())->first();
+
+       if ($event==null){
+           echo 'evento no existe.. podes crearlo';
+           if ($time!=null && $city!=null && $cartArray!=null) {
+                echo "campos llenos, es viable crear";
+                $event = Event::create([
+                 'event_name' => $eventName,
+                 'event_date'=> Event::toDate($day,$month,$year),
+                 'event_time' => Event::toTime($time),
+                 'event_location_id' => $city,
+                 'event_dir' => $dir,
+                 'user_id' => Auth::id()
+             ]);
+
+            foreach ($cartArray as $item) {
+                $event->contact()->create([
+                    'product_id' => $item
+                ]);
+            }
+        }
+       } else {
+           echo 'evento existe! hacer update del mismo';
+           var_dump($event);
+           foreach ($cartArray as $item) {
+               $event->contact()->create([
+                   'product_id' => $item
+               ]);
+           }
+       }
+
+
+    //    return redirect('/event');
+
+
     }
 }

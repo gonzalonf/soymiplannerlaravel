@@ -50,7 +50,7 @@ Route::patch('products/{id}update', 'ProductsController@update')->middleware('au
 | CART/EVENT
 |--------------------------------------------------------------------------*/
 Route::get('/event', 'CartController@index');
-Route::post('/event', 'CartController@checkout');
+Route::post('/event', 'CartController@checkout')->middleware('auth');
 Route::post('/event/add', 'CartController@add');
 Route::post('/event/remove', 'CartController@remove');
 
