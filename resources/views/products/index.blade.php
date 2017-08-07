@@ -31,18 +31,25 @@
         </div>
     @endif
 
+
     @foreach ($products->Chunk(3) as $productChunk)
 
     	<div class="row" style="margin-left: 0">
     		@foreach ($productChunk as $product)
     			<div class="col-xs-12 col-md-4">
     				<div class="thumbnail">
-    					@if (isset($product->imgName))
-    					    <img src="{{Storage::url($product->imgName)}}">
+                        				
+                    	{{-- @if ($product->imgName ===NULL)
+                            <img style="height: 300px;" src="images/default_prod.png" alt="Evento">
     					@else
-    						<img style="height: 300px;" src="http://cdn.playbuzz.com/cdn/adabbd88-1450-44a4-b4bc-a96174ea963c/b3d6a27c-fdf4-438e-9a04-b8a67ee04b52.png" alt="Evento">
-    					@endif {{-- ($product->imgName) --}}
-    					<div class="caption">
+                            <img src="{{Storage::url($product->imgName)}}">
+    					@endif  --}}
+                        @if (!empty (glob ('storage/product/'. $product->id .'.*') [0]))
+                            <img src="{{asset (glob ('storage/product/'. $product->id .'.*') [0]) }}" alt="producto">
+                        @else
+                            <img src="/images/default_prod.png" alt="producto">
+                            @endif 
+                	<div class="caption">
     						<h3> <a href="/products/{{$product->id}}"> {{$product->name}} </a></h3>
                             <p>
                                 <a href="/profile/{{$product->user_seller_id}}">

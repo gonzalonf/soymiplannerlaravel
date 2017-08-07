@@ -13,7 +13,7 @@ class Product extends Model
     public static function getAll()
     {
         $all = self
-        ::select('products.id','name','description','price','category_id','user_seller_id','category_name','first_name','last_name','home','location_id','subcategory_child_of_id')
+        ::select('products.id','name','description','price','category_id','user_seller_id','category_name','first_name','last_name','home','location_id','subcategory_child_of_id', 'imgName', 'phone_products', 'home_products' , 'address_products', 'subscription')
         ->join('categories', 'categories.id', '=', 'products.category_id')
         ->join('users','users.id','=','user_seller_id');
         return $all;

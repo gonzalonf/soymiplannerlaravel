@@ -106,18 +106,28 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+      // dd(request()->all());
       $this->validate($request, [
         'name'=>'required|max:30',
         'price'=>'required',
         'description'=>'required',
         'category_id'=>'required',
             // 'image'=>'required|max:1024'
+        'phone'=>'required',
+        'home'=>'required',
+        'address'=>'required',
+        'subscription'=>'required'
+
         ],
         [
-        'name.required' => 'El Nombre del la Publicación es obligatorio',
-        'price.required' => 'El Precio del la Publicación es obligatorio',
-        'description.required' => 'La Descripcion del la Publicación es obligatoria',
-        'category_id.required' => 'La Categoria del la Publicación es obligatoria',
+        'name.required' => 'El Nombre de la Publicación es obligatorio',
+        'price.required' => 'El Precio de la Publicación es obligatorio',
+        'description.required' => 'La Descripcion de la Publicación es obligatoria',
+        'category_id.required' => 'La Categoria de la Publicación es obligatoria',
+        'phone.required' => 'El Teléfono de la Publicación es obligatoria',
+        'home.required' => 'La Localidad de la Publicación es obligatoria',
+        'address.required' => 'La Dirección de la Publicación es obligatoria',
+        'subscription.required' => 'La Suscripción del la Publicación es obligatoria'
         ]
         );
       $product=Product::create([
@@ -125,7 +135,12 @@ class ProductsController extends Controller
         'price'=>$request->input('price'),
         'description'=>$request->input('description'),
         'category_id'=>$request->input('category_id'),
-        'user_seller_id'=>Auth::id()
+        'user_seller_id'=>Auth::id(),
+        'phone_products'=>$request->input('phone'),
+        'home_products'=>$request->input('home'),
+        'address_products'=>$request->input('address'), 
+        'subscription'=>$request->input('subscription')
+        
 
         ]);
 
@@ -133,9 +148,9 @@ class ProductsController extends Controller
 
         request()->image->storeAs('public/product/', $nombreImagen);
 
-        // $product->image = $nombreImagen;
+        $product->imgName = $nombreImagen;
 
-        // $product->save();
+        $product->save();
       
       return redirect('/profile/products');  
     }

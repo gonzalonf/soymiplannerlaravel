@@ -27,7 +27,7 @@
            <img src="images/default.png" alt="avatar">
            @endif 
        </div>
-       {{------------------------------------------------------------------}}     {{-- FORM AVATAR --}}
+         {{-- FORM AVATAR --}}
        <form class='formulario' method='post' action='{{action('ProfileController@update', Auth::User()->id)}}' enctype='multipart/form-data'>
         {{ csrf_field() }}
         <input name='_method' type='hidden' value='PATCH'>

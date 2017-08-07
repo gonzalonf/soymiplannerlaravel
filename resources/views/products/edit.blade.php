@@ -25,7 +25,7 @@
 			<img src="/images/default_prod.png" alt="producto">
 			@endif 
 		</div>
-		{{------------------------------------------------------------------}}
+		
 		{{-- FORM AVATAR --}}
 		<form enctype='multipart/form-data' class='formulario' method='post' action='{{action('ProductsController@update', $product->id)}}'>
 			{{ csrf_field() }}
@@ -48,7 +48,7 @@
 			{{-- DESCRIPCION --}}
 			<input type="hidden" name="description" value='{{$product->description}}'>
 		</form>
-		{{------------------------------------------------------------------}}
+		
 		{{-- FORM NOMBRE PRODUCTO --}}
 		<form class='formulario' method="post" action="{{action('ProductsController@update', $product->id)}}">
 			{{csrf_field()}}
@@ -72,7 +72,7 @@
 			{{-- DESCRIPCION --}}
 			<input type="hidden" name="description" value='{{$product->description}}'>
 		</form>
-		{{------------------------------------------------------------------}}
+		
 		{{-- FORM CATEGORIA --}}
 		<form class='formulario' method="post" action="{{action('ProductsController@update', $product->id)}}">
 			{{csrf_field()}}
@@ -104,7 +104,7 @@
 			{{-- DESCRIPCION --}}
 			<input type="hidden" name="description" value='{{$product->description}}'>
 		</form>
-		{{------------------------------------------------------------------}}
+		
 		{{-- FORM PRECIO --}}
 		<form class='formulario' method="post" action="{{action('ProductsController@update', $product->id)}}">
 			{{csrf_field()}}
@@ -128,7 +128,7 @@
 			{{-- DESCRIPCION --}}
 			<input type="hidden" name="description" value='{{$product->description}}'>
 		</form>
-		{{------------------------------------------------------------------}}
+		
 		{{-- FORM DESCRIPCION --}}
 		<form class='formulario' method="post" action="{{action('ProductsController@update', $product->id)}}" id="usrform">
 			{{csrf_field()}}

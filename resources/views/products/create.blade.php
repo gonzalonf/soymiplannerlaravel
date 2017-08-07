@@ -31,7 +31,7 @@
             </div>
             @endif
 
-            <input type='text' name='name' class='decorative-input-edit' placeholder='Nombre del Servivio o Producto' value='{{old('name')}}' id='description'> <br>
+            <input style="margin-bottom: 30px;" type='text' name='name' class='decorative-input-edit' placeholder='Nombre del Servivio o Producto' value='{{old('name')}}' id='description' autofocus> 
 
 
             <select name='category_id' class='decorative-input-imagen-boton text-label' style='    padding-left: 15px; margin: 5px 0; height: 38px;' id='exampleSelect1' class='decorative-input-edit'>
@@ -45,14 +45,14 @@
             </select> <br> 
 
 
-            <input type='number' name='price' id='price' class='decorative-input-imagen-boton text-label' style='padding-left: 15px; margin: 5px 0; height: 38px;' placeholder='Precio' value='{{ old('price')}} '><br>
+            <input  type='number' name='price' id='price' class='decorative-input-imagen-boton text-label' style='padding-left: 15px; margin: 5px 0; height: 38px;' placeholder='Precio' value='{{ old('price')}} '><br>
 
 
             <label class='text-label' style='display: inline-block;'>A convenir</label>
             <input type='checkbox' style='display: inline-block;' onclick='if(this.checked){a()}' name='a convenir' id='conv'>
 
 
-            <input type='text' name='description' class='decorative-input-edit' placeholder='Descripción' value='{{old('description')}}' id='description' class='form-control'> <br>
+            <input style="margin-top: 30px;" type='text' name='description' class='decorative-input-edit' placeholder='Descripción' value='{{old('description')}}' id='description' class='form-control'> <br>
 
 
             <label for='img' class='text-label'>Imagen de perfil: </label> <br>
@@ -60,15 +60,15 @@
 
 
             <p class='text-label'>Este telefono sera mostrado en la publicación.</p>
-            <input type='text' class='decorative-input-phone text-label' placeholder='Teléfono' name='telefono' value='{{ Auth::User()->phone }}' id='telefono' class='form-control'> <br>
+            <input type='text' class='decorative-input-phone text-label' placeholder='Teléfono' name='phone' value='{{ Auth::User()->phone }}' id='telefono' class='form-control'> <br>
 
 
             <p class='text-label'>Esta localidad sera mostrada en la publicación.</p>
-            <input type='text' class='decorative-input text-label' placeholder='Localidad' name='localidad' value='{{ Auth::User()->home }}' id='localidad' class='form-control'> <br>
+            <input type='text' class='decorative-input text-label' placeholder='Localidad' name='home' value='{{ Auth::User()->home }}' id='localidad' class='form-control'> <br>
 
 
             <p class='text-label'>Esta dirección sera mostrada en la publicación.</p>
-            <input type='text' class='decorative-input text-label' placeholder='Direccion' name='direccion' value='{{ old('direccion') }}' id='direccion' class='form-control'> <br>
+            <input type='text' class='decorative-input text-label' placeholder='Direccion' name='address' value='{{ old('address') }}' id='direccion' class='form-control'> <br>
 
 
             <div class='' style='max-width: 750px; margin: 0 auto; margin-bottom: 40px; display: flex; align-items: flex-start;'>
@@ -77,7 +77,7 @@
                     <h2>GRATUITA</h2><br>
                     <p>La publicación GRATUITA es de menor tamaño y no aparece en todas las búsquedas de su categoría.</p><br>
                     <strong>Gratis</strong><br><br> 
-                    <input type='radio' style='' name='modalidad' >
+                    <input type='radio' style='' name='subscription' value="Gratuita" {{ old('subscription')=="Gratuita" ? 'checked='.'"'.'checked'.'"' : '' }} >
                 </div>
 
                 <div class='text-label' style=' margin:20px; flex: 1; flex-flow: column; text-align-last: center !important; cursor: pointer;'>  
@@ -86,7 +86,7 @@
                     mercadolibre $477/90dias <br> 
                     <b>Nosotros: $120/90dias </b> <br><br>  
                     {{--  <strong>Premium</strong><br> --}}
-                    <input type='radio' style='' name='modalidad' > 
+                    <input type='radio' style='' name='subscription' value="Paga" {{ old('subscription')=="Paga" ? 'checked='.'"'.'checked'.'"' : '' }} > 
                 </div>
 
             </div>
