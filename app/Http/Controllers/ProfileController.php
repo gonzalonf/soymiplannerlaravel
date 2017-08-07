@@ -141,7 +141,10 @@ class ProfileController extends Controller
     public function products()
     {
         $id = Auth::User()->id;
-        $products = Product::orderBy('id','desc')->where('user_seller_id',$id)->paginate(20);
+        $products = Product::orderBy('id','desc')
+        ->where('user_seller_id',$id)
+        ->where('products.active', '=' , 1)
+        ->paginate(20);
 
 
         $error = '';
