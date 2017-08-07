@@ -22,13 +22,13 @@
         <form class='formulario' method='POST' action='{{ route('register') }}' enctype='multipart/form-data'>
             {{ csrf_field() }}
 
-            <input {{-- id='first_name' --}} class='decorative-input text-label' type='text' name='first_name' placeholder='Nombre' value='{{ old('first_name') }}' required autofocus> <br>
+            <input {{-- id='first_name' --}} class='decorative-input text-label' type='text' name='first_name' placeholder='Nombre' value='{{ old('first_name') }}' autofocus> <br>
 
             @if ($errors->has('first_name'))
             <p class='msj_error'>{{ $errors->first('first_name') }}</p>
             @endif
 
-            <input {{-- id='last_name' --}} class='decorative-input text-label' type='text' name='last_name' placeholder='Apellido' value='{{ old('last_name') }}' required> <br>
+            <input {{-- id='last_name' --}} class='decorative-input text-label' type='text' name='last_name' placeholder='Apellido' value='{{ old('last_name') }}'> <br>
 
             @if ($errors->has('last_name'))
             <p class='msj_error'>{{ $errors->first('last_name') }}</p>
@@ -51,13 +51,13 @@
         <p class='msj_error'>{{ $errors->first('home') }}</p>
         @endif
 
-        <input class='decorative-input-phone text-label' type='tel' name='phone' placeholder='Teléfono' value='{{ old('phone') }}' required autofocus> <br>
+        <input class='decorative-input-phone text-label' type='tel' name='phone' placeholder='Teléfono' value='{{ old('phone') }}'> <br>
 
         @if ($errors->has('phone'))
         <p class='msj_error'>{{ $errors->first('phone') }}</p>
         @endif            
 
-        <input {{-- id='email' --}} class='decorative-input-mail text-label' type='email' name='email' placeholder='Correo electronico' value='{{ old('email') }}' required autofocus> <br>
+        <input {{-- id='email' --}} class='decorative-input-mail text-label' type='email' name='email' placeholder='Correo electronico' value='{{ old('email') }}'> <br>
 
         @if ($errors->has('email'))
         <p class='msj_error'>{{ $errors->first('email') }}</p>
@@ -68,13 +68,13 @@
                 echo $errores["email"];
             }?></p>
 
-        <input {{-- id='password' --}} class='decorative-input-password text-label' type='password' name='password' placeholder='Contraseña' required> <br>
+        <input {{-- id='password' --}} class='decorative-input-password text-label' type='password' name='password' placeholder='Contraseña'> <br>
 
         @if ($errors->has('password'))
         <p class='msj_error'>{{ $errors->first('password') }}</p>
         @endif
 
-        <input {{-- id='password-confirm' --}} class='decorative-input-password text-label' type='password' name='password_confirmation' placeholder='Confirmar contraseña' required> <br>
+        <input {{-- id='password-confirm' --}} class='decorative-input-password text-label' type='password' name='password_confirmation' placeholder='Confirmar contraseña'> <br>
 
         <label for='avatar' class='text-label'>Imagen de perfil: </label> <br>
         <input class='decorative-input-imagen-boton' type='file' name='avatar'> <br>

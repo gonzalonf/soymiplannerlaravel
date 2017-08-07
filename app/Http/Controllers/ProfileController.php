@@ -77,10 +77,20 @@ class ProfileController extends Controller
             'first_name' => 'required|string|max:15',
             'last_name' => 'required|string|max:15',
             'home' => 'required|string|max:20',
-            'phone' => 'required|string|max:25',
+            'phone' => 'required|regex:/^[0-9. -]+$/|max:25',
             'email' => 'required|string|email|max:100|unique:users,email,'.$user->id,
             'password' => 'required|string|min:6|confirmed',
-            ]);
+            ],
+            [
+            'first_name.required' => 'El campo nombre es obligatorio.',
+            'first_name.max:15' => 'El campo nombre debe contener 15 caracteres como máximo.',
+            'last_name.required' => 'El campo apellido es obligatorio.',
+            'last_name.max:15' => 'El campo apellido debe contener 15 caracteres como máximo.',
+            'home.required' => 'El campo seleccionar zona es obligatorio.',
+            'phone.required' => 'El campo teléfono es obigatorio.',
+            'phone.regex' => 'El campo teléfono solo puede contener números y lineas.',
+            ]
+            );
 
         if ($errors->fails()) {
             return redirect('/profile')
@@ -93,7 +103,7 @@ class ProfileController extends Controller
             $user->home = $request->get('home');
             $user->phone = $request->get('phone');
             $user->email = $request->get('email');
-            if ($request->get('password') != '' ) {
+            if ($request->get('password') != $user->password ) {
                 $user->password = bcrypt($request->get('password'));
             }
             $user->save();

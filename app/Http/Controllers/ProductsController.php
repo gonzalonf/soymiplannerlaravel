@@ -136,15 +136,15 @@ class ProductsController extends Controller
         // $product->image = $nombreImagen;
 
         // $product->save();
-
-      return redirect('/profile/products');
+      
+      return redirect('/profile/products');  
     }
 
 
       public function show($id)
       {
         try {
-          $product = Product::where('user_seller_id','<>',Auth::id())->find($id);
+          $product = Product::/*where('user_seller_id','<>',Auth::id())->*/find($id);
 
           $product->id;
 

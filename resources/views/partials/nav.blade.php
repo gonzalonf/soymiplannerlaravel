@@ -28,11 +28,11 @@
 					@else
 
 					<li class="dropdown"> {{Auth::User()->first_name}}
-						<div class="mini_avatar">
+						<div>
 							@if (!empty(glob('storage/avatar/'. Auth::User()->id . ".*")[0]) )
-							<img src="{{ asset (glob('storage/avatar/'. Auth::User()->id . ".*")[0]) }}" height="48px;" alt="avatar">
+							<img class="mini_avatar" src="{{ asset (glob('storage/avatar/'. Auth::User()->id . ".*")[0]) }}" alt="avatar">
 							@else
-							<img src="images/default.png" height="48px;" alt="avatar">
+							<img class="mini_avatar" src="images/default.png" alt="avatar">
 							@endif
 						</div>
 						<div class="dropdown-menu">

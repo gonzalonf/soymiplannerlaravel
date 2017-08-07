@@ -188,7 +188,10 @@ body{
 }
 .mini_avatar{
 	float:right; 
-	margin-top: -15px;
+	margin-top: -30px;
+	width: 48px;
+	height: 48px;
+	object-fit: cover 
 }
 
 /*------------COMIENZA BOTONCITO CSS-----------------------------*/
@@ -198,7 +201,7 @@ body{
 	display: inline-block;
 	width: 18px;
 	height: 38px;
-    bottom: 320px;
+	bottom: 320px;
 	left: 10px;
 }
 
@@ -1362,7 +1365,7 @@ img.thumbnail{
 	}
 
 	.preguntas a{
-	/*	margin-right: 15vw;*/
+		/*	margin-right: 15vw;*/
 	}
 
 	footer .footerContainer{
