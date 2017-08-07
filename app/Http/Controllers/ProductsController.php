@@ -34,7 +34,6 @@ class ProductsController extends Controller
   {
     $products = Product::getAll()
     // ->where('user_seller_id','<>',Auth::id())
-    ->where('products.active', '=' , 1)
     ->orderBy('id', 'desc')
     ->paginate(12); // esto me trae un array
 

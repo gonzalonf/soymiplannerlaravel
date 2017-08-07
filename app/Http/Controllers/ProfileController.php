@@ -64,37 +64,37 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
 
-    /*---------UPDATE---------*/
-     if($request->has('submit'))
-     {
-        if($request->hasfile('avatar'))
+        /*---------UPDATE---------*/
+        if($request->has('submit'))
         {
-            if (!empty(glob('storage/avatar/'. $id . '.*')[0])){
-                File::delete(glob('storage/avatar/'. $id . '.*')[0]);
+            if($request->hasfile('avatar'))
+            {
+                if (!empty(glob('storage/avatar/'. $id . '.*')[0])){
+                    File::delete(glob('storage/avatar/'. $id . '.*')[0]);
+                }
+                $filename = $id . '.' . request()->avatar->extension();
+                request()->avatar->storeAs('public/avatar', $filename);
             }
-            $filename = $id . '.' . request()->avatar->extension();
-            request()->avatar->storeAs('public/avatar', $filename);
-        }
 
-        $user = User::find($id);
-        $errors = Validator::make($request->all(), [
-            'first_name' => 'required|string|max:15',
-            'last_name' => 'required|string|max:15',
-            'home' => 'required|string|max:20',
-            'phone' => 'required|regex:/^[0-9. -]+$/|max:25',
-            'email' => 'required|string|email|max:100|unique:users,email,'.$user->id,
-            'password' => 'required|string|min:6|confirmed',
-            ],
-            [
-            'first_name.required' => 'El campo nombre es obligatorio.',
-            'first_name.max:15' => 'El campo nombre debe contener 15 caracteres como máximo.',
-            'last_name.required' => 'El campo apellido es obligatorio.',
-            'last_name.max:15' => 'El campo apellido debe contener 15 caracteres como máximo.',
-            'home.required' => 'El campo seleccionar zona es obligatorio.',
-            'phone.required' => 'El campo teléfono es obigatorio.',
-            'phone.regex' => 'El campo teléfono solo puede contener números y lineas.',
-            ]
-            );
+            $user = User::find($id);
+            $errors = Validator::make($request->all(), [
+                'first_name' => 'required|string|max:15',
+                'last_name' => 'required|string|max:15',
+                'home' => 'required|string|max:20',
+                'phone' => 'required|regex:/^[0-9. -]+$/|max:25',
+                'email' => 'required|string|email|max:100|unique:users,email,'.$user->id,
+                'password' => 'required|string|min:6|confirmed',
+                ],
+                [
+                'first_name.required' => 'El campo nombre es obligatorio.',
+                'first_name.max:15' => 'El campo nombre debe contener 15 caracteres como máximo.',
+                'last_name.required' => 'El campo apellido es obligatorio.',
+                'last_name.max:15' => 'El campo apellido debe contener 15 caracteres como máximo.',
+                'home.required' => 'El campo seleccionar zona es obligatorio.',
+                'phone.required' => 'El campo teléfono es obigatorio.',
+                'phone.regex' => 'El campo teléfono solo puede contener números y lineas.',
+                ]
+                );
 
             if ($errors->fails()) {
                 return redirect('/profile')
@@ -124,6 +124,13 @@ class ProfileController extends Controller
                 $user->active = "0";
                 $user->save();
 
+                $products=Product::where('user_seller_id', '=', $id)
+                ->update(array('active' => '0'));
+
+                // ->get(); 
+                // $products->active = "0"; 
+                // $products->save(); // mir: como el save me tiraba error, lo hice con update
+
                 Auth::logout();
 
                 return redirect('/');
@@ -143,9 +150,8 @@ class ProfileController extends Controller
         $id = Auth::User()->id;
         $products = Product::orderBy('id','desc')
         ->where('user_seller_id',$id)
-        ->where('products.active', '=' , 1)
+        ->where('products.active', '=' , 1) // mir: lo fitre local, pq aca no se usa la funcion filtrada getall()
         ->paginate(20);
-
 
         $error = '';
         if ($products->count()===0) {
