@@ -23,10 +23,10 @@
 			<div class="mainButton">
 
 				<div class="opciones_principales1">
-					<a href="#">ARMÁ TU EVENTO DESDE CERO</a>
+					<a href="{{ url('/event') }}">ARMÁ TU EVENTO DESDE CERO</a>
 				</div>
 				<div class="opciones_principales2">
-					<a href="#">EXPLORÁ NUESTRAS PROPUESTAS</a>
+					<a href="{{ url('/products') }}">EXPLORÁ NUESTRAS PROPUESTAS</a>
 				</div>
 			</div>
 
