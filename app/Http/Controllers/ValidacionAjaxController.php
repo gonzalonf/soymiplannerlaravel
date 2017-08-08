@@ -18,7 +18,7 @@ class ValidacionAjaxController extends Controller
 		if (User::where('email', $inputEmail)->first()) {
 			$errores['email'] = 'El email ya se encuetra registrado.'; 
 		} else{
-			$errores['email'] = 'El email NO se encuentra registrado.'; 
+			$errores['email'] = ''; 
 		}
 
 		return json_encode($errores);

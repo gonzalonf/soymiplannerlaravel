@@ -224,7 +224,7 @@ $year=(integer)date('Y');
             <form class="" action="/event/store" method="post" >
                 {{ csrf_field() }}
                 <input type="hidden" name="hola" value="asd">
-                <button class='volver'>
+                <button class='volver' type="submit" name="checkout" value="true">
                 CONSULTAR SERVICIOS
                 </button>
             </form>
