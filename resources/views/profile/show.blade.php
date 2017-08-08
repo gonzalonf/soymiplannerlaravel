@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Perfil Público</title>
+<head>
+    <meta charset="utf-8">
+    <title>PRODUCTOS DE {{$user->first_name.' '.$user->last_name}}</title>
+    <link id="pagestyle" rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+    <link rel="icon" type="favicon" href="images/favicon.png">
+</head>
+<body>
+    @include('partials/nav')
 
-        <!-- Bootstrap -->
-        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-        <link href="{{asset('css/style.css')}}" rel="stylesheet">
-        <!---------------->
+    <div class='registro-container editarContainer'>
+        <div class='crear-cuenta'>
+            @if ($user->count() > 0)
+            <h1 class="titulo_seccion">{{$user->first_name.' '.$user->last_name}}</h1>
+            @endif
+            <hr>
+        </div>
 
-        <link id="pagestyle" rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-        <link rel="icon" type="favicon" href="images/favicon.png">
-    </head>
-    <body>
-        @include('/partials/nav')
-
-        @if ($user->count() > 0)
-            <h2>
-                {{$user->first_name.' '.$user->last_name}}
-            </h2>
-            <mark>IMAGEN</mark>
-
-
-        @endif
-
-        <h2>Reputación</h2>
-        <p>estrellas</p>
-
+        <div>
+            <p style="font-size: 1.2rem; line-height: 3rem;">
+                Reputación: ☆☆☆☆☆
+            </p><hr><br>
+        </div>
 
         @if ($products->count() > 0)
-            <h3><b>Sus productos:</b></h3>
-            <ul>
-                @foreach ($products as $prod)
-                    <li>
-                        <h4> <b> {{$prod->name}} </b> </h4>
-                        <h4>precio: {{$prod->price}}</h4>
-                        @foreach ($categories as  $cat)
-                            @if ($cat->id == $prod->category_id)
-                                <h4>{{$cat->category_name}}</h4>
-                            @endif
-                        @endforeach
-                        @if (!empty (glob ('storage/product/'. $prod->id .'.*') [0]))
-                        <img src="{{asset (glob ('storage/product/'. $prod->id .'.*') [0]) }}" alt="producto" class="imagen_prod">
-                        @else
-                        <img src="/images/default_prod.png" alt="producto" class="imagen_prod">
-                        @endif
-                    </li>
+        @foreach ($products as $prod)
+        <div class="wrapper_products">
+
+            <div>
+                @if  (!empty (glob ('storage/product/'. $prod->id .'.*') [0]) )
+                <img class="thumbnail"  src="{{asset (glob ('storage/product/'. $prod->id .'.*') [0]) }}" alt="producto">
+                @else
+                <img class="thumbnail"  src="/images/default_prod.png" alt="producto">
+                @endif
+            </div>
+
+            <div class="info">
+                <h3> {{$prod->name}} </h3>
+                @foreach ($categories as  $cat)
+                @if ($cat->id == $prod->category_id)
+                <p>{{$cat->category_name}}</p>
+                @endif
                 @endforeach
-            </ul>
+                <strong>Precio: {{$prod->price}}</strong>
+            </div>
 
+        </div><hr><br>
+        @endforeach
         @endif
+    </div>
 
+    @include('/partials/footer')
 
-        @include('/partials/footer')
-    </body>
+</body>
 </html>
