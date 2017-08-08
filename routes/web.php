@@ -24,7 +24,9 @@ Auth::routes();
 |--------------------------------------------------------------------------*/
 Route::get('profile', 'ProfileController@index')->middleware('auth');
 Route::get('profile/products', 'ProfileController@products')->middleware('auth');
-Route::get('profile/sales', 'ProfileController@sales')->middleware('auth');
+Route::get('profile/sales', 'SalesController@index')->middleware('auth');
+Route::post('/profile/sales/add', 'SalesController@store')->middleware('auth');
+
 Route::get('profile/{id}', 'ProfileController@show');
 // Route::patch('profile', 'ProfileController@update')->middleware('auth');
 Route::resource('profile', 'ProfileController');// gon: cambié esto p/meter "publicar" en el mismo controlador
@@ -53,6 +55,8 @@ Route::get('/event', 'CartController@index');
 Route::post('/event', 'CartController@checkout')->middleware('auth');
 Route::post('/event/add', 'CartController@add');
 Route::post('/event/remove', 'CartController@remove');
+
+
 
 
 
