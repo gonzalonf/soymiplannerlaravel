@@ -32,93 +32,108 @@
     .tag_search a{
         float: right;
     }
+    .lupita{
+        background-image: url(../images/lupita_blanca.png);
+        background-repeat: no-repeat;
+        background-position: center;
+       background-size: 18px 18px;
+       width: 18px;
+        height: 18px;
+        padding: 0; 
+        /*border-radius: 0px 3px 3px 0px;
+ 
+
+        position: absolute;
+        margin-left: -20px;
+        transition: background-color 0.3s;*/
+    }
 </style>
 {{-- los estilos llevarlos al css --}}
 
- <div id='content' class='row-fluid'>
+<div id='content' class='row-fluid'>
 
 
     <form class="buscador" method="get" action="/products/filter">
 
-		<input type="search" name="q"  id="search_products" placeholder="Buscá" value="">
-        <button class="btn btn-danger" type="submit">
-            <span class=" glyphicon glyphicon-search"></span>
-        </button>
+      <input type="search" name="q"  id="search_products" placeholder="Buscá" value="">
+      <button class="btn btn-danger" type="submit">
+        <span class=" glyphicon{{--  glyphicon-search  --}} lupita" ></span>
+    </button>
 
 
-        @if (isset( $_GET['q']) && trim($_GET['q'])!=='')
-            <div class="tag_search">
-                <b>{{ '"'.$_GET['q'].'"' }}</b>
-                <a href="#">X</a>
-            </div>
+    @if (isset( $_GET['q']) && trim($_GET['q'])!=='')
+    <div class="tag_search">
+        <b>{{ '"'.$_GET['q'].'"' }}</b>
+        <a href="#">X</a>
+    </div>
+    @endif
+    @if (isset(request()->cat))
+    <div class="tag_search">
+        @foreach ($categories as $cat)
+        @if ($cat->id == request()->cat)
+        <b>{{$cat->category_name}}</b>
         @endif
-        @if (isset(request()->cat))
-            <div class="tag_search">
-                @foreach ($categories as $cat)
-                    @if ($cat->id == request()->cat)
-                        <b>{{$cat->category_name}}</b>
-                    @endif
-                @endforeach
-                <a href="#">X</a>
-            </div>
+        @endforeach
+        <a href="#">X</a>
+    </div>
+    @endif
+
+
+    <div class="" style="text-align: left; padding:1em;">
+
+
+       <h4>Ordenar Publicaciones</h4>
+
+
+       <select class="" name="order">
+        <option value="">Orden</option>
+        <option {{request()->order=='mayor'?'selected':''}} value="mayor">Mayor Precio</option>
+        <option {{request()->order=='menor'?'selected':''}} value="menor">Menor Precio</option>
+    </select>
+
+    <h4>Ubicación</h4>
+    {{-- Ojaldre... esto debería venir de una nueva DB, no hardcodeado --}}
+    <select placeholder="hola" class="" name="city" >
+        <option>Elegir Zona</option>
+        @foreach ($locations as $loc)
+        <option
+        @if (request()->city==$loc->id)
+        {{'selected'}}
         @endif
+        value={{$loc->id}}>
+        {{$loc->location}}
+    </option>
+    @endforeach
+</select>
 
 
-        <div class="" style="text-align: left; padding:1em;">
-
-
-        	<h4>Ordenar Publicaciones</h4>
-
-
-            <select class="" name="order">
-                <option value="">Orden</option>
-        	    <option {{request()->order=='mayor'?'selected':''}} value="mayor">Mayor Precio</option>
-                <option {{request()->order=='menor'?'selected':''}} value="menor">Menor Precio</option>
-        	</select>
-
-            <h4>Ubicación</h4>
-        	{{-- Ojaldre... esto debería venir de una nueva DB, no hardcodeado --}}
-            <select placeholder="hola" class="" name="city" >
-                <option>Elegir Zona</option>
-                @foreach ($locations as $loc)
-                    <option
-                        @if (request()->city==$loc->id)
-                                {{'selected'}}
-                        @endif
-                    value={{$loc->id}}>
-                        {{$loc->location}}
-                    </option>
-                @endforeach
-        	</select>
-
-
-            {{-- NOTA: los radios van en hidden cuando tenga JS --}}
-            <h4>Categorias</h4>
-            <ul class="nav nav-tabs nav-stacked">
-                @foreach ($categories as $cat)
-                    @if ($cat->subcategory_child_of_id == null )
-                        <li>
-                            <input  type="radio" name="cat" value="{{$cat->id}}" id="{{$cat->id}}">
-                            <label for="{{$cat->id}}">
-                                {{$cat->category_name}}
-                            </label>
-                            {{-- traer subcategorias --}}
-                            <ul style="font-size:0.8em; margin-left:1em;">
-                            @foreach ($categories as $subcat)
-                                @if ($subcat->subcategory_child_of_id == $cat->id )
-                                    <li>
-                                        <input  type="radio" name="cat" value="{{$subcat->id}}" id="{{$subcat->id}}">
-                                    <label for="{{$subcat->id}}">
-                                        {{$subcat->category_name}}
-                                    </label>
-                                    </li>
-                                @endif
-                            @endforeach
-                            </ul>
-                        </li>
-                    @endif
-                @endforeach
-            </ul>
+{{-- NOTA: los radios van en hidden cuando tenga JS --}}
+<h4>Categorias</h4>
+<ul class="nav nav-tabs nav-stacked">
+    @foreach ($categories as $cat)
+    @if ($cat->subcategory_child_of_id == null )
+    <li>
+        <input  type="radio" name="cat" value="{{$cat->id}}" id="{{$cat->id}}">
+        <label for="{{$cat->id}}">
+            {{$cat->category_name}}
+        </label>
+        {{-- traer subcategorias --}}
+        <ul style="font-size:0.8em; margin-left:1em;">
+            @foreach ($categories as $subcat)
+            @if ($subcat->subcategory_child_of_id == $cat->id )
+            <li>
+                <input  type="radio" name="cat" value="{{$subcat->id}}" id="{{$subcat->id}}">
+                <label for="{{$subcat->id}}">
+                    {{$subcat->category_name}}
+                </label>
+            </li>
+            @endif
+            @endforeach
+        </ul>
+    </li>
+    @endif
+    @endforeach
+</ul>
 
 {{--
             CAT X(volver)
@@ -129,7 +144,7 @@
 
 
 
-        	</div>
-    </form>
- </div>
+            </div>
+        </form>
+    </div>
 
