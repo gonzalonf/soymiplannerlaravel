@@ -22,6 +22,13 @@ class CreateProductsTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('location_id')->unsigned()->nullable();
             $table->tinyInteger('active')->unsigned()->default(1);
+
+            $table->string('imgName', 50)->nullable();
+            $table->string('phone_products')->nullable();
+            $table->string('home_products')->nullable();
+            $table->string('address_products')->nullable();
+            $table->string('subscription')->nullable();
+
             $table->timestamps();
         });
     }
