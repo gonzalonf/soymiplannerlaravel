@@ -11,7 +11,7 @@
 
     <div class='registro-container editarContainer'>
         <div class='crear-cuenta'>
-            <h1 class="titulo_seccion">MIS PRODUCTOS</h1>
+            <h1 class="titulo_seccion">MIS PUBLICACIONES</h1>
             <hr>
         </div>
 

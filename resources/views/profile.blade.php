@@ -35,7 +35,7 @@
         {{-- AVATAR --}}
         <h2 class='datosUsuario'>Imagen de perfil:</h2>
         <input class='inputImagen' type='file' name='avatar'>
-        <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
+        <button type='submit' class='boton_update' name='submit' value="submit"><strong>CAMBIAR</strong></button>
 
         {{-- NOMBRE --}}
         <input type='hidden' name='first_name' value='{{Auth::User()->first_name}}'>
