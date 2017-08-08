@@ -30,4 +30,12 @@ class Product extends Model
         ->where('products.id',$id)
         ->first();
     }
+    public function user()
+    {
+        return $this->belongsTo('App\User','user_seller_id');
+    }
+    public function contact()
+    {
+        return $this->hasMany('App\Contact');
+    }
 }
