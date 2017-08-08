@@ -14,7 +14,7 @@
 	<div class='registro-container editarContainer'>
 
 		<div class='crear-cuenta'>
-			<h1 class="titulo_seccion">EDITAR PRODUCTO</h1>
+			<h1 class="titulo_seccion">EDITAR PUBLICACION</h1>
 			<hr>
 		</div>
 
@@ -34,7 +34,7 @@
 			{{-- AVATAR --}}
 			<h2 class='datosUsuario'>Imagen del producto:</h2>
 			<input class='inputImagen' type='file' name='prod_image'>
-			<button type='submit' class='boton_update' value="submit"><strong>CAMBIAR</strong></button>
+			<button type='submit1' class='boton_update' value="submit"><strong>CAMBIAR</strong></button>
 			
 			{{-- PRODUCTO --}}
 			<input type="hidden" name="name" value='{{$product->name}}'>

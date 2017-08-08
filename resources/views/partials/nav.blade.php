@@ -37,7 +37,7 @@
 						</div>
 						<div class="dropdown-menu1">
 							<ul>
-								<li><a style="line-height: 1.1em;" href="{{ url('/profile/products') }}">MIS PRODUCTOS</a></li>
+								<li><a style="line-height: 1.1em;" href="{{ url('/profile/products') }}">MIS PUBLICACIONES</a></li>
 								<li><a href="{{ url('/profile/sales') }}">TRANSACCIONES</a></li>
                             	<li><a style="line-height: 1.1em;" href="{{ url('/event') }}">MIS EVENTOS</a></li>
 								<li><a href="{{ url('/profile') }}">PERFIL</a></li>
