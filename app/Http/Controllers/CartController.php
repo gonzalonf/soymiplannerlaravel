@@ -7,7 +7,6 @@ use App\Product;
 use App\Contact;
 use App\Event;
 
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +15,9 @@ class CartController extends Controller
 {
     public function index()
     {
-        echo "mis eventos";
+        $events = Auth::user()->event;
+
+        return view('event.index',compact('events'));
     }
     public function create()
     {
@@ -36,7 +37,7 @@ class CartController extends Controller
             $events = [];
         }
 
-        return view('event.index')
+        return view('event.create')
         ->with(compact('products','locations','events'));
 
     }
@@ -138,6 +139,8 @@ class CartController extends Controller
 
            }
        }
+
+       session()->forget(['cart','event','dir','city','eventName']);
 
        return redirect('/event');
 

@@ -39,6 +39,7 @@
 							<ul>
 								<li><a style="line-height: 1.1em;" href="{{ url('/profile/products') }}">MIS PRODUCTOS</a></li>
 								<li><a href="{{ url('/profile/sales') }}">TRANSACCIONES</a></li>
+                            	<li><a style="line-height: 1.1em;" href="{{ url('/event') }}">MIS EVENTOS</a></li>
 								<li><a href="{{ url('/profile') }}">PERFIL</a></li>
 								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">LOGOUT</a>
