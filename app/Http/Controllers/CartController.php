@@ -14,12 +14,11 @@ use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
+    {
+        echo "mis eventos";
+    }
+    public function create()
     {
         if (session()->has('cart')) {
             $cart = (session()->has('cart')) ? session()->get('cart') : [];
@@ -42,20 +41,11 @@ class CartController extends Controller
 
     }
 
-    public function create()
-    {
-        //
-    }
-    public function store(Request $request)
-    {
-        //
-    }
-
     public function destroy($id)
     {
         //
     }
-    public function add(Request $request)
+    public function edit(Request $request)
     {
 
          $cart = (session()->has('cart')) ? session()->get('cart') : [];
@@ -85,11 +75,6 @@ class CartController extends Controller
 
         }
 
-
-        return redirect('/event');
-    }
-    public function remove(Request $request)
-    {
         if ($request->rem){
             $cartArray = session()->get('cart');
             session()->forget('cart');
@@ -108,9 +93,9 @@ class CartController extends Controller
             session()->forget('event.time');
         }
 
-        return redirect('/event');
+        return redirect('/event/create');
     }
-    public function checkout(Request $request)
+    public function store(Request $request)
     {
         // ojo validar
        $cartArray = session()->get('cart');

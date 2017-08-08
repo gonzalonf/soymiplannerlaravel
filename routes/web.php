@@ -51,10 +51,13 @@ Route::patch('products/{id}update', 'ProductsController@update')->middleware('au
 /*--------------------------------------------------------------------------
 | CART/EVENT
 |--------------------------------------------------------------------------*/
+
 Route::get('/event', 'CartController@index');
-Route::post('/event', 'CartController@checkout')->middleware('auth');
-Route::post('/event/add', 'CartController@add');
-Route::post('/event/remove', 'CartController@remove');
+Route::get('/event/create', 'CartController@create');
+Route::post('/event/store', 'CartController@store')->middleware('auth');
+Route::post('/event/edit', 'CartController@edit');
+
+
 
 
 

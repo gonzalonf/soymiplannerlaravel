@@ -23,13 +23,13 @@
         width: 300px !important;
         height: 300px !important;
         object-fit: cover !important;
-    } 
+    }
     h3 > a, p > a {
         color: #ff5a5f !important;
-    } 
+    }
     h3 > a:hover, p > a:hover{
         color: #ed878a !important;
-    }  
+    }
     .paginacion{
         text-align: center;
     }
@@ -78,7 +78,7 @@
                     <img src="{{asset (glob ('storage/product/'. $product->id .'.*') [0]) }}" alt="producto" class="imagen_prod">
                     @else
                     <img src="/images/default_prod.png" alt="producto" class="imagen_prod">
-                    @endif 
+                    @endif
                     <div class="caption">
                         <h3> <a href="/products/{{$product->id}}"> {{$product->name}} </a></h3>
                         <p>
@@ -100,7 +100,7 @@
                         <h5><b>{{$father.$product->category_name}}</b></h5>
                         <p>Descripcion: {{$product->description}}.</p>
                         <p class="caption">Precio: {{$product->price}} </p>
-                        <form class="" action="/event/add" method="post">
+                        <form class="" action="/event/edit" method="post">
                             {{ csrf_field() }}
                             <button class="enviar" type="submit" name="add" value="{{$product->id}}">
                                 Contactar

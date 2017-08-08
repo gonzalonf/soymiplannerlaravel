@@ -45,7 +45,7 @@
             <h1>Evento</h1><br>
 
             <h3>Nombre:
-                <form class="" action="/event/add" method="post">
+                <form class="" action="/event/edit" method="post">
                     {{ csrf_field() }}
                     <input type="text" name="name" value="{{$eventName}}">
                     <button type="sumbit" name="send">cambiar</button>
@@ -53,7 +53,7 @@
             </h3>
 
             <h3>Fecha:
-                <form class="" action="/event/add" method="post">
+                <form class="" action="/event/edit" method="post">
 
                     <select class="" name="day">
                         @for ($i=1; $i <=31 ; $i++)
@@ -119,7 +119,7 @@
             <br>
 
             @if (session()->has('event.time'))
-                <form class="" action="/event/remove" method="post">
+                <form class="" action="/event/edit" method="post">
                     <h4>
                         {{$eventDate}}
                         <button type="submit" name="remDate" value="true">
@@ -137,7 +137,7 @@
 
             <h3>Lugar</h3>
             <p>Ya tenés locación?</p>
-            <form class="" action="/event/add" method="post">
+            <form class="" action="/event/edit" method="post">
                 {{ csrf_field() }}
                 <select class="" name="city">
                     <option value="">Zona</option>
@@ -161,7 +161,7 @@
                     @foreach ($locations as  $city)
 
                         @if ($city->id == $sessionCity )
-                            <form class="" action="/event/remove" method="post">
+                            <form class="" action="/event/edit" method="post">
                                 <h4>{{$city->location}}
                                     > {{session()->get('dir')}}
                                     <button type="submit" name="remLoc" value="true"><b>-eliminar</b>
@@ -186,7 +186,7 @@
 
                 @foreach ($products as $item)
                     <li>
-                        <form class="" action="/event/remove" method="post">
+                        <form class="" action="/event/edit" method="post">
                             <h4><a href="/products/{{$item->id}}">{{$item->name}} </a>
                                 <button type="submit" name="rem" value="{{$item->id}}"><b>-eliminar</b>
                                 </button>
