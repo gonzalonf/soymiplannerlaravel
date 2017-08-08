@@ -161,7 +161,7 @@ body{
 	color: darkslateblue;
 }
 
-.dropdown{
+.dropdown1{
 	background-repeat: no-repeat;
 	background-image: url(../images/dropdown.png);
 	background-position-x: 20px;
@@ -172,18 +172,18 @@ body{
 	color: white;
 }
 
-.dropdown:hover{
+.dropdown1:hover{
 	background-color: grey;
 }
 
-.dropdown-menu{
+.dropdown-menu1{
 	display: none;
 	position: relative;
 	background-color: lightgrey;
 	top: 10px;
 }
 
-.dropdown:hover .dropdown-menu{
+.dropdown1:hover .dropdown-menu1{
 	display: block;
 }
 .mini_avatar{
@@ -191,7 +191,7 @@ body{
 	margin-top: -30px;
 	width: 48px;
 	height: 48px;
-	object-fit: cover 
+	object-fit: cover;
 }
 
 /*------------COMIENZA BOTONCITO CSS-----------------------------*/
@@ -1344,14 +1344,14 @@ img.thumbnail{
 		padding-top: 10%;
 	}
 
-	.dropdown{
+	.dropdown1{
 		width: 150px;
 		background-position-x: 10px;
 		background-position-y: 15px;
 		padding: 15px 0;
 	}
 
-	.dropdown-menu {
+	.dropdown-menu1 {
 		top: 15px;
 	}
 
