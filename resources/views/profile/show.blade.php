@@ -43,6 +43,7 @@
                 @endif
                 @endforeach
                 <strong>Precio: {{$prod->price}}</strong>
+                <a class="boton_editar" href='/products/{{$prod->id}}'>VER</a>
             </div>
 
         </div><hr><br>
