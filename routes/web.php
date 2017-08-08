@@ -39,6 +39,7 @@ Route::get('/products/filter', 'ProductsController@filter');
 
 Route::get('/products/create', 'ProductsController@create');
 Route::get('/products/{id}', 'ProductsController@show');
+Route::post('/products/{id}', 'ProductsController@post');
 /*--------------------------------------------------------------------------
 | PRODUCTS PROFILE
 |--------------------------------------------------------------------------*/

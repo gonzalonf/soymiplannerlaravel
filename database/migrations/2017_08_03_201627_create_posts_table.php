@@ -15,6 +15,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 50);
+            $table->text('comment', 150);
+            $table->integer('product_id');
+            $table->integer('user_id');
+
 
             // ACA van a ir las CONSULTAS y RESPUESTAS
 

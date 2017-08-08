@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Post;
 
 use Illuminate\Http\Request;
 
@@ -164,7 +165,9 @@ class ProductsController extends Controller
 
       $product->id;
 
-      return view('products.show', compact('product'));
+      $comments=Post::where('product_id', '=', $id)->get();
+
+      return view('products.show', compact('product', 'comments'));
 
     } catch (\Exception $e) {
       abort(404);
@@ -253,4 +256,35 @@ class ProductsController extends Controller
   {
       //
   }
+  public function post(Request $request, $id)
+  {
+     $this->validate($request, [
+      'c'=>'required'
+      ]
+      ,
+      ['c.required'=>'Debe Escribir Un Comentario'
+      ]
+      );
+    
+    $post = Post::create([
+      'name'=>Auth::user()->first_name,
+      'comment'=>$request->input('c'),
+      'product_id'=>Product::find($id)->id,
+      'user_id'=>Auth::user()->id      
+
+
+      ]);
+
+    return redirect()->back();
+ 
+      
+
+
+    // $comentario = $request->input('comentario');
+    // $usuario_comentador = Auth::user()->id;
+    // $id_producto = Product::find($id)->id;
+    // var_dump($id_producto);
+   
+  }
+
 }
