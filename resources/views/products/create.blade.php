@@ -31,19 +31,22 @@
             </div>
             @endif
 
-            <input style="margin-bottom: 30px;" type='text' name='name' class='decorative-input-edit' placeholder='Nombre del Servivio o Producto' value='{{old('name')}}' id='description' autofocus> 
+            <input style="margin-bottom: 30px;" type='text' name='name' class='decorative-input-edit' placeholder='Nombre del Servivio o Producto' value='{{old('name')}}' id='description' autofocus>
 
 
             <select name='category_id' class='decorative-input-imagen-boton text-label' style='    padding-left: 15px; margin: 5px 0; height: 38px;' id='exampleSelect1' class='decorative-input-edit'>
                 {{-- el primer value debe ser vacio--}}
                 <option disabled selected value>--Elige la Categoría--</option>
-                <option value='1'>Lugar</option>
-                <option value='2'>Decoracion</option>
-                <option value='3'>Catering</option>
-                <option value='4'>Servicios</option>
-                <option value='5'>Otros</option>
-            </select> <br> 
-
+            
+                @if ($categories->count() > 0){
+                    @foreach ($categories as $cat)
+                            <option value="{{$cat->id}}">
+                                {{$cat->category_name}}
+                            </option>
+                    @endforeach
+                }
+                @endif
+            </select> <br>
 
             <input  type='number' name='price' id='price' class='decorative-input-imagen-boton text-label' style='padding-left: 15px; margin: 5px 0; height: 38px;' placeholder='Precio' value='{{ old('price')}} '><br>
 
@@ -76,17 +79,17 @@
                 <div class='text-label' style=' margin:20px; flex: 1; flex-flow: column; text-align-last: center !important; cursor: pointer;'>
                     <h2>GRATUITA</h2><br>
                     <p>La publicación GRATUITA es de menor tamaño y no aparece en todas las búsquedas de su categoría.</p><br>
-                    <strong>Gratis</strong><br><br> 
+                    <strong>Gratis</strong><br><br>
                     <input type='radio' style='' name='subscription' value="Gratuita" {{ old('subscription')=="Gratuita" ? 'checked='.'"'.'checked'.'"' : '' }} >
                 </div>
 
-                <div class='text-label' style=' margin:20px; flex: 1; flex-flow: column; text-align-last: center !important; cursor: pointer;'>  
+                <div class='text-label' style=' margin:20px; flex: 1; flex-flow: column; text-align-last: center !important; cursor: pointer;'>
                 <h2>PREMIUM</h2><br>
                     <p>La públicacion PREMIUM aparece en las búsquedas de manera destacada.</p><br>
-                    mercadolibre $477/90dias <br> 
-                    <b>Nosotros: $120/90dias </b> <br><br>  
+                    mercadolibre $477/90dias <br>
+                    <b>Nosotros: $120/90dias </b> <br><br>
                     {{--  <strong>Premium</strong><br> --}}
-                    <input type='radio' style='' name='subscription' value="Paga" {{ old('subscription')=="Paga" ? 'checked='.'"'.'checked'.'"' : '' }} > 
+                    <input type='radio' style='' name='subscription' value="Paga" {{ old('subscription')=="Paga" ? 'checked='.'"'.'checked'.'"' : '' }} >
                 </div>
 
             </div>

@@ -95,7 +95,8 @@ class ProductsController extends Controller
   public function create()
   {
 
-    return view('products.create');
+    $categories = DB::table('categories')->get();
+    return view('products.create',compact('categories'));
   }
 
   /**
@@ -138,9 +139,9 @@ class ProductsController extends Controller
       'user_seller_id'=>Auth::id(),
       'phone_products'=>$request->input('phone'),
       'home_products'=>$request->input('home'),
-      'address_products'=>$request->input('address'), 
+      'address_products'=>$request->input('address'),
       'subscription'=>$request->input('subscription')
-      
+
 
       ]);
 
@@ -151,8 +152,8 @@ class ProductsController extends Controller
     $product->imgName = $nombreImagen;
 
     $product->save();
-    
-    return redirect('/profile/products');  
+
+    return redirect('/profile/products');
   }
 
 
@@ -194,7 +195,7 @@ class ProductsController extends Controller
    {
     /*---------UPDATE---------*/
     if($request->has('submit'))
-    { 
+    {
       if($request->hasfile('prod_image'))
       {
         if (!empty(glob('storage/product/'. $id . '.*')[0])){
@@ -230,7 +231,7 @@ class ProductsController extends Controller
 
     /*---------BORRAR---------*/
     if($request->has('submit2'))
-    {   
+    {
       $inputBaja = $request->get('borrarProducto');
       if($inputBaja == 'ok')
       {
@@ -240,7 +241,7 @@ class ProductsController extends Controller
 
         return redirect('profile/products');
       }
-    } 
+    }
   }
   /**
    * Remove the specified resource from storage.
