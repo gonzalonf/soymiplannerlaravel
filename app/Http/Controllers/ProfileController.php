@@ -113,10 +113,10 @@ class ProfileController extends Controller
                 $user->save();
                 return redirect('/profile');
             }
-        }     
+        }
         /*---------BAJA---------*/
         if($request->has('submit2'))
-        {   
+        {
             $inputBaja = $request->get('borrarUsuario');
             if($inputBaja == 'ok')
             {
@@ -127,8 +127,8 @@ class ProfileController extends Controller
                 $products=Product::where('user_seller_id', '=', $id)
                 ->update(array('active' => '0'));
 
-                // ->get(); 
-                // $products->active = "0"; 
+                // ->get();
+                // $products->active = "0";
                 // $products->save(); // mir: como el save me tiraba error, lo hice con update
 
                 Auth::logout();
@@ -163,15 +163,45 @@ class ProfileController extends Controller
 
     public function sales()
     {
+        // recupero array con id de mis productos
+        $productsId = Auth::User()
+                    ->product
+                    ->where('products.active','1')
+                    ->pluck('id')
+                    ->toArray();
 
-        $contacts=Contact::all();
-        // ->join('products','products.id','=','contacts.product_id')
-        // ->join('users','users.id','=','contacts.user_seller_id')
-        // ->where('user_seller_id',$id)
-        // ->get();
-        // y tb la fecha sea anterior o igual al evento
+        // buscando contactos en espera que contengan mi producto
+        $contacts = Contact::whereIn('product_id',$productsId)
+                    ->where('user_seller_OK',0)
+                    ->get();
 
-        return view('profile/sales',compact('contacts'));
+        // compras en espera
+        $buyer_contacts = Contact::select('first_name','last_name','name','event_date','event_time')
+                        ->join('events','event_id','=','events.id')
+                        ->join('users','user_id','=','users.id')
+                        ->join('products','products.id','=','contacts.product_id')
+                        ->where('user_id',Auth::id())
+                        ->where('user_seller_OK',0)
+                        ->get();
+
+
+
+
+        // recuperando ventas del usuario
+        $sales = Sale::select('item_name','item_description','first_name','last_name','price','event_date')
+                ->join('users','users.id','=','user_buyer_id')
+                ->where('user_seller_id',Auth::id())
+                ->where('seller_concreted',0)
+                ->get();
+
+        $buyer_sales = Sale::select('item_name','item_description','first_name','last_name','price','event_date')
+                ->join('users','users.id','=','user_seller_id')
+                ->where('user_buyer_id',Auth::id())
+                ->where('seller_concreted',0)
+                ->get();
+
+
+        return view('profile/sales',compact('contacts','sales','buyer_sales','buyer_contacts'));
     }
 
     public function show($id)

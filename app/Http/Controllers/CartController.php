@@ -30,9 +30,15 @@ class CartController extends Controller
 
         $locations = DB::table('locations')->get();
 
+        if (Auth::check()){
+
+            $events = Auth::user()->event;
+        } else {
+            $events = [];
+        }
 
         return view('event.index')
-        ->with(compact('products','locations'));
+        ->with(compact('products','locations','events'));
 
     }
 
@@ -119,7 +125,7 @@ class CartController extends Controller
        $event = Event::where('user_id',Auth::id())->first();
 
        if ($event==null){
-           echo 'evento no existe.. podes crearlo';
+        //    evento no existe.. podes crearlo
            if ($time!=null && $city!=null && $cartArray!=null) {
                 echo "campos llenos, es viable crear";
                 $event = Event::create([
@@ -132,24 +138,23 @@ class CartController extends Controller
              ]);
 
             foreach ($cartArray as $item) {
-                $event->contact()->create([
-                    'product_id' => $item
-                ]);
+                $event->contact()->create(['product_id' => $item]);
             }
         }
        } else {
-           echo 'evento existe! hacer update del mismo';
-           var_dump($event);
+        //    evento existe!
+        // comprobar productos
+           $eventProducts = $event->contact->pluck('product_id')->toArray() ?: [];
+        //  agregar
            foreach ($cartArray as $item) {
-               $event->contact()->create([
-                   'product_id' => $item
-               ]);
+               if ( !in_array( $item, $eventProducts) ) {
+                   $event->contact()->create(['product_id' => $item]);
+               }
+
            }
        }
 
-
-    //    return redirect('/event');
-
+       return redirect('/event');
 
     }
 }

@@ -32,9 +32,39 @@ class SalesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
-        //
+        if (isset($request->add)) {
+            echo 'hola';
+            $contact=Contact::find($request->add);
+            if ($contact) {
+                $contact->user_seller_OK = 1;
+                $contact->save();
+
+                $product=$contact->product;
+
+                Sale::create([
+                    'item_name'=>$product->name,
+                    'item_description'=>$product->description,
+                    'price'=>$product->price,
+                    'product_id'=>$product->id,
+                    'user_buyer_id'=>$contact->event->user->id,
+                    'user_seller_id'=> Auth::id(),
+                    'event_date'=> $contact->event->event_date.' '.$contact->event->event_time,
+                    'buyer_concreted'=>0,
+                    'seller_concreted'=>0,
+                ]);
+            }
+        }
+        if (isset($request->deny)) {
+            echo 'hola';
+            $contact=Contact::find($request->deny);
+            if ($contact) {
+                $contact->user_seller_OK = 2;
+                $contact->save();
+            }
+        }
+        return redirect('/profile/sales');
     }
 
     /**
