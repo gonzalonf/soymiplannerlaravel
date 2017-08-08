@@ -17,8 +17,8 @@
 
 
 					<li><a href="{{ url('/products') }}">PUBLICACIONES</a></li>
+					<li ><a href="{{ url('/event') }}">CREAR EVENTO</a></li>
 					<li ><a href="{{ url('/create') }}">PUBLICAR</a></li>
-					<li ><a href="{{ url('/event') }}">EVENTO</a></li>
 
 
 					@if (Auth::guest())
@@ -27,7 +27,7 @@
 
 					@else
 
-					<li class="dropdown"> {{Auth::User()->first_name}}
+					<li class="dropdown1"> {{Auth::User()->first_name}}
 						<div>
 							@if (!empty(glob('storage/avatar/'. Auth::User()->id . ".*")[0]) )
 							<img class="mini_avatar" src="{{ asset (glob('storage/avatar/'. Auth::User()->id . ".*")[0]) }}" alt="avatar">
@@ -35,9 +35,9 @@
 							<img class="mini_avatar" src="images/default.png" alt="avatar">
 							@endif
 						</div>
-						<div class="dropdown-menu">
+						<div class="dropdown-menu1">
 							<ul>
-								<li><a href="{{ url('/profile/products') }}">MIS PRODUCTOS</a></li>
+								<li><a style="line-height: 1.1em;" href="{{ url('/profile/products') }}">MIS PRODUCTOS</a></li>
 								<li><a href="{{ url('/profile/sales') }}">TRANSACCIONES</a></li>
 								<li><a href="{{ url('/profile') }}">PERFIL</a></li>
 								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();

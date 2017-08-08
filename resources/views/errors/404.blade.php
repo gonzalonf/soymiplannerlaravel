@@ -27,7 +27,7 @@
     </head>
     <body>
         @include('../partials/nav')
-        <div class="error">
+        <div class="error" style="border-radius: 10px;">
 
             <h1>Error 404</h1>
             <h2>

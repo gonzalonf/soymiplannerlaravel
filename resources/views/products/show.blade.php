@@ -1,30 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
-<link rel="icon" type="favicon" href="images/favicon.png">
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="icon" type="favicon" href="images/favicon.png">
+</head>
+<style type="text/css">
+  h2, p{
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+</style>
+<body>
+
   @include('partials/nav')
-	<div class="row">
-		<div class="col-xs-12">
-			<h1>{{$product->name}}</h1>
-			 @if (isset($product->imgName))
-    					    <img src="{{Storage::url($product->imgName)}}">
-    					@else
-    						<img style="height: 300px;" src="/images/default_prod.png" alt="Evento">
-    						@endif
-			<h2>{{$product->description}}</h2>
-			<p> <b>Precio: {{$product->price}}</b></p>
-			<button class="btn-lg  btn-success">Añadir a Tu Carruaje de Eventos
-		</div>
-	</div>
 
-	  @include('partials/footer')
+  <div class='registro-container editarContainer'>
+    <div class='crear-cuenta'>
+      <h1 class="titulo_seccion">{{$product->name}}</h1>
+      <hr>
+    </div>
 
-  </body>
+    <div class="avatar" style="margin-top: 10px;">
+      @if (!empty (glob ('storage/product/'. $product->id .'.*') [0]) )
+      <img src="{{asset (glob ('storage/product/'. $product->id .'.*') [0]) }}" alt="producto">
+      @else
+      <img src="/images/default_prod.png" alt="producto">
+      @endif 
+    </div>
+<div style="width: 70%; margin: 0 auto !important; text-align: left;">
+    <h2 >{{$product->description}}</h2>
+    <p><strong>Precio: {{$product->price}}</strong></p>
+</div>
+    <div class='formulario'>
+    <button type='submit' class='editar volver' name='submit'><strong>Añadir a Tu Carruaje de Eventos</strong></button>
+   </div>
+ </div>
+
+ @include('partials/footer')
+
+</body>
 </html>
