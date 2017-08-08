@@ -146,13 +146,17 @@ class ProductsController extends Controller
 
       ]);
 
-    $nombreImagen = $product->id . /*'.' . str_slug($product->name) .*/ '.' .request()->image->extension();
+      if($request->image){
 
-    request()->image->storeAs('public/product/', $nombreImagen);
+              $nombreImagen = $product->id . /*'.' . str_slug($product->name) .*/ '.' .request()->image->extension();
 
-    $product->imgName = $nombreImagen;
+              request()->image->storeAs('public/product/', $nombreImagen);
 
-    $product->save();
+              $product->imgName = $nombreImagen;
+
+              $product->save();
+      }
+
 
     return redirect('/profile/products');
   }
