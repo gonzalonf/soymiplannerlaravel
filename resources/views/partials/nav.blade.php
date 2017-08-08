@@ -17,7 +17,7 @@
 
 
 					<li><a href="{{ url('/products') }}">PUBLICACIONES</a></li>
-					<li ><a href="{{ url('/event/create') }}">CREAR EVENTO</a></li>
+					<li ><a href="{{ url('/event') }}">PLANEAR EVENTO</a></li>
 					<li ><a href="{{ url('/create') }}">PUBLICAR</a></li>
 
 
