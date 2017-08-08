@@ -108,7 +108,11 @@ class CartController extends Controller
        $time = session()->get('event.time');
        $eventName = (session()->get('eventName'))?:'Mi Evento';
 
-       $event = Event::where('user_id',Auth::id())->first();
+       $event = Event::where('user_id',Auth::id())
+                ->where('event_name',$eventName)
+                ->where('event_date',Event::toDate($day,$month,$year))
+                ->where('event_time',Event::toTime($time))
+                ->first();
 
        if ($event==null){
         //    evento no existe.. podes crearlo
