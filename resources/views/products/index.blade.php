@@ -5,11 +5,11 @@
 </head>
 
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/app.css" rel="stylesheet">
+<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{asset('css/style.css')}}" rel="stylesheet">
 <!---------------->
 
-<link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <link rel="icon" type="favicon" href="images/favicon.png">
 <style type="text/css">
     *{
@@ -33,6 +33,12 @@
     .paginacion{
         text-align: center;
     }
+    .error_search{
+        text-align: center;
+        width: 50%;
+        clear: both;
+        border-radius: 6px;
+    }
 </style>
 <body>
 
@@ -47,16 +53,15 @@
     {{-- el aside --}}
     @include('partials/search')
 
+    @if ($products->count()===0)
+
+        <h2  class="error_search">
+            Lo sentimos, no pudimos encontrar su búsqueda en nuestra base de datos.
+        </h2>
+
+    @endif
+
     <div class="contenidos_productos">
-
-        @if ($products->count()===0)
-        <div class="error_search">
-            <h2>
-                Lo sentimos, no pudimos encontrar su búsqueda en nuestra base de datos.
-            </h2>
-        </div>
-        @endif
-
         @foreach ($products->Chunk(3) as $productChunk)
         <div class="row" style="margin-left: 0;">
             @foreach ($productChunk as $product)
