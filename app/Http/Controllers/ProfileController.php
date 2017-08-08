@@ -167,22 +167,17 @@ class ProfileController extends Controller
     public function show($id)
     {
         try {
-            $user = User::find($id);
-            $username = $user->first_name.' '.$user->last_name;
-            echo 'Perfil público del usuario <b>$username</b> <br>';
-            echo 'Mostrar otros productos, reputación, etc...<br><br>';
-            $products=Product::getAll()->where('user_seller_id',$id)->get();
-            echo 'sus productos...<br>';
-            echo '<ul>';
-            foreach ($products as $value) {
-                echo '<li>'.$value->name.'</li><br>';
-            }
-            echo '</ul>';
+            $user = User::where('active',1)->find($id);
+            $products = $user->product;
+            $categories = DB::table('categories')->get();
+            return view('/profile/show',compact('user','products','categories'));
 
         } catch (\Exception $e) {
-
             abort(404);
         }
+
+
+
     }
 
 }
