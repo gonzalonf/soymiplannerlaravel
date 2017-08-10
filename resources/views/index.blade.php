@@ -21,6 +21,9 @@
 			<h2 class="contenedor-responsive-altura">¡Todo lo que necesitás para planificar TU EVENTO!</h2>
 
 			<div class="mainButton">
+                <div class="">
+                    &#9888;
+                </div>
 
 				<div class="opciones_principales1">
 					<a href="{{ url('/event/create') }}">ARMÁ TU EVENTO DESDE CERO</a>
