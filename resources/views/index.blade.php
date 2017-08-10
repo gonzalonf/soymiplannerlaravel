@@ -6,7 +6,13 @@
 
 	<section class="type_portada">
 
-		<div class="contenedorFijo">
+        <span class="mensajes_portada" >
+            &#9888;
+            Página en desarollo. Los productos y servicios son ficticios, con propósito de prueba.
+        </span>
+
+        <div class="contenedorFijo">
+
 			<div class="contenedorMovil">
 				<div class="contenido1"></div>
 				<div class="contenido2"></div>
@@ -18,12 +24,10 @@
 		<button type="button" class="buttonCarrusel buttonRight">&gt;</button>
 
 		<div class="contenedor-responsive ">
+
 			<h2 class="contenedor-responsive-altura">¡Todo lo que necesitás para planificar TU EVENTO!</h2>
 
 			<div class="mainButton">
-                <div class="">
-                    &#9888;
-                </div>
 
 				<div class="opciones_principales1">
 					<a href="{{ url('/event/create') }}">ARMÁ TU EVENTO DESDE CERO</a>
