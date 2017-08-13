@@ -99,7 +99,7 @@
         {{-- APELLIDO --}}
         <h2 class="datosUsuario">Apellido: <strong> {{Auth::User()->last_name}} </strong> </h2>
         <input class='decorative-input text-label inputUpdate' type="text" placeholder={{Auth::User()->last_name}} name="last_name" value='{{Auth::User()->last_name}}'>
-        <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
+        <button type='submit' class='boton_update' name='submit' value="submit"><strong>CAMBIAR</strong></button>
 
         @if ($errors->has('last_name'))
         <p class='msj_error'>{{ $errors->first('last_name') }}</p>
@@ -144,7 +144,7 @@
         </option>
         @endforeach
     </select>
-    <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
+    <button type='submit' class='boton_update' name='submit' value="submit"><strong>CAMBIAR</strong></button>
 
     @if ($errors->has('home'))
     <p class='msj_error'>{{ $errors->first('home') }}</p>
@@ -178,7 +178,7 @@
     {{-- TEL --}}
     <h2 class="datosUsuario">Teléfono: <strong> {{Auth::User()->phome}} </strong> </h2>
     <input class='decorative-input text-label inputUpdate' type="tel" placeholder={{Auth::User()->phone}} name="phone" value='{{Auth::User()->phone}}'>
-    <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
+    <button type='submit' class='boton_update' name='submit' value="submit"><strong>CAMBIAR</strong></button>
 
     @if ($errors->has('home'))
     <p class='msj_error'>{{ $errors->first('phone') }}</p>
@@ -212,7 +212,7 @@
     {{-- EMAIL --}}
     <h2 class="datosUsuario">Email: <strong> {{Auth::User()->email}} </strong> </h2>
     <input class='decorative-input-mail text-label inputUpdate' type="email" placeholder={{Auth::User()->email}} name="email" value='{{Auth::User()->email}}'>
-    <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button>
+    <button type='submit' class='boton_update' name='submit' value="submit"><strong>CAMBIAR</strong></button>
 
     @if ($errors->has('email'))
     <p class='msj_error'>{{ $errors->first('email') }}</p>
@@ -255,7 +255,7 @@
     {{-- PASSWORD CONFIRM --}}
     <h2 class="datosUsuario">Confirmar contraseña:</h2>
     <input class='decorative-input-password text-label inputUpdate' type='password' name='password_confirmation' placeholder='●●●●●●'> 
-    <button type='submit' class='boton_update' name='submit'><strong>CAMBIAR</strong></button><br>
+    <button type='submit' class='boton_update' name='submit' value="submit"><strong>CAMBIAR</strong></button><br>
 </form>
 {{------------------------------------------------------------------}}
 {{-- FORM BORRAR USUARIO--}}
