@@ -6,6 +6,14 @@
     <title></title>
     <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="icon" type="favicon" href="images/favicon.png">
+   <style type="text/css">
+    @media (max-width : 400px) {
+        .formulario {
+        margin: 10px;
+        width: auto;
+        }
+    }
+    </style>
 </head>
 <body>
 
