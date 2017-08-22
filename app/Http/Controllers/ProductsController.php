@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Post;
+use App\Http\Controllers\ProductSearch\ProductSearch;
+
 
 use Illuminate\Http\Request;
 
@@ -47,43 +49,10 @@ class ProductsController extends Controller
 
   public function filter()
   {
-    $search = trim(request()->q);
 
-    $products =Product::getAll()
-      // ->where('user_seller_id','<>',Auth::id())
+    $products = ProductSearch::apply();
 
-
-      // search
-    ->where(function($query) use ($search){
-     return $query
-     ->where('name','like', '%'.$search.'%')
-     ->orWhere('category_name','like','%'.$search.'%')
-     ->orWhere('description','like','%'.$search.'%');
-   });
-
-      // filter
-    if (isset(request()->cat) && is_numeric(request()->cat) ) {
-      $products=$products->where('category_id',request()->cat)
-      ->orWhere('subcategory_child_of_id',request()->cat);
-
-    }
-
-      // order
-    switch (request()->order) {
-      case 'mayor':
-      $products=$products->orderBy('price','desc');
-      break;
-      case 'menor':
-      $products=$products->orderBy('price','asc');
-      break;
-      default:
-      $products=$products->orderBy('id','desc','name','asc');
-      break;
-    }
-
-
-
-    $products=$products->paginate(12);
+    $products = $products->paginate(12);
 
     return view('products.index')
     ->with(compact('products'))

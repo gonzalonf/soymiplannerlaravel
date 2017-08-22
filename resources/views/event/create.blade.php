@@ -180,7 +180,7 @@ $year=(integer)date('Y');
         </select>
         <input class="inputBase" type="text" name="dir" value="" placeholder="dirección">
         <button class="boton_editar2" type="submit" name="send">AGREGAR</button>
-        <a href="/products/filter?q=&order=&city=Elegir+Zona&cat=1"><br>
+        <a href="/products/filter?q=&order=&city={{$sessionCity??''}}&cat=1"><br>
             ...o consultá nuestras opciones!
         </a>
     </form>
@@ -200,10 +200,10 @@ $year=(integer)date('Y');
 </div>
 <hr>
 <div class="eventCont3" >
-    <a class="boton_editar3" href="/products/filter?q=&order=&city={{$sessionCity}}Elegir+Zona&cat=3">Catering</a>
-    <a class="boton_editar3" href="/products/filter?q=&order=&city={{$sessionCity}}Elegir+Zona&cat=2">Decoración</a>
-    <a class="boton_editar3" href="/products/filter?q=&order=&city={{$sessionCity}}Elegir+Zona&cat=4">Entretenimiento</a>
-    <a class="boton_editar3" href="/products/filter?q=&order=&city={{$sessionCity}}Elegir+Zona&cat=5">Otros&nbsp;Servicios</a>
+    <a class="boton_editar3" href="/products/filter?q=&order=&city={{$sessionCity??''}}&cat=3">Catering</a>
+    <a class="boton_editar3" href="/products/filter?q=&order=&city={{$sessionCity??''}}&cat=2">Decoración</a>
+    <a class="boton_editar3" href="/products/filter?q=&order=&city={{$sessionCity??''}}&cat=4">Entretenimiento</a>
+    <a class="boton_editar3" href="/products/filter?q=&order=&city={{$sessionCity??''}}&cat=5">Otros&nbsp;Servicios</a>
     {{-- estaría bueno hacer que vayan marcado las categorías que las están yponerle mas onda a los botones --}}
     <br><br>
     @if ($products!==[])

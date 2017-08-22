@@ -15,6 +15,8 @@ class CreateProductsLocationsTable extends Migration
     {
         Schema::create('products_locations', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('product_id')->unsigned();
+            $table->integer('location_id')->unsigned();
             $table->timestamps();
         });
     }
