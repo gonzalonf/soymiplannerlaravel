@@ -73,9 +73,13 @@
                                 <img src="{{Storage::url($product->imgName)}}">
                                 @endif  --}}
                                 @if (!empty (glob ('storage/product/'. $product->id .'.*') [0]))
+                               <a href="/products/{{$product->id}}">
                                 <img src="{{asset (glob ('storage/product/'. $product->id .'.*') [0]) }}" alt="producto" class="imagen_prod">
+                                </a>
                                 @else
+                                <a href="/products/{{$product->id}}">
                                 <img src="/images/default_prod.png" alt="producto" class="imagen_prod">
+                                </a>
                                 @endif
                                 <div class="caption">
                                     <h3> <a href="/products/{{$product->id}}"> {{$product->name}} </a></h3>
