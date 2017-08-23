@@ -50,7 +50,7 @@ class ProductsController extends Controller
   public function filter()
   {
 
-    $products = ProductSearch::apply();
+    $products = ProductSearch::apply(request());
 
     $products = $products->paginate(12);
 

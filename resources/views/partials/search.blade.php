@@ -50,13 +50,13 @@ transition: background-color 0.3s;*/
 {{-- los estilos llevarlos al css --}}
 <div id='content' class='row-fluid'>
     <form class="buscador" method="get" action="/products/filter">
-        <input type="search" name="q"  id="search_products" placeholder="Buscá" value="">
+        <input type="search" name="search"  id="search_products" placeholder="Buscá" value="">
         <button class="btn btn-danger" type="submit">
         <span class=" glyphicon{{--  glyphicon-search  --}} lupita" ></span>
         </button>
-        @if (isset( $_GET['q']) && trim($_GET['q'])!=='')
+        @if (isset( $_GET['search']) && trim($_GET['search'])!=='')
         <div class="tag_search">
-            <b>{{ '"'.$_GET['q'].'"' }}</b>
+            <b>{{ '"'.$_GET['search'].'"' }}</b>
             <a href="#">X</a>
         </div>
         @endif
@@ -80,7 +80,7 @@ transition: background-color 0.3s;*/
             <h4>Ubicación</h4>
             {{-- Ojaldre... esto debería venir de una nueva DB, no hardcodeado --}}
             <select placeholder="hola" class="" name="city" >
-                <option>Elegir Zona</option>
+                <option value="">Elegir Zona</option>
                 @foreach ($locations as $loc)
                 <option
                     @if (request()->city==$loc->id)

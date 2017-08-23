@@ -359,6 +359,7 @@ footer img{
 	margin-top: 5px;
 }
 .mensajes_portada{
+    width: 100%;
     position:absolute;
     left:0;
     top:0;
@@ -1106,7 +1107,7 @@ img.thumbnail{
 
     .mensajes_portada{
 
-        font-size:2em;
+        font-size:1.5em;
 
     }
 

@@ -39,7 +39,7 @@
 
 			<form class="buscador" method="get" action="products/filter">
 				<label  for="search"> Buscá: <br> </label>
-				<input type="search" name="q"  id="search" placeholder="Salones, Catering, Dj, Fotografía, Ambientación, ..." >
+				<input type="search" name="search"  id="search" placeholder="Salones, Catering, Dj, Fotografía, Ambientación, ..." >
 				<input type="submit" value="" id=lupita>
 			</form>
 		</div>
