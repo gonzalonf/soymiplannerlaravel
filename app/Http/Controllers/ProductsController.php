@@ -47,10 +47,10 @@ class ProductsController extends Controller
 
   }
 
-  public function filter()
+  public function filter(Request $request)
   {
 
-    $products = ProductSearch::apply(request());
+    $products = ProductSearch::apply($request);
 
     $products = $products->paginate(12);
 
