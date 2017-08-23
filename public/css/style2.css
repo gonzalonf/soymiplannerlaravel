@@ -754,6 +754,83 @@ to {transform: scale(1)}
 }*/
 
 /*------------FIN ESTILOS LOGIN-------------------------------------------*/
+
+
+/*--------------ESTILOS SEARCH FILTERS--------------------*/
+
+#content{
+/* min-width: 270px; */
+padding: 0 5px;
+background-color: rgba(0, 0, 0, 0.1);
+}
+#search_products {
+height: 35px;
+border: none;
+position: relative;
+top: 2.3px;
+width: 70%;
+margin: auto;
+}
+.buscador {
+text-align: center;
+margin: 7px auto;
+}
+.tag_search{
+margin:0.5em;
+padding: 0.5em;
+background: lightblue;
+overflow: hidden;
+border-radius: 3px;
+box-sizing: border-box;
+}
+.tag_search a:hover{
+text-decoration: none;
+font-weight: bold;
+}
+.tag_search a{
+float: right;
+}
+.lupita{
+background-image: url(../images/lupita_blanca.png);
+background-repeat: no-repeat;
+background-position: center;
+background-size: 18px 18px;
+width: 18px;
+height: 18px;
+padding: 0;
+/*border-radius: 0px 3px 3px 0px;
+
+position: absolute;
+margin-left: -20px;
+transition: background-color 0.3s;*/
+}
+.filters{
+    text-align: left;
+    padding:1em;
+}
+.cat_radio{
+    display: none;
+}
+.cat_label:hover{
+    color: #3e5a87;
+    cursor: pointer;
+}
+.subcat{
+    font-size:0.8em;
+    margin-left:1em;
+    display: none;
+
+}
+.cat_radio:checked + .cat_label{
+    color:#0b50c1;
+}
+
+.show{
+    display: block;
+}
+
+
+
 /* ----------- INICIA ESTILOS REGISTRATE----------------------------------*/
 
 .registro-container {

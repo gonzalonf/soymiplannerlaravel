@@ -1,59 +1,10 @@
-<style media="screen">
-#content{
-/* min-width: 270px; */
-padding: 0 5px;
-background-color: rgba(0, 0, 0, 0.1);
-}
-#search_products {
-height: 35px;
-border: none;
-position: relative;
-top: 2.3px;
-width: 70%;
-margin: auto;
-}
-.buscador {
-text-align: center;
-margin: 7px auto;
-}
-.tag_search{
-margin:0.5em;
-padding: 0.5em;
-background: lightblue;
-overflow: hidden;
-border-radius: 3px;
-box-sizing: border-box;
-}
-.tag_search a:hover{
-text-decoration: none;
-font-weight: bold;
-}
-.tag_search a{
-float: right;
-}
-.lupita{
-background-image: url(../images/lupita_blanca.png);
-background-repeat: no-repeat;
-background-position: center;
-background-size: 18px 18px;
-width: 18px;
-height: 18px;
-padding: 0;
-/*border-radius: 0px 3px 3px 0px;
-
-position: absolute;
-margin-left: -20px;
-transition: background-color 0.3s;*/
-}
-</style>
-
-{{-- los estilos llevarlos al css --}}
 <div id='content' class='row-fluid'>
     <form class="buscador" method="get" action="/products/filter">
         <input type="search" name="search"  id="search_products" placeholder="Buscá" value="">
         <button class="btn btn-danger" type="submit">
         <span class=" glyphicon{{--  glyphicon-search  --}} lupita" ></span>
         </button>
+
         @if (isset( $_GET['search']) && trim($_GET['search'])!=='')
         <div class="tag_search">
             <b>{{ '"'.$_GET['search'].'"' }}</b>
@@ -70,15 +21,29 @@ transition: background-color 0.3s;*/
             <a href="#">X</a>
         </div>
         @endif
-        <div class="" style="text-align: left; padding:1em;">
+        @if (isset( request()->city))
+        <div class="tag_search">
+            <b>
+                @foreach ($locations as $loc)
+                    @if ($loc->id == request()->city)
+                        {{$loc->location}}
+                    @endif
+                @endforeach
+            </b>
+            <a href="#">X</a>
+        </div>
+        @endif
+
+        <div class="filters" >
+
             <h4>Ordenar Publicaciones</h4>
             <select class="" name="order">
                 <option value="">Orden</option>
                 <option {{request()->order=='mayor'?'selected':''}} value="mayor">Mayor Precio</option>
                 <option {{request()->order=='menor'?'selected':''}} value="menor">Menor Precio</option>
             </select>
+
             <h4>Ubicación</h4>
-            {{-- Ojaldre... esto debería venir de una nueva DB, no hardcodeado --}}
             <select placeholder="hola" class="" name="city" >
                 <option value="">Elegir Zona</option>
                 @foreach ($locations as $loc)
@@ -91,23 +56,23 @@ transition: background-color 0.3s;*/
                 </option>
                 @endforeach
             </select>
-            {{-- NOTA: los radios van en hidden cuando tenga JS --}}
+
             <h4>Categorias</h4>
             <ul class="nav nav-tabs nav-stacked">
                 @foreach ($categories as $cat)
                 @if ($cat->subcategory_child_of_id == null )
                 <li>
-                    <input  type="radio" name="cat" value="{{$cat->id}}" id="{{$cat->id}}">
-                    <label for="{{$cat->id}}">
+                    <input  class="cat_radio cat_parent" type="radio" name="cat" value="{{$cat->id}}" id="{{$cat->id}}">
+                    <label class="cat_label cat_parent_label" for="{{$cat->id}}">
                         {{$cat->category_name}}
                     </label>
                     {{-- traer subcategorias --}}
-                    <ul style="font-size:0.8em; margin-left:1em;">
+                    <ul class="subcat" id="subcat_container_{{$cat->id}}">
                         @foreach ($categories as $subcat)
                         @if ($subcat->subcategory_child_of_id == $cat->id )
                         <li>
-                            <input  type="radio" name="cat" value="{{$subcat->id}}" id="{{$subcat->id}}">
-                            <label for="{{$subcat->id}}">
+                            <input class="cat_radio"  type="radio" name="cat" value="{{$subcat->id}}" id="{{$subcat->id}}">
+                            <label class="cat_label" for="{{$subcat->id}}">
                                 {{$subcat->category_name}}
                             </label>
                         </li>
@@ -118,10 +83,29 @@ transition: background-color 0.3s;*/
                 @endif
                 @endforeach
             </ul>
-            {{--
-            CAT X(volver)
-            subcategory
-            subcategory --}}
+
         </div>
     </form>
+    <script type="text/javascript">
+        ;(function(window,document,undefined){
+        window.addEventListener('DOMContentLoaded',function(){
+
+            var cats = document.getElementsByClassName('cat_parent_label');
+
+            Object.keys(cats).forEach( function(v){
+                var popup = document.getElementsByClassName('subcat')[v];
+
+                cats[v].addEventListener('click', function(){
+                    popup.classList.toggle('show');
+                });
+            });
+
+            console.log("JS cargado");
+
+        });// Fin ON LOAD!!
+        }(window,document));
+
+    </script>
+
+
 </div>
