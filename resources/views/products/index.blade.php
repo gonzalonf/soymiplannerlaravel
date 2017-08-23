@@ -96,7 +96,15 @@
                                     }
                                     @endphp
                                     <h5><b>{{$father.$product->category_name}}</b></h5>
-                                    <p>Descripcion: {{$product->description}}.</p>
+                                    <p>Descripcion: 
+                                    @if (strlen($product->description)>10)
+                                        {{substr($product->description, 0, 50) . '...'}}
+                                    @else
+                                    {{$product->description}}
+                                    @endif
+                                    
+
+                                    </p>
                                     <p class="caption">Precio: {{$product->price}} </p>
                                     <form class="" action="/event/edit" method="post">
                                         {{ csrf_field() }}
