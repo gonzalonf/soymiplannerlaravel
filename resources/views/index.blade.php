@@ -1,5 +1,12 @@
 @include('partials/head')
+@php
+	// sleep(1);
+@endphp
+
 <body>
+	<div id="load_screen"><div id="loading"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+<span class="sr-only">Loading...</span>
+</div></div>
 
 	<!-- navegación -->
 	@include('partials/nav')
@@ -56,5 +63,6 @@
 
 	<script src="../js/carrusel.js"></script>
 	<script src="../js/cuantos_somos.js"> </script>
+
 </body>
 </html>
