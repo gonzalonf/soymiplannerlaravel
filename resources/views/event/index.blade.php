@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Mis Eventos</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="favicon" href="images/favicon.png">
 </head>
 <body>
     @include('partials/nav')
@@ -25,7 +26,10 @@
                         <h3>Horario: {{\App\Event::toHumanTime($ev->event_time)}}</h3>
                     </div>
                 </a>
+
+
             </li>
+
             @endforeach
         </ul>
         @endif

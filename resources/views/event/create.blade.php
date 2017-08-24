@@ -72,6 +72,7 @@ $year=(integer)date('Y');
             text-align: center;
             font-weight: bold;
             font-size: 12px;
+            display: block;
         }
     </style>
 </head>
@@ -207,6 +208,7 @@ $year=(integer)date('Y');
     {{-- estaría bueno hacer que vayan marcado las categorías que las están yponerle mas onda a los botones --}}
     <br><br>
     @if ($products!==[])
+    <h3>Eventos Seleccionados</h3>
     @foreach ($products as $item)
     <li>
         <form class="" action="/event/edit" method="post">
