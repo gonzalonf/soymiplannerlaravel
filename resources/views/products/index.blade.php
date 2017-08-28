@@ -99,7 +99,7 @@
                                         $father = '';
                                     }
                                     @endphp
-                                    <h5><b><a href="products/filter?search=&order=&city=&cat={{$product->category_id}}"> {{$father.$product->category_name}}</b> </a></h5>
+                                    <h5><b><a href="/products/filter?search=&order=&city=&cat={{$product->category_id}}"> {{$father.$product->category_name}}</b> </a></h5>
                                     <p> <b> Descripcion: </b> 
                                     @if (strlen($product->description)>10)
                                         {{substr($product->description, 0, 50) . '...'}}
