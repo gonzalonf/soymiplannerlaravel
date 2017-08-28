@@ -7,7 +7,6 @@
     <!-- Bootstrap -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <!---------------->
     <link id="pagestyle" rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <link rel="icon" type="favicon" href="images/favicon.png">
     <style type="text/css">
@@ -53,7 +52,6 @@
             <h2>Eventos</h2>
         </div> --}}
         <div>
-        {{-- style="display: flex" --}}
             <div  class="contenedor-flex ">
                 {{-- el aside --}}
                 @include('partials/search')
