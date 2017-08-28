@@ -53,7 +53,8 @@
             <h2>Eventos</h2>
         </div> --}}
         <div>
-            <div style="display: flex" class="contenedor-flex ">
+        {{-- style="display: flex" --}}
+            <div  class="contenedor-flex ">
                 {{-- el aside --}}
                 @include('partials/search')
                 @if ($products->count()===0)
