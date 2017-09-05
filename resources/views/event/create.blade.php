@@ -93,7 +93,11 @@ $year=(integer)date('Y');
                     <form class="" action="/event/edit" method="post">
                         {{ csrf_field() }}
                         <input class='decorative-input-edit text-label inputUpdate' type="text" name="name" value="{{$eventName}}">
-                        <button class="boton_editar2" type="sumbit" name="send">CAMBIAR</button>
+                        <button class="boton_editar2" type="sumbit" name="send"><i style="  
+        position: relative;
+        top: 4px;
+        right: 4px;" 
+    class="material-icons">check</i>CAMBIAR</button>
                     </form>
                 </h3>
                 <h3><strong>FECHA:</strong>
@@ -146,7 +150,11 @@ $year=(integer)date('Y');
             @endif
             >
             <label for="noch">Noche</label>
-            <button class="boton_editar2" type="sumbit" name="dateAdd">AGREGAR</button>
+            <button class="boton_editar2" type="sumbit" name="dateAdd"><i style="  
+        position: relative;
+        top: 4px;
+        right: 4px;" 
+    class="material-icons">check</i>AGREGAR</button>
             {{ csrf_field() }}
         </form>
     </h3>
@@ -183,7 +191,11 @@ $year=(integer)date('Y');
             @endforeach
         </select>
         <input class="inputBase" type="text" name="dir" value="" placeholder="dirección">
-        <button class="boton_editar2" type="submit" name="send">AGREGAR</button>
+        <button class="boton_editar2" type="submit" name="send"><i style="  
+        position: relative;
+        top: 4px;
+        right: 4px;" 
+    class="material-icons">add_circle</i>AGREGAR</button>
         <a href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=1"><br>
             ...o consultá nuestras opciones!
         </a>
@@ -204,14 +216,31 @@ $year=(integer)date('Y');
 </div>
 <hr>
 <div class="eventCont3" >
-    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=3">Catering</a>
-    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=2">Decoración</a>
-    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=4">Entretenimiento</a>
-    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=5">Otros&nbsp;Servicios</a>
+    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=3"> <i style="  
+        position: relative;
+        top: 4px;
+        right: 4px;" 
+    class="material-icons">add_circle</i>  Catering </a>
+    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=2"><i style="  
+        position: relative;
+        top: 4px;
+        right: 4px;" 
+    class="material-icons">add_circle</i> Decoración</a>
+    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=4"><i style="  
+        position: relative;
+        top: 4px;
+        right: 4px;" 
+    class="material-icons">add_circle</i> Entretenimiento</a>
+    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=5"><i style="  
+        position: relative;
+        top: 4px;
+        right: 4px;" 
+    class="material-icons">add_circle</i> Otros&nbsp;Servicios</a>
     {{-- estaría bueno hacer que vayan marcado las categorías que las están yponerle mas onda a los botones --}}
     <br><br>
     @if ($products!==[])
 
+{{-- -CAJITA FIXED --}}
 <div class="fixed-box">
     <span class="js-btn btn"> 
     <i class="material-icons">keyboard_arrow_left</i>
@@ -226,7 +255,7 @@ $year=(integer)date('Y');
         <li>
             <form class="" action="/event/edit" method="post">
                 <h2><a href="/products/{{$item->id}}">{{$item->name}} </a>
-                    <button class="boton_editar2" type="submit" name="rem" value="{{$item->id}}"><b>ELIMINAR</b>
+                    <button class="boton_editar2" type="submit" name="rem" value="{{$item->id}}"><i style="cursor: pointer;" class="material-icons">clear</i>
                     </button>
                 </h2>
                 {{ csrf_field() }}
@@ -243,12 +272,17 @@ $year=(integer)date('Y');
         <input type="hidden" name="hola" value="asd">
         <button class='volver' type="submit" name="checkout" value="true">
             CONSULTAR SERVICIOS
+            <i style="position: relative;
+    left: 4px;
+    top: 4px;" class="material-icons">mail_outline</i>
         </button>
     </form>
 
 @endif
 </div>
 </div>
+
+{{-- FIN CAJITA FIXED --}}
    @if ($products!==[])
 
         <h3>Eventos Seleccionados</h3>
@@ -257,7 +291,7 @@ $year=(integer)date('Y');
         <li>
             <form class="" action="/event/edit" method="post">
                 <h2><a href="/products/{{$item->id}}">{{$item->name}} </a>
-                    <button class="boton_editar2" type="submit" name="rem" value="{{$item->id}}"><b>ELIMINAR</b>
+                    <button style="cursor: pointer;" class="boton_editar2" type="submit" name="rem" value="{{$item->id}}"><i  class="material-icons">clear</i><b>ELIMINAR</b>
                     </button>
                 </h2>
                 {{ csrf_field() }}
@@ -274,6 +308,9 @@ $year=(integer)date('Y');
         <input type="hidden" name="hola" value="asd">
         <button class='volver' type="submit" name="checkout" value="true">
             CONSULTAR SERVICIOS
+            <i style="position: relative;
+    left: 4px;
+    top: 4px;" class="material-icons">mail_outline</i>
         </button>
     </form>
 </div>
