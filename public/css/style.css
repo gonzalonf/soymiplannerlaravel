@@ -23,6 +23,31 @@ header{
 }
 
 
+.is-hidden {
+  display: none;
+}
+
+.btn {
+  background: #ccc;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 5px;
+}
+.btn:hover{
+	background-color: #E85057;
+}
+.fixed-box{
+	position: fixed;
+	top: 45px;
+	left: 0;
+	background-color: #EFEFEF;
+	text-align: right;
+
+}
+
+
+
+
 /*------------COMIENZA BURGUER------------------------------------------*/
 
 .burger {

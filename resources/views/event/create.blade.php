@@ -14,6 +14,9 @@ $year=(integer)date('Y');
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Crea tu evento</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="favicon" href="images/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <style media="screen">
         .eventCont1{
             padding:3em;
@@ -208,33 +211,128 @@ $year=(integer)date('Y');
     {{-- estaría bueno hacer que vayan marcado las categorías que las están yponerle mas onda a los botones --}}
     <br><br>
     @if ($products!==[])
-    <h3>Eventos Seleccionados</h3>
-    @foreach ($products as $item)
-    <li>
-        <form class="" action="/event/edit" method="post">
-            <h2><a href="/products/{{$item->id}}">{{$item->name}} </a>
-                <button class="boton_editar2" type="submit" name="rem" value="{{$item->id}}"><b>ELIMINAR</b>
-                </button>
-            </h2>
-            {{ csrf_field() }}
-        </form>
-        <h2><b>Precio: </b>{{$item->price}}</h2>
-        <br><br>
-    </li>
-    @endforeach
-    @endif
-</ul>
-@if (isset($products) && !empty($products))
-<form class="" action="/event/store" method="post" >
-    {{ csrf_field() }}
-    <input type="hidden" name="hola" value="asd">
-    <button class='volver' type="submit" name="checkout" value="true">
-        CONSULTAR SERVICIOS
-    </button>
-</form>
+
+<div class="fixed-box">
+    <span class="js-btn btn"> 
+    <i class="material-icons">keyboard_arrow_left</i>
+    <i class="material-icons">event_available</i> 
+
+    </span>
+
+    <div class="js-fade is-hidden" style="">
+        <h3>Eventos Seleccionados</h3>
+        <hr>
+        @foreach ($products as $item)
+        <li>
+            <form class="" action="/event/edit" method="post">
+                <h2><a href="/products/{{$item->id}}">{{$item->name}} </a>
+                    <button class="boton_editar2" type="submit" name="rem" value="{{$item->id}}"><b>ELIMINAR</b>
+                    </button>
+                </h2>
+                {{ csrf_field() }}
+            </form>
+            <h2><b>Precio: </b>{{$item->price}}</h2>
+            <br><br>
+        </li>
+        @endforeach
+        @endif
+    </ul>
+    @if (isset($products) && !empty($products))
+    <form class="" action="/event/store" method="post" >
+        {{ csrf_field() }}
+        <input type="hidden" name="hola" value="asd">
+        <button class='volver' type="submit" name="checkout" value="true">
+            CONSULTAR SERVICIOS
+        </button>
+    </form>
+
 @endif
 </div>
 </div>
+   @if ($products!==[])
+
+        <h3>Eventos Seleccionados</h3>
+        <hr>
+        @foreach ($products as $item)
+        <li>
+            <form class="" action="/event/edit" method="post">
+                <h2><a href="/products/{{$item->id}}">{{$item->name}} </a>
+                    <button class="boton_editar2" type="submit" name="rem" value="{{$item->id}}"><b>ELIMINAR</b>
+                    </button>
+                </h2>
+                {{ csrf_field() }}
+            </form>
+            <h2><b>Precio: </b>{{$item->price}}</h2>
+            <br><br>
+        </li>
+        @endforeach
+        @endif
+    </ul>
+    @if (isset($products) && !empty($products))
+    <form class="" action="/event/store" method="post" >
+        {{ csrf_field() }}
+        <input type="hidden" name="hola" value="asd">
+        <button class='volver' type="submit" name="checkout" value="true">
+            CONSULTAR SERVICIOS
+        </button>
+    </form>
+</div>
+</div>
+@endif
 @include('partials/footer')
+
+<script type="text/javascript">
+
+    window.addEventListener('load',function(){
+        // fade out
+
+function fadeOut(el){
+  el.style.opacity = 1;
+
+  (function fade() {
+    if ((el.style.opacity -= .1) < 0) {
+      el.style.display = 'none';
+      el.classList.add('is-hidden');
+    } else {
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
+// fade in
+
+function fadeIn(el, display){
+  if (el.classList.contains('is-hidden')){
+    el.classList.remove('is-hidden');
+  }
+  el.style.opacity = 0;
+  el.style.display = display || "block";
+
+  (function fade() {
+    var val = parseFloat(el.style.opacity);
+    if (!((val += .1) > 1)) {
+      el.style.opacity = val;
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
+var btn = document.querySelector('.js-btn');
+var el = document.querySelector('.js-fade');
+
+btn.addEventListener('click', function(e){
+  if(el.classList.contains('is-hidden')){
+    fadeIn(el);
+  }
+  else {
+    fadeOut(el);
+  }
+});
+
+});
+    
+        
+
+</script>
 </body>
 </html>
