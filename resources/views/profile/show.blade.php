@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>PRODUCTOS DE {{$user->first_name.' '.$user->last_name}}</title>
     <link id="pagestyle" rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-    <link rel="icon" type="favicon" href="images/favicon.png">
+    <link rel="icon" type="favicon" href="/images/favicon.png">
 </head>
 <body>
     @include('partials/nav')

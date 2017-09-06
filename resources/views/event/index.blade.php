@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Mis Eventos</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" type="favicon" href="images/favicon.png">
+    <link rel="icon" type="favicon" href="/images/favicon.png">
 </head>
 <body>
     @include('partials/nav')

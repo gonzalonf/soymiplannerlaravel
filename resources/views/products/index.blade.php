@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Productos</title>
+    <title>Publicaciones</title>
     <!-- Bootstrap -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link id="pagestyle" rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-    <link rel="icon" type="favicon" href="images/favicon.png">
+    <link rel="icon" type="favicon" href="/images/favicon.png">
     <style type="text/css">
         *{
             text-decoration: none !important;

@@ -10,6 +10,7 @@
   <meta charset="utf-8">
   <title>LOGIN</title>
   <link id="pagestyle" rel="stylesheet" type="text/css" href="../css/style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <link rel="icon" type="favicon" href="images/favicon.png">
 </head>
 <body>
