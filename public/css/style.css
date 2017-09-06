@@ -37,8 +37,8 @@ header{
 	background-color: #ff5a5f;
 }
 .fixed-box{
-	position: fixed;
-	top: 45px;
+	position: absolute;
+	top: 15px;
 	left: 0;
 	background-color: #EFEFEF;
 	text-align: right;
