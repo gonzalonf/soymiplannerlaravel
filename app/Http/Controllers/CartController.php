@@ -101,7 +101,10 @@ class CartController extends Controller
     }
     public function store(Request $request)
     {
-        // ojo validar
+        // ojo validar....
+        // y devolver errores si...
+        // 1-no está completo
+        // 2-coincide con un evento igual
        $cartArray = session()->get('cart');
        $city = session()->get('city');
        $dir = session()->get('dir');
@@ -135,7 +138,7 @@ class CartController extends Controller
             }
         }
        } else {
-        //    evento existe!
+        //    evento existe!  ...ojo..esto desopués  vuela... se exige validación antes de llegar
         // comprobar productos
            $eventProducts = $event->contact->pluck('product_id')->toArray() ?: [];
         //  agregar
@@ -146,8 +149,11 @@ class CartController extends Controller
 
            }
        }
-//ACA HACE FALTA ARREGLAR Y PONER EL EMAIL DEL USUARIO QUE PUBLICO SI ALGUIEN SABE COMO LLEGAR
-       Mail::to(Product::user()->email)->send(new ContactUser());
+       foreach ($cartArray as $item) {
+           $seller_email = Product::find($item)->user->email;
+           Mail::to($seller_email)->send(new ContactUser());
+       }
+
        session()->forget(['cart','event','dir','city','eventName']);
 
        return redirect('/event');
