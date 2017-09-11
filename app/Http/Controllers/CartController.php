@@ -10,6 +10,9 @@ use App\Event;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use Mail;
+use App\Mail\ContactUser;
+
 
 class CartController extends Controller
 {
@@ -143,7 +146,8 @@ class CartController extends Controller
 
            }
        }
-
+//ACA HACE FALTA ARREGLAR Y PONER EL EMAIL DEL USUARIO QUE PUBLICO SI ALGUIEN SABE COMO LLEGAR
+       Mail::to(Product::user()->email)->send(new ContactUser());
        session()->forget(['cart','event','dir','city','eventName']);
 
        return redirect('/event');
