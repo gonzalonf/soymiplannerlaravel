@@ -29,16 +29,16 @@ window.addEventListener('DOMContentLoaded',function(){
     if (document.getElementById('rem_cat')){
         var rem_cat = document.getElementById('rem_cat');
         rem_cat.addEventListener('click',function(){
-            document.forms[0].elements['cat'].forEach(function(e) {
+            document.forms.search.elements['cat'].forEach(function(e) {
                 if (e.checked==true){
                     e.checked=false;
                 }
-                document.forms[0].elements['cat'].value = '';
-                console.log(document.forms[0].elements['cat'].value)
+                document.forms.search.elements['cat'].value = '';
+                console.log(document.forms.search.elements['cat'].value)
 
             });
             this.parentNode.remove();
-            document.forms[0].submit();
+            document.forms.search.submit();
         });
     }
 
@@ -46,27 +46,25 @@ window.addEventListener('DOMContentLoaded',function(){
     if (document.getElementById('rem_search')){
         var rem_search = document.getElementById('rem_search');
         rem_search.addEventListener('click',function(){
-            document.forms[0].elements['search'].value = '';
-            document.forms[0].submit();
+            document.forms.search.elements['search'].value = '';
+            document.forms.search.submit();
         });
     }
 
     if (document.getElementById('rem_loc')){
         var rem_loc = document.getElementById('rem_loc');
         rem_loc.addEventListener('click',function(){
-            document.forms[0].elements['city'].value = '';
+            document.forms.search.elements['city'].value = '';
             this.parentNode.remove();
-            document.forms[0].submit();
+            document.forms.search.submit();
         });
     }
 
 
-    document.forms[0].addEventListener('change',function(e){
-
+    document.forms.search.addEventListener('change',function(){
         this.submit();
-
+        console.log('change');
     });
-
 
     console.log("JS cargado");
 

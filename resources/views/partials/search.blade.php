@@ -1,5 +1,5 @@
 <div id='content' class='row-fluid'>
-    <form class="buscador" method="get" action="/products/filter">
+    <form class="buscador" method="get" action="/products/filter" name="search">
         <input type="search" name="search"  id="search_products" placeholder="Buscá" value="{{request()->search}}">
         {{-- <input type="hidden" name="search" value="{{$_GET['search']}}"> --}}
         <button class="btn btn-danger" type="submit">
