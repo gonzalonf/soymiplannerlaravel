@@ -36,10 +36,16 @@
         <p><strong>Precio: {{$product->price}}</strong></p>
       </div>
       <div class='formulario'>
-        <button type='submit' class='editar volver' name='submit'><strong>Añadir a Tu Carruaje de Eventos</strong></button>
+          <form class="" action="/event/edit" method="post">
+              {{ csrf_field() }}
+              <button class="enviar" type="submit" name="add" value="{{$product->id}}">
+                  Contactar
+              </button>
+          </form>
+    
       </div>
     </div>
-    
+
     @if (Auth::guest())
     <a style="text-align: center;" href="{{ url('/register') }}">"Que esperas, Registrate!" </a>
     @endif
@@ -73,7 +79,7 @@
         </form>
       </div>
     </div>
-    
+
     @endif
     @include('partials/footer')
   </body>

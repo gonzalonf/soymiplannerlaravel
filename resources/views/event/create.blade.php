@@ -81,10 +81,16 @@ $year=(integer)date('Y');
 </head>
 <body>
     @include('partials/nav')
+
+
+
     <div class='registro-container editarContainer'>
         <div class='crear-cuenta'>
             <h1 class="titulo_seccion">PLANEÁ TU EVENTO</h1>
             <hr>
+        </div>
+        <div class="panel-body">
+            <div id="example"></div>
         </div>
             {{-- Para guardar (o sea, pasar de sesion a db) logear
             La idea es que puedan guardar muchos 'carts' de eventos y recuperarlos --}}
@@ -93,10 +99,10 @@ $year=(integer)date('Y');
                     <form class="" action="/event/edit" method="post">
                         {{ csrf_field() }}
                         <input class='decorative-input-edit text-label inputUpdate' type="text" name="name" value="{{$eventName}}">
-                        <button class="boton_editar2" type="sumbit" name="send"><i style="  
+                        <button class="boton_editar2" type="sumbit" name="send"><i style="
         position: relative;
         top: 4px;
-        right: 4px;" 
+        right: 4px;"
     class="material-icons">check</i>CAMBIAR</button>
                     </form>
                 </h3>
@@ -150,10 +156,10 @@ $year=(integer)date('Y');
             @endif
             >
             <label for="noch">Noche</label>
-            <button class="boton_editar2" type="sumbit" name="dateAdd"><i style="  
+            <button class="boton_editar2" type="sumbit" name="dateAdd"><i style="
         position: relative;
         top: 4px;
-        right: 4px;" 
+        right: 4px;"
     class="material-icons">check</i>AGREGAR</button>
             {{ csrf_field() }}
         </form>
@@ -167,8 +173,8 @@ $year=(integer)date('Y');
             <button class="boton_editar2" type="submit" name="remDate" value="true">
                 <b>ELIMINAR</b>
             </button>
-            {{ csrf_field() }}
         </h2>
+        {{ csrf_field() }}
     </form>
     @endif
 </div>
@@ -191,10 +197,10 @@ $year=(integer)date('Y');
             @endforeach
         </select>
         <input class="inputBase" type="text" name="dir" value="" placeholder="dirección">
-        <button class="boton_editar2" type="submit" name="send"><i style="  
+        <button class="boton_editar2" type="submit" name="send"><i style="
         position: relative;
         top: 4px;
-        right: 4px;" 
+        right: 4px;"
     class="material-icons">add_circle</i>AGREGAR</button>
         <a href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=1"><br>
             ...o consultá nuestras opciones!
@@ -216,25 +222,25 @@ $year=(integer)date('Y');
 </div>
 <hr>
 <div class="eventCont3" >
-    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=3"> <i style="  
+    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=3"> <i style="
         position: relative;
         top: 4px;
-        right: 4px;" 
+        right: 4px;"
     class="material-icons">add_circle</i>  Catering </a>
-    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=2"><i style="  
+    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=2"><i style="
         position: relative;
         top: 4px;
-        right: 4px;" 
+        right: 4px;"
     class="material-icons">add_circle</i> Decoración</a>
-    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=4"><i style="  
+    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=4"><i style="
         position: relative;
         top: 4px;
-        right: 4px;" 
+        right: 4px;"
     class="material-icons">add_circle</i> Entretenimiento</a>
-    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=5"><i style="  
+    <a class="boton_editar3" href="/products/filter?search=&order=&city={{$sessionCity??''}}&cat=5"><i style="
         position: relative;
         top: 4px;
-        right: 4px;" 
+        right: 4px;"
     class="material-icons">add_circle</i> Otros&nbsp;Servicios</a>
     {{-- estaría bueno hacer que vayan marcado las categorías que las están yponerle mas onda a los botones --}}
     <br><br>
@@ -242,9 +248,9 @@ $year=(integer)date('Y');
 
 {{-- -CAJITA FIXED --}}
 <div class="fixed-box">
-    <span class="js-btn btn"> 
+    <span class="js-btn btn">
     <i class="material-icons">keyboard_arrow_left</i>
-    <i class="material-icons">event_available</i> 
+    <i class="material-icons">event_available</i>
 
     </span>
 
@@ -318,6 +324,7 @@ $year=(integer)date('Y');
 @endif
 @include('partials/footer')
 
+
 <script type="text/javascript">
 
     window.addEventListener('load',function(){
@@ -367,9 +374,8 @@ btn.addEventListener('click', function(e){
 });
 
 });
-    
-        
 
 </script>
+<script src="{{mix('js/app.js')}}" charset="utf-8"></script>
 </body>
 </html>

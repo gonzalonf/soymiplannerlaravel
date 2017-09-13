@@ -53,12 +53,16 @@ Route::patch('products/{id}update', 'ProductsController@update')->middleware('au
 | CART/EVENT
 |--------------------------------------------------------------------------*/
 
-Route::get('/event', 'CartController@index');
+Route::get('/event', 'CartController@index')->middleware('auth');;
 Route::get('/event/create', 'CartController@create');
 Route::post('/event/store', 'CartController@store')->middleware('auth');
 Route::post('/event/edit', 'CartController@edit');
 
-
+// devuelve un 404 en lugar de MethodNotAllowedHttpException (x ej cuando el
+// usuario escribe a mano rutas destinadas a post o put)
+Route::any('{all}', function(){
+    return view('errors.404');
+})->where('all', '.*');
 
 
 

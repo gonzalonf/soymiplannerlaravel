@@ -101,6 +101,7 @@ class CartController extends Controller
     }
     public function store(Request $request)
     {
+
         // ojo validar....
         // y devolver errores si...
         // 1-no está completo
@@ -157,6 +158,5 @@ class CartController extends Controller
        session()->forget(['cart','event','dir','city','eventName']);
 
        return redirect('/event');
-
     }
 }
